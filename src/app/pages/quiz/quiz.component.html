@@ -1,0 +1,49 @@
+<div class="container card m-t-lg">
+  <div class="card-body">
+    <form [formGroup]="form" autocomplete="off">
+      <div [class]="formGroupClass">
+        <label [class]="labelClass">なまえ：</label>
+        <input
+          type="text"
+          [class]="inputClass"
+          formControlName="name"
+          [attr.disabled]
+        />
+      </div>
+      <div [class]="formGroupClass">
+        <label [class]="labelClass">タイプ：</label>
+        <input
+          type="text"
+          [class]="inputClass"
+          formControlName="types"
+          [attr.disabled]
+        />
+      </div>
+      <div [class]="formGroupClass">
+        <label [class]="labelClass">とくせい：</label>
+        <input
+          type="text"
+          [class]="inputClass"
+          formControlName="abilities"
+          [attr.disabled]
+        />
+      </div>
+    </form>
+    <div class="d-flex justify-content-between">
+      <button
+        type="button"
+        class="btn btn-outline-secondary  w-100px ml-1"
+        (click)="register('1')"
+      >
+        こたえ１
+      </button>
+      <button
+        type="button"
+        class="btn btn-info  w-100px ml-1"
+        (click)="register('2')"
+      >
+        こたえ２
+      </button>
+    </div>
+  </div>
+</div>
