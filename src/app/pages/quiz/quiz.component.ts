@@ -226,7 +226,12 @@ export class QuizComponent implements OnInit {
 
   register(choice: string) {
     console.log(choice)
-    this.answerService.addAnswer(this.target, this.quizType, choice)
+    this.answerService.addAnswer(
+      this.target,
+      this.quizType,
+      choice,
+      this.imageUrl
+    )
     this.count += 1
     this.ngOnInit()
   }

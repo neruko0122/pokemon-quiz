@@ -1,0 +1,18 @@
+.preview {
+  width: 40%;
+}
+
+.success {
+  background-color: rgba(151, 248, 142, 0.801);
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.fail {
+  background-color: rgba(255, 0, 0, 0.411);
+  font-size: 25px;
+  text-align: center;
+  vertical-align: middle;
+}

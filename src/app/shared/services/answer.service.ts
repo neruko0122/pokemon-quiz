@@ -13,7 +13,7 @@ export class AnswerService {
     this.answerList = []
   }
 
-  addAnswer(target, quizType, choice: string) {
+  addAnswer(target, quizType, choice: string, imageUrl) {
     var correctAnswer = null
     switch (quizType) {
       case 1:
@@ -33,7 +33,8 @@ export class AnswerService {
       question: QUESTIONS[quizType].value,
       answer: choice,
       correctAnswer: correctAnswer,
-      success: correctAnswer === choice
+      success: correctAnswer === choice,
+      image: imageUrl
     })
     console.log(this.answerList)
   }
