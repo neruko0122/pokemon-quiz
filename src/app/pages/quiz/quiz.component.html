@@ -1,48 +1,86 @@
 <div class="container card m-t-lg">
+  <div class="card-header">
+    <label class="question">Q{{ count }}. {{ question }}</label>
+  </div>
   <div class="card-body">
     <form [formGroup]="form" autocomplete="off">
-      <div [class]="formGroupClass">
+      <div>
+        <img class="preview" src="{{ imageUrl }}" alt="ポケモンイメージ" />
+      </div>
+      <div [class]="formGroupClass" *ngIf="quizType != 1">
         <label [class]="labelClass">なまえ：</label>
         <input
           type="text"
           [class]="inputClass"
           formControlName="name"
-          [attr.disabled]
+          readonly
         />
       </div>
-      <div [class]="formGroupClass">
+      <div [class]="formGroupClass" *ngIf="quizType != 2">
         <label [class]="labelClass">タイプ：</label>
         <input
           type="text"
           [class]="inputClass"
           formControlName="types"
-          [attr.disabled]
+          readonly
         />
       </div>
-      <div [class]="formGroupClass">
+      <div [class]="formGroupClass" *ngIf="quizType != 3">
+        <label [class]="labelClass">しんか：</label>
+        <input
+          type="text"
+          [class]="inputClass"
+          formControlName="evolutions"
+          readonly
+        />
+      </div>
+      <div [class]="formGroupClass" *ngIf="quizType != 4">
         <label [class]="labelClass">とくせい：</label>
         <input
           type="text"
           [class]="inputClass"
           formControlName="abilities"
-          [attr.disabled]
+          readonly
+        />
+      </div>
+      <div [class]="formGroupClass" *ngIf="quizType != 4">
+        <label [class]="labelClass">かくれとくせい：</label>
+        <input
+          type="text"
+          [class]="inputClass"
+          formControlName="hiddenAbilities"
+          readonly
         />
       </div>
     </form>
     <div class="d-flex justify-content-between">
       <button
         type="button"
-        class="btn btn-outline-secondary  w-100px ml-1"
-        (click)="register('1')"
+        class="btn btn-info  w-100px ml-1"
+        (click)="register(answer1)"
       >
-        こたえ１
+        {{ answer1 }}
       </button>
       <button
         type="button"
-        class="btn btn-info  w-100px ml-1"
-        (click)="register('2')"
+        class="btn btn-danger  w-100px ml-1"
+        (click)="register(answer2)"
       >
-        こたえ２
+        {{ answer2 }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-success  w-100px ml-1"
+        (click)="register(answer3)"
+      >
+        {{ answer3 }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-warning  w-100px ml-1"
+        (click)="register(answer4)"
+      >
+        {{ answer4 }}
       </button>
     </div>
   </div>

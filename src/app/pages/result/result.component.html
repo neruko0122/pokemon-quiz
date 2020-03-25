@@ -1,1 +1,18 @@
-<p>result works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>もんだい</th>
+      <th>かいとう</th>
+      <th>せいかい</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let answer of answerList">
+      <td>{{ answer.question }}</td>
+      <td>{{ answer.answer }}</td>
+      <td>{{ answer.correctAnswer }}</td>
+      <td>{{ answer.success ? '○' : '×' }}</td>
+    </tr>
+  </tbody>
+</table>

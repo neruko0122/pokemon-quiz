@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { AnswerService } from 'src/app/shared/services/answer.service'
 
 @Component({
   selector: 'app-result',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  constructor() {}
+  answerList!: any[]
+  constructor(private answerService: AnswerService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.answerList = this.answerService.getAnswer()
+    console.log(this.answerList)
+  }
 }
