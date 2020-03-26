@@ -136,14 +136,20 @@ export class QuizComponent implements OnInit {
       // メガシンカ後も取り直し
       return this.getPokemonData(data, excludeNum, isEvolution)
     }
+    // TODO: 選択肢のポケモン同士で回答が被るケースを防ぐ
     switch (this.quizType) {
       case 1:
         // 同名のポケモンはいないのでスルー（アローラのすがたは別途検討）
         break
       case 2:
         // 問題のポケモンと同一タイプは取り直し
-        if (this.target.types === data[number - 1]['types']) {
-          return this.getPokemonData(data, excludeNum, isEvolution)
+        if (this.target.types[0] === data[number - 1]['types'][0]) {
+          if (
+            this.target.types.length < 2 ||
+            this.target.types[1] === data[number - 1]['types'][1]
+          ) {
+            return this.getPokemonData(data, excludeNum, isEvolution)
+          }
         }
         break
       case 3:
@@ -151,8 +157,13 @@ export class QuizComponent implements OnInit {
         break
       case 4:
         // 問題のポケモンと同一とくせいは取り直し
-        if (this.target.abilities === data[number - 1]['abilities']) {
-          return this.getPokemonData(data, excludeNum, isEvolution)
+        if (this.target.abilities[0] === data[number - 1]['abilities'][0]) {
+          if (
+            this.target.abilities.length < 2 ||
+            this.target.abilities[1] === data[number - 1]['abilities'][1]
+          ) {
+            return this.getPokemonData(data, excludeNum, isEvolution)
+          }
         }
         break
       default:
