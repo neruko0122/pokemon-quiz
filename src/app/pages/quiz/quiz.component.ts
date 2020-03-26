@@ -15,7 +15,7 @@ import { QUESTIONS, QUIZ_TYPES } from './../../shared/constants/quiz'
 export class QuizComponent implements OnInit {
   form: FormGroup
   data: any
-  target: any
+  target: any = null
   quizType = 0
   quizTypes = QUIZ_TYPES
   question!: string
@@ -121,20 +121,44 @@ export class QuizComponent implements OnInit {
 
     var number = Math.floor(Math.random() * (max + 1 - min)) + min
     if (number == excludeNum) {
+      // 問題のポケモンは除外して取り直し
       return this.getPokemonData(data, excludeNum, isEvolution)
     }
     if (isEvolution && data[number - 1]['evolutions'].length === 0) {
+      // 進化系問題で進化先のない場合は取り直し
       return this.getPokemonData(data, excludeNum, isEvolution)
     }
     if (data[number - 1]['form'] !== '') {
       // アローラのすがたは取り直し
       return this.getPokemonData(data, excludeNum, isEvolution)
-    } else if (data[number - 1]['isMegaEvolution']) {
+    }
+    if (data[number - 1]['isMegaEvolution']) {
       // メガシンカ後も取り直し
       return this.getPokemonData(data, excludeNum, isEvolution)
-    } else {
-      return data[number - 1]
     }
+    switch (this.quizType) {
+      case 1:
+        // 同名のポケモンはいないのでスルー（アローラのすがたは別途検討）
+        break
+      case 2:
+        // 問題のポケモンと同一タイプは取り直し
+        if (this.target.types === data[number - 1]['types']) {
+          return this.getPokemonData(data, excludeNum, isEvolution)
+        }
+        break
+      case 3:
+        // 同名のポケモンに進化しないのでスルー
+        break
+      case 4:
+        // 問題のポケモンと同一とくせいは取り直し
+        if (this.target.abilities === data[number - 1]['abilities']) {
+          return this.getPokemonData(data, excludeNum, isEvolution)
+        }
+        break
+      default:
+        break
+    }
+    return data[number - 1]
   }
 
   private getPokemonImage(number) {
