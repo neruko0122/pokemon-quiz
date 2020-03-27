@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # image files
-./assets/images/pokemon
+src/assets/images/pokemon/*

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NgxSpinnerModule } from 'ngx-spinner'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
@@ -16,7 +17,8 @@ import { AppComponent } from './app.component'
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

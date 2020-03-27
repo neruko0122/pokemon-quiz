@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { NgxSpinnerService } from 'ngx-spinner'
 import { AnswerService } from 'src/app/shared/services/answer.service'
 
 @Component({
@@ -8,10 +10,30 @@ import { AnswerService } from 'src/app/shared/services/answer.service'
 })
 export class ResultComponent implements OnInit {
   answerList!: any[]
-  constructor(private answerService: AnswerService) {}
+  constructor(
+    private answerService: AnswerService,
+    private router: Router,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.answerList = this.answerService.getAnswer()
     console.log(this.answerList)
+  }
+
+  restart() {
+    this.spinner.show()
+    this.router.navigate(['/quiz'])
+    setTimeout(() => {
+      this.spinner.hide()
+    }, 500)
+  }
+
+  setting() {
+    this.spinner.show()
+    this.router.navigate(['/setting'])
+    setTimeout(() => {
+      this.spinner.hide()
+    }, 500)
   }
 }

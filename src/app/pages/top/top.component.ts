@@ -12,6 +12,7 @@ export class TopComponent implements OnInit {
   ngOnInit(): void {}
 
   start() {
+    // TODO: 設定画面に遷移で、問題範囲を指定
     this.router.navigate(['/quiz'])
   }
 }

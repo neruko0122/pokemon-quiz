@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
+import { NgxSpinnerService } from 'ngx-spinner'
 import { AnswerService } from 'src/app/shared/services/answer.service'
 import { DataService } from 'src/app/shared/services/data.service'
 
@@ -34,7 +35,8 @@ export class QuizComponent implements OnInit {
     private dataService: DataService,
     private fb: FormBuilder,
     private http: HttpClient,
-    private answerService: AnswerService
+    private answerService: AnswerService,
+    private spinner: NgxSpinnerService
   ) {
     this.data = this.dataService.import()
     this.answerService.clearList()
@@ -117,7 +119,7 @@ export class QuizComponent implements OnInit {
 
   private getPokemonData(data: any, excludeNum: number, isEvolution: boolean) {
     var min = 1
-    var max = 151
+    var max = 251
 
     var number = Math.floor(Math.random() * (max + 1 - min)) + min
     if (number == excludeNum) {
@@ -260,6 +262,7 @@ export class QuizComponent implements OnInit {
   }
 
   register(choice: string) {
+    this.spinner.show()
     console.log(choice)
     this.answerService.addAnswer(
       this.target,
@@ -269,5 +272,8 @@ export class QuizComponent implements OnInit {
     )
     this.count += 1
     this.ngOnInit()
+    setTimeout(() => {
+      this.spinner.hide()
+    }, 500)
   }
 }
