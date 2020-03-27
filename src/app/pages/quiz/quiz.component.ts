@@ -43,7 +43,7 @@ export class QuizComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.count > 10) {
+    if (this.count > 20) {
       this.router.navigate(['/result'])
     }
     this.buildForm()
@@ -263,7 +263,6 @@ export class QuizComponent implements OnInit {
 
   register(choice: string) {
     this.spinner.show()
-    console.log(choice)
     this.answerService.addAnswer(
       this.target,
       this.quizType,
@@ -274,6 +273,6 @@ export class QuizComponent implements OnInit {
     this.ngOnInit()
     setTimeout(() => {
       this.spinner.hide()
-    }, 500)
+    }, 1000)
   }
 }
