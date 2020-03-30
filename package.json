@@ -6,7 +6,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "npm i && ng serve --base-href=/ --host=0.0.0.0",
+    "start": "npm i && ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
