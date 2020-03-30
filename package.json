@@ -6,8 +6,8 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "npm i && ng serve --base-href=/ --host=0.0.0.0 --disableHostCheck=true",
-    "build": "node --max_old_space_size=512 ./node_modules/@angular/cli/bin/ng build --prod",
+    "start": "npm i && ng serve --base-href=/ --host=0.0.0.0",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "format:check": "prettier --no-semi true --single-quote true --check \"src/app/**/*{.ts,.js,.json,.css,.scss,.html}\"",
