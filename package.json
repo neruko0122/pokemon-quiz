@@ -1,9 +1,12 @@
 {
   "name": "pokemon-quiz",
   "version": "0.0.0",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "npm i && ng serve --base-href=/ --host=0.0.0.0",
+    "start": "npm i && ng serve --base-href=/ --host=0.0.0.0 --disableHostCheck=true",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
