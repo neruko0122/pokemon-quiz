@@ -43,7 +43,7 @@ export class QuizComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.count > 20) {
+    if (this.count > 10) {
       this.router.navigate(['/result'])
     }
     this.buildForm()
@@ -119,7 +119,7 @@ export class QuizComponent implements OnInit {
 
   private getPokemonData(data: any, excludeNum: number, isEvolution: boolean) {
     var min = 1
-    var max = 251
+    var max = 260
 
     var number = Math.floor(Math.random() * (max + 1 - min)) + min
     if (number == excludeNum) {
@@ -203,7 +203,7 @@ export class QuizComponent implements OnInit {
     if (typeNum !== 3) {
       return typeNum
     } else {
-      if (target['evolutions'].length > 0 && target['evolutions'][0] < 152) {
+      if (target['evolutions'].length > 0 && target['evolutions'][0] < 260) {
         return typeNum
       } else {
         return this.getQuizType(target)
