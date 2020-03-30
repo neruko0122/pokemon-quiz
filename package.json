@@ -2,7 +2,8 @@
   "name": "pokemon-quiz",
   "version": "0.0.0",
   "engines": {
-    "node": "12.x"
+    "node": "12.15.0",
+    "npm": "6.4.1"
   },
   "scripts": {
     "ng": "ng",
