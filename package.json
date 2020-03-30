@@ -6,7 +6,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "npm i && ng serve --base-href=/ --host=0.0.0.0 --disableHostCheck=true",
+    "start": "npm i && ng serve --base-href=/ --host=0.0.0.0 --disableHostCheck=true --max-old-space-size=512 --no-warnings",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
