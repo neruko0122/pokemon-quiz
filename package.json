@@ -7,7 +7,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "npm i && ng serve",
+    "start": "node server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -29,6 +29,7 @@
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
     "bootstrap": "4.3.1",
+    "express": "^4.17.1",
     "ngx-bootstrap": "^5.3.2",
     "ngx-order-pipe": "^2.0.4",
     "ngx-spinner": "^9.0.1",
