@@ -13,7 +13,6 @@
     "lint": "ng lint",
     "format:check": "prettier --no-semi true --single-quote true --check \"src/app/**/*{.ts,.js,.json,.css,.scss,.html}\"",
     "format:write": "npm run format:check -- --write",
-    "heroku-postbuild": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "e2e": "ng e2e"
   },
   "private": true,
