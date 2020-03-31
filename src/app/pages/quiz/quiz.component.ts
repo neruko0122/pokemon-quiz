@@ -26,8 +26,8 @@ export class QuizComponent implements OnInit {
   answer4!: string
   imageUrl!: string
   count = 1
-  inputClass = 'form-control col-sm-9'
-  labelClass = 'col-sm-3 col-form-label col-form-label-sm'
+  inputClass = 'form-control col-sm-10'
+  labelClass = 'col-sm-2 col-form-label col-form-label-sm'
   formGroupClass = 'form-group row align-items-center'
 
   constructor(

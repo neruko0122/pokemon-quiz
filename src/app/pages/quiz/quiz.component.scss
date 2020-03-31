@@ -2,6 +2,7 @@
   color: red;
   font-weight: bold;
   font-size: 20pt;
+  display: contents;
 }
 
 .container {
@@ -18,5 +19,13 @@
 }
 
 .preview {
-  width: 5%;
+  width: 64px;
+}
+
+.form-control {
+  width: auto;
+}
+
+.col-form-label {
+  width: auto;
 }
