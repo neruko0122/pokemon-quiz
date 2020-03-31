@@ -13,7 +13,7 @@
     "lint": "ng lint",
     "format:check": "prettier --no-semi true --single-quote true --check \"src/app/**/*{.ts,.js,.json,.css,.scss,.html}\"",
     "format:write": "npm run format:check -- --write",
-    "postinstall": "ng build --aot --target=production",
+    "postinstall": "ng build --aot",
     "e2e": "ng e2e"
   },
   "private": true,
