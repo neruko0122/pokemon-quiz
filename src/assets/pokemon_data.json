@@ -3191,7 +3191,7 @@
     "isMegaEvolution": false,
     "evolutions": [148],
     "types": ["ドラゴン"],
-    "abilities": ["だっび"],
+    "abilities": ["だっぴ"],
     "hiddenAbilities": ["ふしぎなうろこ"],
     "status": {
       "hp": 41,
@@ -3209,7 +3209,7 @@
     "isMegaEvolution": false,
     "evolutions": [149],
     "types": ["ドラゴン"],
-    "abilities": ["だっび"],
+    "abilities": ["だっぴ"],
     "hiddenAbilities": ["ふしぎなうろこ"],
     "status": {
       "hp": 61,
