@@ -33,3 +33,6 @@ https://frysk-pokemon-quiz.herokuapp.com/
 ## JSON DATA
 
 https://github.com/kotofurumiya/pokemon_data
+
+## IMAGE DATA
+[ひこちゃんず！](http://hikochans.com/)
