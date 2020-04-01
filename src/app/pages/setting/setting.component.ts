@@ -48,3 +48,7 @@ export class SettingComponent implements OnInit {
 // No.387-494 シンオウ
 // No.495-649 イッシュ
 // No.650-807 カロス
+
+// デオキシス
+// ミノムッチ
+// ギラティナ

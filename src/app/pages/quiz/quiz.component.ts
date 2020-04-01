@@ -79,6 +79,9 @@ export class QuizComponent implements OnInit {
             : '',
         status: pokemon['status']
       }
+      setTimeout(() => {
+        this.spinner.hide()
+      }, 1000)
     })
 
     this.answerStatus.subscribe(response => {
@@ -168,7 +171,7 @@ export class QuizComponent implements OnInit {
 
   private getPokemonData(data: any, excludeNum: number, isEvolution: boolean) {
     var min = 1
-    var max = 260
+    var max = 505
 
     var number = Math.floor(Math.random() * (max + 1 - min)) + min
     if (number == excludeNum) {
@@ -247,12 +250,13 @@ export class QuizComponent implements OnInit {
     // 2: タイプ当て
     // 3: 新化先当て
     // 4: 特性当て
+    // 5: 弱点当て
 
     var typeNum = Math.floor(Math.random() * (max + 1 - min)) + min
     if (typeNum !== 3) {
       return typeNum
     } else {
-      if (target['evolutions'].length > 0 && target['evolutions'][0] < 260) {
+      if (target['evolutions'].length > 0 && target['evolutions'][0] < 505) {
         return typeNum
       } else {
         return this.getQuizType(target)
@@ -359,8 +363,5 @@ export class QuizComponent implements OnInit {
     )
     this.count += 1
     this.ngOnInit()
-    setTimeout(() => {
-      this.spinner.hide()
-    }, 1000)
   }
 }
