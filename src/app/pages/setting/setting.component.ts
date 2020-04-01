@@ -5,10 +5,17 @@ import { NgxSpinnerService } from 'ngx-spinner'
 import { SettingService } from 'src/app/shared/services/setting.service'
 
 import {
+  LEVEL_ADVANCED,
   LEVEL_ELEMENTARY,
+  LEVEL_INTERMEDIATE,
   LEVELS,
   POKEMON_RANGES,
-  RANGE_KANTO
+  RANGE_HOENN,
+  RANGE_ISSHU,
+  RANGE_JOHTO,
+  RANGE_KALOS,
+  RANGE_KANTO,
+  RANGE_SINNOH
 } from './../../shared/constants/setting'
 
 @Component({
@@ -36,9 +43,9 @@ export class SettingComponent implements OnInit {
     this.rangeChange(RANGE_KANTO)
     this.levelChange(LEVEL_ELEMENTARY)
     this.form.patchValue({
-      pokemonRange: [1, 151],
-      level: [1, 2],
-      count: 10
+      pokemonRange: this.convertRange(this.settingService.getRange()),
+      level: this.convertLevel(this.settingService.getLevel()),
+      count: this.settingService.getQuizCount()
     })
   }
 
@@ -77,6 +84,34 @@ export class SettingComponent implements OnInit {
   start() {
     this.spinner.show()
     this.router.navigate(['/quiz'])
+  }
+
+  private convertRange(range: any[]) {
+    switch (range[1]) {
+      case 151:
+        return RANGE_KANTO
+      case 251:
+        return RANGE_JOHTO
+      case 368:
+        return RANGE_HOENN
+      case 494:
+        return RANGE_SINNOH
+      case 649:
+        return RANGE_ISSHU
+      case 807:
+        return RANGE_KALOS
+    }
+  }
+
+  private convertLevel(level: any[]) {
+    switch (level[1]) {
+      case 2:
+        return LEVEL_ELEMENTARY
+      case 3:
+        return LEVEL_INTERMEDIATE
+      case 4:
+        return LEVEL_ADVANCED
+    }
   }
 }
 
