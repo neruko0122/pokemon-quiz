@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
+import { NgxSpinnerService } from 'ngx-spinner'
 import { SettingService } from 'src/app/shared/services/setting.service'
 
 import {
@@ -26,7 +27,8 @@ export class SettingComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private settingService: SettingService
+    private settingService: SettingService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +65,7 @@ export class SettingComponent implements OnInit {
   }
 
   start() {
+    this.spinner.show()
     this.router.navigate(['/quiz'])
   }
 }
