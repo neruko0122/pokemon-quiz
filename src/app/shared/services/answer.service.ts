@@ -36,7 +36,6 @@ export class AnswerService {
       success: correctAnswer === choice,
       image: imageUrl
     })
-    console.log(this.answerList)
   }
 
   getAnswer() {

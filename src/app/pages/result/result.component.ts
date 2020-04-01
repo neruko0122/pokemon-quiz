@@ -18,7 +18,6 @@ export class ResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.answerList = this.answerService.getAnswer()
-    console.log(this.answerList)
   }
 
   restart() {

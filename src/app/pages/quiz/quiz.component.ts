@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
 import { NgxSpinnerService } from 'ngx-spinner'
+import { Subject } from 'rxjs'
 import { AnswerService } from 'src/app/shared/services/answer.service'
 import { DataService } from 'src/app/shared/services/data.service'
 
@@ -16,6 +17,7 @@ import { QUESTIONS, QUIZ_TYPES } from './../../shared/constants/quiz'
 export class QuizComponent implements OnInit {
   form: FormGroup
   data: any
+  pokemonData: any
   target: any = null
   quizType = 0
   quizTypes = QUIZ_TYPES
@@ -29,6 +31,8 @@ export class QuizComponent implements OnInit {
   inputClass = 'form-control col-sm-10 col-xs-9'
   labelClass = 'col-sm-2 col-xs-3 col-form-label col-form-label-sm'
   formGroupClass = 'form-group row align-items-center'
+  answerList: Subject<any[]> = new Subject()
+  answerStatus = this.answerList.asObservable()
 
   constructor(
     private router: Router,
@@ -48,6 +52,7 @@ export class QuizComponent implements OnInit {
     }
     this.buildForm()
     this.data.subscribe(json => {
+      this.pokemonData = json
       var pokemon = this.getPokemonData(json, 0, false)
       this.quizType = this.getQuizType(pokemon)
       this.question = QUESTIONS[this.quizType].value
@@ -73,6 +78,50 @@ export class QuizComponent implements OnInit {
             ? this.getEvolution(json, pokemon)[0]['name']
             : '',
         status: pokemon['status']
+      }
+    })
+
+    this.answerStatus.subscribe(response => {
+      if (!response) {
+        return this.getAnswer(this.target, this.quizType)
+      }
+      response.sort(() => Math.random() - 0.5)
+
+      switch (this.quizType) {
+        case 1:
+          this.answer1 = response[0]['name']
+          this.answer2 = response[1]['name']
+          this.answer3 = response[2]['name']
+          this.answer4 = response[3]['name']
+          break
+        case 2:
+          this.answer1 = response[0]['types']
+          this.answer2 = response[1]['types']
+          this.answer3 = response[2]['types']
+          this.answer4 = response[3]['types']
+          break
+        case 3:
+          this.answer1 = this.getEvolution(this.pokemonData, response[0])[0][
+            'name'
+          ]
+          this.answer2 = this.getEvolution(this.pokemonData, response[1])[0][
+            'name'
+          ]
+          this.answer3 = this.getEvolution(this.pokemonData, response[2])[0][
+            'name'
+          ]
+          this.answer4 = this.getEvolution(this.pokemonData, response[3])[0][
+            'name'
+          ]
+          break
+        case 4:
+          this.answer1 = response[0]['abilities']
+          this.answer2 = response[1]['abilities']
+          this.answer3 = response[2]['abilities']
+          this.answer4 = response[3]['abilities']
+          break
+        default:
+          break
       }
     })
   }
@@ -220,38 +269,77 @@ export class QuizComponent implements OnInit {
       var dummy1 = this.getPokemonData(json, target['no'], typeNum === 3)
       var dummy2 = this.getPokemonData(json, target['no'], typeNum === 3)
       var dummy3 = this.getPokemonData(json, target['no'], typeNum === 3)
-      var answerList = [target, dummy1, dummy2, dummy3]
-      answerList.sort(() => Math.random() - 0.5)
-
-      switch (typeNum) {
-        case 1:
-          this.answer1 = answerList[0]['name']
-          this.answer2 = answerList[1]['name']
-          this.answer3 = answerList[2]['name']
-          this.answer4 = answerList[3]['name']
-          break
-        case 2:
-          this.answer1 = answerList[0]['types']
-          this.answer2 = answerList[1]['types']
-          this.answer3 = answerList[2]['types']
-          this.answer4 = answerList[3]['types']
-          break
-        case 3:
-          this.answer1 = this.getEvolution(json, answerList[0])[0]['name']
-          this.answer2 = this.getEvolution(json, answerList[1])[0]['name']
-          this.answer3 = this.getEvolution(json, answerList[2])[0]['name']
-          this.answer4 = this.getEvolution(json, answerList[3])[0]['name']
-          break
-        case 4:
-          this.answer1 = answerList[0]['abilities']
-          this.answer2 = answerList[1]['abilities']
-          this.answer3 = answerList[2]['abilities']
-          this.answer4 = answerList[3]['abilities']
-          break
-        default:
-          break
-      }
+      this.checkAnswers(target, dummy1, dummy2, dummy3, typeNum)
     })
+  }
+
+  private checkAnswers(target, dummy1, dummy2, dummy3, typeNum) {
+    switch (typeNum) {
+      case 1:
+        if (
+          target['name'] === dummy1['name'] ||
+          target['name'] === dummy2['name'] ||
+          target['name'] === dummy3['name'] ||
+          dummy1['name'] === dummy2['name'] ||
+          dummy1['name'] === dummy3['name'] ||
+          dummy2['name'] === dummy3['name']
+        ) {
+          this.getAnswer(target, typeNum)
+        }
+        break
+      case 2:
+        if (
+          this.conpareList(target['types'], dummy1['types']) ||
+          this.conpareList(target['types'], dummy2['types']) ||
+          this.conpareList(target['types'], dummy3['types']) ||
+          this.conpareList(dummy1['types'], dummy2['types']) ||
+          this.conpareList(dummy1['types'], dummy3['types']) ||
+          this.conpareList(dummy2['types'], dummy3['types'])
+        ) {
+          this.getAnswer(target, typeNum)
+        }
+        break
+      case 3:
+        if (
+          this.conpareList(target['evolutions'], dummy1['evolutions']) ||
+          this.conpareList(target['evolutions'], dummy2['evolutions']) ||
+          this.conpareList(target['evolutions'], dummy3['evolutions']) ||
+          this.conpareList(dummy1['evolutions'], dummy2['evolutions']) ||
+          this.conpareList(dummy1['evolutions'], dummy3['evolutions']) ||
+          this.conpareList(dummy2['evolutions'], dummy3['evolutions'])
+        ) {
+          this.getAnswer(target, typeNum)
+        }
+        break
+      case 4:
+        if (
+          this.conpareList(target['abilities'], dummy1['abilities']) ||
+          this.conpareList(target['abilities'], dummy2['abilities']) ||
+          this.conpareList(target['abilities'], dummy3['abilities']) ||
+          this.conpareList(dummy1['abilities'], dummy2['abilities']) ||
+          this.conpareList(dummy1['abilities'], dummy3['abilities']) ||
+          this.conpareList(dummy2['abilities'], dummy3['abilities'])
+        ) {
+          this.getAnswer(target, typeNum)
+        }
+        break
+    }
+    this.answerList.next([target, dummy1, dummy2, dummy3])
+  }
+
+  private conpareList(list1: any[], list2: any[]): boolean {
+    if (list1.length !== list2.length) {
+      return false
+    }
+    if (list1[0] !== list2[0]) {
+      return false
+    }
+    if (list1.length > 0 && list2.length > 0) {
+      if (list1[1] !== list2[1]) {
+        return false
+      }
+    }
+    return true
   }
 
   private getEvolution(data: any[], base: any) {
