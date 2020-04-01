@@ -12,3 +12,14 @@ export const POKEMON_RANGES: any[] = [
   // RANGE_ISSHU,
   // RANGE_KALOS
 ]
+
+export const LEVEL_ELEMENTARY = 'しょきゅう（なまえ・タイプ）'
+export const LEVEL_INTERMEDIATE = 'ちゅうきゅう（なまえ・タイプ・しんか）'
+export const LEVEL_ADVANCED = 'じょうきゅう（なまえ・タイプ・しんか・とくせい）'
+export const LEVEL_UPPER_ADVANCED = 'ちょうじょうきゅう（ひみつ）'
+
+export const LEVELS: any[] = [
+  LEVEL_ELEMENTARY,
+  LEVEL_INTERMEDIATE,
+  LEVEL_ADVANCED
+]

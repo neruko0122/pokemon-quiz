@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core'
 
 import {
+  LEVEL_ADVANCED,
+  LEVEL_ELEMENTARY,
+  LEVEL_INTERMEDIATE,
   RANGE_HOENN,
   RANGE_ISSHU,
   RANGE_JOHTO,
@@ -14,6 +17,7 @@ import {
 })
 export class SettingService {
   pokemonRange = [1, 151]
+  level = [1, 2]
   constructor() {}
 
   setRange(range: string) {
@@ -41,5 +45,23 @@ export class SettingService {
 
   getRange() {
     return this.pokemonRange
+  }
+
+  setLevel(level: string) {
+    switch (level) {
+      case LEVEL_ELEMENTARY:
+        this.level = [1, 2]
+        break
+      case LEVEL_INTERMEDIATE:
+        this.level = [1, 3]
+        break
+      case LEVEL_ADVANCED:
+        this.level = [1, 4]
+        break
+    }
+  }
+
+  getLevel() {
+    return this.level
   }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { SettingService } from 'src/app/shared/services/setting.service'
 
-import { POKEMON_RANGES } from './../../shared/constants/setting'
+import { LEVELS, POKEMON_RANGES } from './../../shared/constants/setting'
 
 @Component({
   selector: 'app-setting',
@@ -13,6 +13,7 @@ import { POKEMON_RANGES } from './../../shared/constants/setting'
 export class SettingComponent implements OnInit {
   form: FormGroup
   pokemonRanges = POKEMON_RANGES
+  levels = LEVELS
   inputClass = 'form-control col-sm-9'
   labelClass = 'col-sm-3 col-form-label col-form-label-sm'
   formGroupClass = 'form-group row align-items-center'
@@ -25,12 +26,12 @@ export class SettingComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm()
-    console.log(this.pokemonRanges)
   }
 
   private buildForm(): void {
     this.form = this.fb.group({
-      pokemonRange: [null]
+      pokemonRange: [null, [Validators.required]],
+      level: [null, [Validators.required]]
     })
   }
 
@@ -38,8 +39,16 @@ export class SettingComponent implements OnInit {
     return this.form.get('pokemonRange') as FormControl
   }
 
+  get level(): FormControl {
+    return this.form.get('level') as FormControl
+  }
+
   rangeChange(value) {
     this.settingService.setRange(value)
+  }
+
+  levelChange(value) {
+    this.settingService.setLevel(value)
   }
 
   start() {

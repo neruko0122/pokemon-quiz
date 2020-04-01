@@ -3,9 +3,9 @@
     <label class="setting">せってい</label>
   </div>
   <div class="card-body">
-    <p>もんだいにでてくるポケモン：</p>
     <form [formGroup]="form">
       <div class="form-group form-row">
+        <p>もんだいにでてくるポケモン：</p>
         <div class="col-md-3">
           <select
             class="custom-select w-75"
@@ -24,8 +24,27 @@
           >※「イッシュ」と「カロス」はじゅんびちゅうです。</label
         >
       </div>
+      <div class="form-group form-row">
+        <p>もんだいのむずかしさ</p>
+        <div class="col-md-3">
+          <select
+            class="custom-select w-75"
+            (change)="levelChange($event.target.value)"
+            formControlName="level"
+          >
+            <option *ngFor="let level of levels" [value]="level">
+              {{ level }}
+            </option>
+          </select>
+        </div>
+      </div>
     </form>
-    <button type="button" class="btn btn-info  w-100px ml-1" (click)="start()">
+    <button
+      type="button"
+      class="btn btn-info  w-100px ml-1"
+      (click)="start()"
+      [disabled]="pokemonRange.invalid || level.invalid"
+    >
       スタート
     </button>
   </div>

@@ -29,6 +29,7 @@ export class QuizComponent implements OnInit {
   answer4!: string
   imageUrl!: string
   range: any[]
+  level: any[]
   count = 1
   inputClass = 'form-control col-sm-10 col-xs-9'
   labelClass = 'col-sm-2 col-xs-3 col-form-label col-form-label-sm'
@@ -47,6 +48,8 @@ export class QuizComponent implements OnInit {
   ) {
     this.data = this.dataService.import()
     this.answerService.clearList()
+    this.range = this.settingService.getRange()
+    this.level = this.settingService.getLevel()
   }
 
   ngOnInit(): void {
@@ -56,7 +59,6 @@ export class QuizComponent implements OnInit {
     this.buildForm()
     this.data.subscribe(json => {
       this.pokemonData = json
-      this.range = this.settingService.getRange()
       var pokemon = this.getPokemonData(json, 0, false)
       this.quizType = this.getQuizType(pokemon)
       this.question = QUESTIONS[this.quizType].value
@@ -248,8 +250,8 @@ export class QuizComponent implements OnInit {
   }
 
   private getQuizType(target) {
-    var min = 1
-    var max = 4
+    var min = this.level[0]
+    var max = this.level[1]
     // 1: 名前当て
     // 2: タイプ当て
     // 3: 新化先当て
