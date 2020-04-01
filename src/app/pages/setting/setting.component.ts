@@ -37,14 +37,16 @@ export class SettingComponent implements OnInit {
     this.levelChange(LEVEL_ELEMENTARY)
     this.form.patchValue({
       pokemonRange: [1, 151],
-      level: [1, 2]
+      level: [1, 2],
+      count: 10
     })
   }
 
   private buildForm(): void {
     this.form = this.fb.group({
       pokemonRange: [null, [Validators.required]],
-      level: [null, [Validators.required]]
+      level: [null, [Validators.required]],
+      count: [null, [Validators.required]]
     })
   }
 
@@ -56,12 +58,20 @@ export class SettingComponent implements OnInit {
     return this.form.get('level') as FormControl
   }
 
+  get count(): FormControl {
+    return this.form.get('count') as FormControl
+  }
+
   rangeChange(value) {
     this.settingService.setRange(value)
   }
 
   levelChange(value) {
     this.settingService.setLevel(value)
+  }
+
+  countChange(value: number) {
+    this.settingService.setQuizCount(value)
   }
 
   start() {

@@ -18,6 +18,7 @@ import {
 export class SettingService {
   pokemonRange = [1, 151]
   level = [1, 2]
+  quizCount = 10
   constructor() {}
 
   setRange(range: string) {
@@ -63,5 +64,13 @@ export class SettingService {
 
   getLevel() {
     return this.level
+  }
+
+  setQuizCount(count: number) {
+    this.quizCount = count
+  }
+
+  getQuizCount() {
+    return this.quizCount
   }
 }

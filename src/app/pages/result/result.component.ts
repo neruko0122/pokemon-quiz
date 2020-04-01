@@ -17,6 +17,7 @@ export class ResultComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.spinner.hide()
     this.answerList = this.answerService.getAnswer()
   }
 

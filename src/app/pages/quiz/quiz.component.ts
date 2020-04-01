@@ -31,6 +31,7 @@ export class QuizComponent implements OnInit {
   range: any[]
   level: any[]
   count = 1
+  maxCount = 10
   inputClass = 'form-control col-sm-10 col-xs-9'
   labelClass = 'col-sm-2 col-xs-3 col-form-label col-form-label-sm'
   formGroupClass = 'form-group row align-items-center'
@@ -50,89 +51,91 @@ export class QuizComponent implements OnInit {
     this.answerService.clearList()
     this.range = this.settingService.getRange()
     this.level = this.settingService.getLevel()
+    this.maxCount = this.settingService.getQuizCount()
   }
 
   ngOnInit(): void {
-    if (this.count > 10) {
+    if (this.count > this.maxCount) {
       this.router.navigate(['/result'])
-    }
-    this.buildForm()
-    this.data.subscribe(json => {
-      this.pokemonData = json
-      var pokemon = this.getPokemonData(json, 0, false)
-      this.quizType = this.getQuizType(pokemon)
-      this.question = QUESTIONS[this.quizType].value
-      this.getPokemonImage(pokemon['no'])
-      this.getAnswer(pokemon, this.quizType)
-      this.form.patchValue({
-        number: pokemon['no'],
-        name: pokemon['name'],
-        types: pokemon['types'],
-        abilities: pokemon['abilities'],
-        hiddenAbilities: pokemon['hiddenAbilities'],
-        evolutions: pokemon['evolutions'].length > 0 ? 'する' : 'しない',
-        status: pokemon['status']
+    } else {
+      this.buildForm()
+      this.data.subscribe(json => {
+        this.pokemonData = json
+        var pokemon = this.getPokemonData(json, 0, false)
+        this.quizType = this.getQuizType(pokemon)
+        this.question = QUESTIONS[this.quizType].value
+        this.getPokemonImage(pokemon['no'])
+        this.getAnswer(pokemon, this.quizType)
+        this.form.patchValue({
+          number: pokemon['no'],
+          name: pokemon['name'],
+          types: pokemon['types'],
+          abilities: pokemon['abilities'],
+          hiddenAbilities: pokemon['hiddenAbilities'],
+          evolutions: pokemon['evolutions'].length > 0 ? 'する' : 'しない',
+          status: pokemon['status']
+        })
+        this.target = {
+          number: pokemon['no'],
+          name: pokemon['name'],
+          types: pokemon['types'],
+          abilities: pokemon['abilities'],
+          hiddenAbilities: pokemon['hiddenAbilities'],
+          evolutions:
+            pokemon['evolutions'].length > 0
+              ? this.getEvolution(json, pokemon)[0]['name']
+              : '',
+          status: pokemon['status']
+        }
+        setTimeout(() => {
+          this.spinner.hide()
+        }, 1000)
       })
-      this.target = {
-        number: pokemon['no'],
-        name: pokemon['name'],
-        types: pokemon['types'],
-        abilities: pokemon['abilities'],
-        hiddenAbilities: pokemon['hiddenAbilities'],
-        evolutions:
-          pokemon['evolutions'].length > 0
-            ? this.getEvolution(json, pokemon)[0]['name']
-            : '',
-        status: pokemon['status']
-      }
-      setTimeout(() => {
-        this.spinner.hide()
-      }, 1000)
-    })
 
-    this.answerStatus.subscribe(response => {
-      if (!response) {
-        return this.getAnswer(this.target, this.quizType)
-      }
-      response.sort(() => Math.random() - 0.5)
+      this.answerStatus.subscribe(response => {
+        if (!response) {
+          return this.getAnswer(this.target, this.quizType)
+        }
+        response.sort(() => Math.random() - 0.5)
 
-      switch (this.quizType) {
-        case 1:
-          this.answer1 = response[0]['name']
-          this.answer2 = response[1]['name']
-          this.answer3 = response[2]['name']
-          this.answer4 = response[3]['name']
-          break
-        case 2:
-          this.answer1 = response[0]['types']
-          this.answer2 = response[1]['types']
-          this.answer3 = response[2]['types']
-          this.answer4 = response[3]['types']
-          break
-        case 3:
-          this.answer1 = this.getEvolution(this.pokemonData, response[0])[0][
-            'name'
-          ]
-          this.answer2 = this.getEvolution(this.pokemonData, response[1])[0][
-            'name'
-          ]
-          this.answer3 = this.getEvolution(this.pokemonData, response[2])[0][
-            'name'
-          ]
-          this.answer4 = this.getEvolution(this.pokemonData, response[3])[0][
-            'name'
-          ]
-          break
-        case 4:
-          this.answer1 = response[0]['abilities']
-          this.answer2 = response[1]['abilities']
-          this.answer3 = response[2]['abilities']
-          this.answer4 = response[3]['abilities']
-          break
-        default:
-          break
-      }
-    })
+        switch (this.quizType) {
+          case 1:
+            this.answer1 = response[0]['name']
+            this.answer2 = response[1]['name']
+            this.answer3 = response[2]['name']
+            this.answer4 = response[3]['name']
+            break
+          case 2:
+            this.answer1 = response[0]['types']
+            this.answer2 = response[1]['types']
+            this.answer3 = response[2]['types']
+            this.answer4 = response[3]['types']
+            break
+          case 3:
+            this.answer1 = this.getEvolution(this.pokemonData, response[0])[0][
+              'name'
+            ]
+            this.answer2 = this.getEvolution(this.pokemonData, response[1])[0][
+              'name'
+            ]
+            this.answer3 = this.getEvolution(this.pokemonData, response[2])[0][
+              'name'
+            ]
+            this.answer4 = this.getEvolution(this.pokemonData, response[3])[0][
+              'name'
+            ]
+            break
+          case 4:
+            this.answer1 = response[0]['abilities']
+            this.answer2 = response[1]['abilities']
+            this.answer3 = response[2]['abilities']
+            this.answer4 = response[3]['abilities']
+            break
+          default:
+            break
+        }
+      })
+    }
   }
 
   private buildForm(): void {
