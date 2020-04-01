@@ -5,10 +5,10 @@
   <div class="card-body">
     <form [formGroup]="form">
       <div class="form-group form-row">
-        <p>もんだいにでてくるポケモン：</p>
-        <div class="col-md-3">
+        <p class="col-sm-3">もんだいにでてくるポケモン：</p>
+        <div class="col-sm-9">
           <select
-            class="custom-select w-75"
+            class="custom-select"
             (change)="rangeChange($event.target.value)"
             formControlName="pokemonRange"
           >
@@ -25,10 +25,10 @@
         >
       </div>
       <div class="form-group form-row">
-        <p>もんだいのむずかしさ</p>
-        <div class="col-md-3">
+        <p class="col-sm-3">もんだいのむずかしさ：</p>
+        <div class="col-sm-9">
           <select
-            class="custom-select w-75"
+            class="custom-select"
             (change)="levelChange($event.target.value)"
             formControlName="level"
           >
