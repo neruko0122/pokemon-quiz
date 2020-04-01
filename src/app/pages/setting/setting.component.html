@@ -6,9 +6,6 @@
     <p>もんだいにでてくるポケモン：</p>
     <form [formGroup]="form">
       <div class="form-group form-row">
-        <label class="col-form-label col-md-1 title" for="authTypeName"
-          >カントー
-        </label>
         <div class="col-md-3">
           <select
             class="custom-select w-75"
@@ -23,10 +20,13 @@
             </option>
           </select>
         </div>
+        <label style="color: red"
+          >※「イッシュ」と「カロス」はじゅんびちゅうです。</label
+        >
       </div>
     </form>
     <button type="button" class="btn btn-info  w-100px ml-1" (click)="start()">
-      すたーと
+      スタート
     </button>
   </div>
 </div>

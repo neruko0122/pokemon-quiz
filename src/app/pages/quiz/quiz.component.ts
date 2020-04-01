@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner'
 import { Subject } from 'rxjs'
 import { AnswerService } from 'src/app/shared/services/answer.service'
 import { DataService } from 'src/app/shared/services/data.service'
+import { SettingService } from 'src/app/shared/services/setting.service'
 
 import { QUESTIONS, QUIZ_TYPES } from './../../shared/constants/quiz'
 
@@ -27,6 +28,7 @@ export class QuizComponent implements OnInit {
   answer3!: string
   answer4!: string
   imageUrl!: string
+  range: any[]
   count = 1
   inputClass = 'form-control col-sm-10 col-xs-9'
   labelClass = 'col-sm-2 col-xs-3 col-form-label col-form-label-sm'
@@ -40,7 +42,8 @@ export class QuizComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private answerService: AnswerService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private settingService: SettingService
   ) {
     this.data = this.dataService.import()
     this.answerService.clearList()
@@ -53,6 +56,7 @@ export class QuizComponent implements OnInit {
     this.buildForm()
     this.data.subscribe(json => {
       this.pokemonData = json
+      this.range = this.settingService.getRange()
       var pokemon = this.getPokemonData(json, 0, false)
       this.quizType = this.getQuizType(pokemon)
       this.question = QUESTIONS[this.quizType].value
@@ -170,8 +174,8 @@ export class QuizComponent implements OnInit {
   }
 
   private getPokemonData(data: any, excludeNum: number, isEvolution: boolean) {
-    var min = 1
-    var max = 505
+    var min = this.range[0]
+    var max = this.range[1]
 
     var number = Math.floor(Math.random() * (max + 1 - min)) + min
     if (number == excludeNum) {
@@ -256,7 +260,10 @@ export class QuizComponent implements OnInit {
     if (typeNum !== 3) {
       return typeNum
     } else {
-      if (target['evolutions'].length > 0 && target['evolutions'][0] < 505) {
+      if (
+        target['evolutions'].length > 0 &&
+        target['evolutions'][0] < this.range[1]
+      ) {
         return typeNum
       } else {
         return this.getQuizType(target)

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
+import { SettingService } from 'src/app/shared/services/setting.service'
 
 import { POKEMON_RANGES } from './../../shared/constants/setting'
 
@@ -16,7 +17,11 @@ export class SettingComponent implements OnInit {
   labelClass = 'col-sm-3 col-form-label col-form-label-sm'
   formGroupClass = 'form-group row align-items-center'
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private settingService: SettingService
+  ) {}
 
   ngOnInit(): void {
     this.buildForm()
@@ -34,7 +39,7 @@ export class SettingComponent implements OnInit {
   }
 
   rangeChange(value) {
-    console.log(value)
+    this.settingService.setRange(value)
   }
 
   start() {
