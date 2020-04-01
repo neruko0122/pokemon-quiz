@@ -3,7 +3,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { SettingService } from 'src/app/shared/services/setting.service'
 
-import { LEVELS, POKEMON_RANGES } from './../../shared/constants/setting'
+import {
+  LEVEL_ELEMENTARY,
+  LEVELS,
+  POKEMON_RANGES,
+  RANGE_KANTO
+} from './../../shared/constants/setting'
 
 @Component({
   selector: 'app-setting',
@@ -26,6 +31,12 @@ export class SettingComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm()
+    this.rangeChange(RANGE_KANTO)
+    this.levelChange(LEVEL_ELEMENTARY)
+    this.form.patchValue({
+      pokemonRange: [1, 151],
+      level: [1, 2]
+    })
   }
 
   private buildForm(): void {
