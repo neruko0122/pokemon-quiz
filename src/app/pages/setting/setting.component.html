@@ -41,12 +41,15 @@
       <div class="form-group form-row">
         <p class="col-sm-3">もんだいのかず：</p>
         <div class="col-sm-9">
-          <input
-            type="number"
-            class="form-control"
-            formControlName="count"
+          <select
+            class="custom-select"
             (change)="countChange($event.target.value)"
-          />
+            formControlName="count"
+          >
+            <option *ngFor="let count of countList" [value]="count">
+              {{ count }}
+            </option>
+          </select>
         </div>
       </div>
     </form>

@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner'
 import { SettingService } from 'src/app/shared/services/setting.service'
 
 import {
+  COUNT_LIST,
   LEVEL_ADVANCED,
   LEVEL_ELEMENTARY,
   LEVEL_INTERMEDIATE,
@@ -27,6 +28,7 @@ export class SettingComponent implements OnInit {
   form: FormGroup
   pokemonRanges = POKEMON_RANGES
   levels = LEVELS
+  countList = COUNT_LIST
   inputClass = 'form-control col-sm-9'
   labelClass = 'col-sm-3 col-form-label col-form-label-sm'
   formGroupClass = 'form-group row align-items-center'

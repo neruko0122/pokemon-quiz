@@ -23,3 +23,5 @@ export const LEVELS: any[] = [
   LEVEL_INTERMEDIATE,
   LEVEL_ADVANCED
 ]
+
+export const COUNT_LIST = [5, 10, 15, 20, 25]
