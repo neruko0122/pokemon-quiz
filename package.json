@@ -30,6 +30,7 @@
     "@angular/router": "~9.0.2",
     "bootstrap": "4.3.1",
     "express": "^4.17.1",
+    "log4js": "^6.1.2",
     "ngx-bootstrap": "^5.3.2",
     "ngx-order-pipe": "^2.0.4",
     "ngx-spinner": "^9.0.1",

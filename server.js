@@ -1,6 +1,12 @@
 const express = require('express');
 
 const app = express();
+var log4js = require("log4js");
+var logger = log4js.getLogger("system");
+
+app.use(log4js.connectLogger(logger, {
+  level: 'auto'
+}));
 
 app.use(express.static('./dist/pokemon-quiz'));
 
