@@ -199,7 +199,6 @@ export class QuizComponent implements OnInit {
       // メガシンカ後も取り直し
       return this.getPokemonData(data, excludeNum, isEvolution)
     }
-    // TODO: 選択肢のポケモン同士で回答が被るケースを防ぐ
     switch (this.quizType) {
       case 1:
         // 同名のポケモンはいないのでスルー（アローラのすがたは別途検討）
@@ -290,8 +289,13 @@ export class QuizComponent implements OnInit {
   }
 
   private checkAnswers(target, dummy1, dummy2, dummy3, typeNum) {
+    console.log('## 回答チェック開始：')
     switch (typeNum) {
       case 1:
+        console.log('### target: ' + target['name'])
+        console.log('### dummy1: ' + dummy1['name'])
+        console.log('### dummy2: ' + dummy2['name'])
+        console.log('### dummy3: ' + dummy3['name'])
         if (
           target['name'] === dummy1['name'] ||
           target['name'] === dummy2['name'] ||
@@ -300,10 +304,15 @@ export class QuizComponent implements OnInit {
           dummy1['name'] === dummy3['name'] ||
           dummy2['name'] === dummy3['name']
         ) {
+          console.log('### 回答取り直し type=1')
           this.getAnswer(target, typeNum)
         }
         break
       case 2:
+        console.log('### target: ' + target['types'])
+        console.log('### dummy1: ' + dummy1['types'])
+        console.log('### dummy2: ' + dummy2['types'])
+        console.log('### dummy3: ' + dummy3['types'])
         if (
           this.conpareList(target['types'], dummy1['types']) ||
           this.conpareList(target['types'], dummy2['types']) ||
@@ -312,10 +321,15 @@ export class QuizComponent implements OnInit {
           this.conpareList(dummy1['types'], dummy3['types']) ||
           this.conpareList(dummy2['types'], dummy3['types'])
         ) {
+          console.log('### 回答取り直し type=2')
           this.getAnswer(target, typeNum)
         }
         break
       case 3:
+        console.log('### target: ' + target['evolutions'])
+        console.log('### dummy1: ' + dummy1['evolutions'])
+        console.log('### dummy2: ' + dummy2['evolutions'])
+        console.log('### dummy3: ' + dummy3['evolutions'])
         if (
           this.conpareList(target['evolutions'], dummy1['evolutions']) ||
           this.conpareList(target['evolutions'], dummy2['evolutions']) ||
@@ -324,10 +338,15 @@ export class QuizComponent implements OnInit {
           this.conpareList(dummy1['evolutions'], dummy3['evolutions']) ||
           this.conpareList(dummy2['evolutions'], dummy3['evolutions'])
         ) {
+          console.log('### 回答取り直し type=3')
           this.getAnswer(target, typeNum)
         }
         break
       case 4:
+        console.log('### target: ' + target['abilities'])
+        console.log('### dummy1: ' + dummy1['abilities'])
+        console.log('### dummy2: ' + dummy2['abilities'])
+        console.log('### dummy3: ' + dummy3['abilities'])
         if (
           this.conpareList(target['abilities'], dummy1['abilities']) ||
           this.conpareList(target['abilities'], dummy2['abilities']) ||
@@ -336,6 +355,7 @@ export class QuizComponent implements OnInit {
           this.conpareList(dummy1['abilities'], dummy3['abilities']) ||
           this.conpareList(dummy2['abilities'], dummy3['abilities'])
         ) {
+          console.log('### 回答取り直し type=4')
           this.getAnswer(target, typeNum)
         }
         break
