@@ -1,14 +1,12 @@
 const express = require('express');
+const log4js = require("log4js");
 
 const app = express();
 
-var log4js = require("log4js");
+log4js.configure('./log4js.config.json')
+var logger = log4js.getLogger('system');
 
-var logger = log4js.getLogger("debug");
-
-app.use(log4js.connectLogger(logger, {
-  level: 'auto'
-}));
+app.use(log4js.connectLogger(logger));
 
 app.use(express.static('./dist/pokemon-quiz'));
 
@@ -17,5 +15,7 @@ app.get('/*', (req, res) =>
     root: 'dist/pokemon-quiz/'
   }),
 );
+
+logger.info("===# APP START #===")
 
 app.listen(process.env.PORT || 8080);

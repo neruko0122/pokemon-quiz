@@ -1,16 +1,22 @@
 {
-  "appenders": [{
+  "appenders": {
+    "system": {
       "type": "file",
-      "filename": "log/system.log",
-      "maxLogSize": 20480,
-      "backups": 3,
-      "category": "system"
-    },
-    {
-      "type": "console"
+      "filename": "./log/system.log"
     }
-  ],
-  "levels": {
-    "system": "ALL"
+  },
+  "categories": {
+    "default": {
+      "appenders": [
+        "system"
+      ],
+      "level": "INFO"
+    },
+    "system": {
+      "appenders": [
+        "system"
+      ],
+      "level": "ALL"
+    }
   }
 }
