@@ -1,10 +1,10 @@
 const express = require('express');
-const log4js = require("log4js");
 
 const app = express();
 
-log4js.configure('./log4js.config.json')
-var logger = log4js.getLogger("system");
+var log4js = require("log4js");
+
+var logger = log4js.getLogger("debug");
 
 app.use(log4js.connectLogger(logger, {
   level: 'auto'
