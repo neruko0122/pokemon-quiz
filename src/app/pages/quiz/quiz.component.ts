@@ -38,7 +38,7 @@ export class QuizComponent implements OnInit {
   answerList: Subject<any[]> = new Subject()
   answerStatus = this.answerList.asObservable()
 
-  checkAnswerFlag = false
+  checkAnswer = 0
   debugTarget: any = null
   debugDummy1: any = null
   debugDummy2: any = null
@@ -295,7 +295,7 @@ export class QuizComponent implements OnInit {
   }
 
   private checkAnswers(target, dummy1, dummy2, dummy3, typeNum) {
-    this.checkAnswerFlag = true
+    this.checkAnswer += 1
     this.debugTarget = target
     this.debugDummy1 = dummy1
     this.debugDummy2 = dummy2

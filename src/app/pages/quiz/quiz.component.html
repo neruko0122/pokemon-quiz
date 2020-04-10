@@ -86,9 +86,7 @@
   </div>
 </div>
 <div class="debug">
-  <div>
-    {{ checkAnswerFlag }}
-  </div>
+  <div>チェックメソッド：{{ checkAnswer }}</div>
   <div>
     {{ debugTarget | json }}
   </div>
@@ -100,5 +98,12 @@
   </div>
   <div>
     {{ debugDummy3 | json }}
+  </div>
+
+  <div>
+    表示内容：
+  </div>
+  <div>
+    {{ answerList | json }}
   </div>
 </div>
