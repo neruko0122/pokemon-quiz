@@ -38,6 +38,12 @@ export class QuizComponent implements OnInit {
   answerList: Subject<any[]> = new Subject()
   answerStatus = this.answerList.asObservable()
 
+  checkAnswerFlag = false
+  debugTarget: any = null
+  debugDummy1: any = null
+  debugDummy2: any = null
+  debugDummy3: any = null
+
   constructor(
     private router: Router,
     private dataService: DataService,
@@ -47,9 +53,6 @@ export class QuizComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private settingService: SettingService
   ) {
-    // logger.configure("../../../../log4js.config.json");
-    // this.logger = getLogger();
-    // this.logger.level = "debug";
     this.data = this.dataService.import()
     this.answerService.clearList()
     this.range = this.settingService.getRange()
@@ -292,11 +295,11 @@ export class QuizComponent implements OnInit {
   }
 
   private checkAnswers(target, dummy1, dummy2, dummy3, typeNum) {
-    sessionStorage.setItem('ANSWERCHECK_TARGET', target)
-    sessionStorage.setItem('ANSWERCHECK_DUMMY1', dummy1)
-    sessionStorage.setItem('ANSWERCHECK_DUMMY2', dummy2)
-    sessionStorage.setItem('ANSWERCHECK_DUMMY3', dummy3)
-    sessionStorage.setItem('ANSWERCHECK_TYPE', typeNum)
+    this.checkAnswerFlag = true
+    this.debugTarget = target
+    this.debugDummy1 = dummy1
+    this.debugDummy2 = dummy2
+    this.debugDummy3 = dummy3
     switch (typeNum) {
       case 1:
         if (
@@ -307,7 +310,6 @@ export class QuizComponent implements OnInit {
           dummy1['name'] === dummy3['name'] ||
           dummy2['name'] === dummy3['name']
         ) {
-          sessionStorage.setItem('ANSWERCHECK_RETRY', typeNum)
           this.getAnswer(target, typeNum)
         }
         break
@@ -320,7 +322,6 @@ export class QuizComponent implements OnInit {
           this.conpareList(dummy1['types'], dummy3['types']) ||
           this.conpareList(dummy2['types'], dummy3['types'])
         ) {
-          sessionStorage.setItem('ANSWERCHECK_RETRY', typeNum)
           this.getAnswer(target, typeNum)
         }
         break
@@ -333,7 +334,6 @@ export class QuizComponent implements OnInit {
           this.conpareList(dummy1['evolutions'], dummy3['evolutions']) ||
           this.conpareList(dummy2['evolutions'], dummy3['evolutions'])
         ) {
-          sessionStorage.setItem('ANSWERCHECK_RETRY', typeNum)
           this.getAnswer(target, typeNum)
         }
         break
@@ -346,7 +346,6 @@ export class QuizComponent implements OnInit {
           this.conpareList(dummy1['abilities'], dummy3['abilities']) ||
           this.conpareList(dummy2['abilities'], dummy3['abilities'])
         ) {
-          sessionStorage.setItem('ANSWERCHECK_RETRY', typeNum)
           this.getAnswer(target, typeNum)
         }
         break
