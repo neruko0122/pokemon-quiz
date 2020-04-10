@@ -43,6 +43,7 @@ export class QuizComponent implements OnInit {
   debugDummy1: any = null
   debugDummy2: any = null
   debugDummy3: any = null
+  debugAnswerList: any[] = []
 
   constructor(
     private router: Router,
@@ -350,6 +351,7 @@ export class QuizComponent implements OnInit {
         }
         break
     }
+    this.debugAnswerList = [target, dummy1, dummy2, dummy3]
     this.answerList.next([target, dummy1, dummy2, dummy3])
   }
 
