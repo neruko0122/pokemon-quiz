@@ -24,16 +24,10 @@ export class ResultComponent implements OnInit {
   restart() {
     this.spinner.show()
     this.router.navigate(['/quiz'])
-    setTimeout(() => {
-      this.spinner.hide()
-    }, 500)
   }
 
   setting() {
     this.spinner.show()
     this.router.navigate(['/setting'])
-    setTimeout(() => {
-      this.spinner.hide()
-    }, 500)
   }
 }
