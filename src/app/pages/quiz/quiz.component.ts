@@ -312,50 +312,60 @@ export class QuizComponent implements OnInit {
           dummy2['name'] === dummy3['name']
         ) {
           this.getAnswer(target, typeNum)
+        } else {
+          this.debugAnswerList = [target, dummy1, dummy2, dummy3]
+          this.answerList.next([target, dummy1, dummy2, dummy3])
         }
         break
       case 2:
         if (
-          this.conpareList(target['types'], dummy1['types']) ||
-          this.conpareList(target['types'], dummy2['types']) ||
-          this.conpareList(target['types'], dummy3['types']) ||
-          this.conpareList(dummy1['types'], dummy2['types']) ||
-          this.conpareList(dummy1['types'], dummy3['types']) ||
-          this.conpareList(dummy2['types'], dummy3['types'])
+          this.compareList(target['types'], dummy1['types']) ||
+          this.compareList(target['types'], dummy2['types']) ||
+          this.compareList(target['types'], dummy3['types']) ||
+          this.compareList(dummy1['types'], dummy2['types']) ||
+          this.compareList(dummy1['types'], dummy3['types']) ||
+          this.compareList(dummy2['types'], dummy3['types'])
         ) {
           this.getAnswer(target, typeNum)
+        } else {
+          this.debugAnswerList = [target, dummy1, dummy2, dummy3]
+          this.answerList.next([target, dummy1, dummy2, dummy3])
         }
         break
       case 3:
         if (
-          this.conpareList(target['evolutions'], dummy1['evolutions']) ||
-          this.conpareList(target['evolutions'], dummy2['evolutions']) ||
-          this.conpareList(target['evolutions'], dummy3['evolutions']) ||
-          this.conpareList(dummy1['evolutions'], dummy2['evolutions']) ||
-          this.conpareList(dummy1['evolutions'], dummy3['evolutions']) ||
-          this.conpareList(dummy2['evolutions'], dummy3['evolutions'])
+          this.compareList(target['evolutions'], dummy1['evolutions']) ||
+          this.compareList(target['evolutions'], dummy2['evolutions']) ||
+          this.compareList(target['evolutions'], dummy3['evolutions']) ||
+          this.compareList(dummy1['evolutions'], dummy2['evolutions']) ||
+          this.compareList(dummy1['evolutions'], dummy3['evolutions']) ||
+          this.compareList(dummy2['evolutions'], dummy3['evolutions'])
         ) {
           this.getAnswer(target, typeNum)
+        } else {
+          this.debugAnswerList = [target, dummy1, dummy2, dummy3]
+          this.answerList.next([target, dummy1, dummy2, dummy3])
         }
         break
       case 4:
         if (
-          this.conpareList(target['abilities'], dummy1['abilities']) ||
-          this.conpareList(target['abilities'], dummy2['abilities']) ||
-          this.conpareList(target['abilities'], dummy3['abilities']) ||
-          this.conpareList(dummy1['abilities'], dummy2['abilities']) ||
-          this.conpareList(dummy1['abilities'], dummy3['abilities']) ||
-          this.conpareList(dummy2['abilities'], dummy3['abilities'])
+          this.compareList(target['abilities'], dummy1['abilities']) ||
+          this.compareList(target['abilities'], dummy2['abilities']) ||
+          this.compareList(target['abilities'], dummy3['abilities']) ||
+          this.compareList(dummy1['abilities'], dummy2['abilities']) ||
+          this.compareList(dummy1['abilities'], dummy3['abilities']) ||
+          this.compareList(dummy2['abilities'], dummy3['abilities'])
         ) {
           this.getAnswer(target, typeNum)
+        } else {
+          this.debugAnswerList = [target, dummy1, dummy2, dummy3]
+          this.answerList.next([target, dummy1, dummy2, dummy3])
         }
         break
     }
-    this.debugAnswerList = [target, dummy1, dummy2, dummy3]
-    this.answerList.next([target, dummy1, dummy2, dummy3])
   }
 
-  private conpareList(list1: any[], list2: any[]): boolean {
+  private compareList(list1: any[], list2: any[]): boolean {
     if (list1.length !== list2.length) {
       return false
     }
@@ -386,6 +396,7 @@ export class QuizComponent implements OnInit {
       this.imageUrl
     )
     this.count += 1
+    this.checkAnswer = 0
     this.ngOnInit()
   }
 }
