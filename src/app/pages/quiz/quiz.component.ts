@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http'
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
 import { NgxSpinnerService } from 'ngx-spinner'
 import { Subject } from 'rxjs'
+import { takeUntil } from 'rxjs/operators'
+import { ConfirmService } from 'src/app/shared/modals/confirm'
 import { AnswerService } from 'src/app/shared/services/answer.service'
 import { DataService } from 'src/app/shared/services/data.service'
 import { SettingService } from 'src/app/shared/services/setting.service'
@@ -15,7 +17,7 @@ import { QUESTIONS, QUIZ_TYPES } from './../../shared/constants/quiz'
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss']
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit, OnDestroy {
   form: FormGroup
   data: any
   pokemonData: any
@@ -37,13 +39,9 @@ export class QuizComponent implements OnInit {
   formGroupClass = 'form-group row align-items-center'
   answerList: Subject<any[]> = new Subject()
   answerStatus = this.answerList.asObservable()
+  onDestroy$ = new Subject()
 
   checkAnswer = 0
-  debugTarget: any = null
-  debugDummy1: any = null
-  debugDummy2: any = null
-  debugDummy3: any = null
-  debugAnswerList: any[] = []
 
   constructor(
     private router: Router,
@@ -52,7 +50,8 @@ export class QuizComponent implements OnInit {
     private http: HttpClient,
     private answerService: AnswerService,
     private spinner: NgxSpinnerService,
-    private settingService: SettingService
+    private settingService: SettingService,
+    private confirmService: ConfirmService
   ) {
     this.data = this.dataService.import()
     this.answerService.clearList()
@@ -62,87 +61,57 @@ export class QuizComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.count > this.maxCount) {
-      this.router.navigate(['/result'])
-    } else {
-      this.buildForm()
-      this.data.subscribe(json => {
-        this.pokemonData = json
-        var pokemon = this.getPokemonData(json, 0, false)
-        this.quizType = this.getQuizType(pokemon)
-        this.question = QUESTIONS[this.quizType].value
-        this.getPokemonImage(pokemon['no'])
-        this.getAnswer(pokemon, this.quizType)
-        this.form.patchValue({
-          number: pokemon['no'],
-          name: pokemon['name'],
-          types: pokemon['types'],
-          abilities: pokemon['abilities'],
-          hiddenAbilities: pokemon['hiddenAbilities'],
-          evolutions: pokemon['evolutions'].length > 0 ? 'する' : 'しない',
-          status: pokemon['status']
-        })
-        this.target = {
-          number: pokemon['no'],
-          name: pokemon['name'],
-          types: pokemon['types'],
-          abilities: pokemon['abilities'],
-          hiddenAbilities: pokemon['hiddenAbilities'],
-          evolutions:
-            pokemon['evolutions'].length > 0
-              ? this.getEvolution(json, pokemon)[0]['name']
-              : '',
-          status: pokemon['status']
-        }
-        setTimeout(() => {
-          this.spinner.hide()
-        }, 1000)
-      })
+    this.buildForm()
+    this.getNext()
 
-      this.answerStatus.subscribe(response => {
-        if (!response) {
-          return this.getAnswer(this.target, this.quizType)
-        }
-        response.sort(() => Math.random() - 0.5)
+    this.answerStatus.subscribe(response => {
+      if (!response) {
+        return this.getAnswer(this.target, this.quizType)
+      }
+      response.sort(() => Math.random() - 0.5)
+      this.resetAnswer()
+      switch (this.quizType) {
+        case 1:
+          this.answer1 = response[0]['name']
+          this.answer2 = response[1]['name']
+          this.answer3 = response[2]['name']
+          this.answer4 = response[3]['name']
+          break
+        case 2:
+          this.answer1 = response[0]['types']
+          this.answer2 = response[1]['types']
+          this.answer3 = response[2]['types']
+          this.answer4 = response[3]['types']
+          break
+        case 3:
+          this.answer1 = this.getEvolution(this.pokemonData, response[0])[0][
+            'name'
+          ]
+          this.answer2 = this.getEvolution(this.pokemonData, response[1])[0][
+            'name'
+          ]
+          this.answer3 = this.getEvolution(this.pokemonData, response[2])[0][
+            'name'
+          ]
+          this.answer4 = this.getEvolution(this.pokemonData, response[3])[0][
+            'name'
+          ]
+          break
+        case 4:
+          this.answer1 = response[0]['abilities']
+          this.answer2 = response[1]['abilities']
+          this.answer3 = response[2]['abilities']
+          this.answer4 = response[3]['abilities']
+          break
+        default:
+          break
+      }
+    })
+  }
 
-        switch (this.quizType) {
-          case 1:
-            this.answer1 = response[0]['name']
-            this.answer2 = response[1]['name']
-            this.answer3 = response[2]['name']
-            this.answer4 = response[3]['name']
-            break
-          case 2:
-            this.answer1 = response[0]['types']
-            this.answer2 = response[1]['types']
-            this.answer3 = response[2]['types']
-            this.answer4 = response[3]['types']
-            break
-          case 3:
-            this.answer1 = this.getEvolution(this.pokemonData, response[0])[0][
-              'name'
-            ]
-            this.answer2 = this.getEvolution(this.pokemonData, response[1])[0][
-              'name'
-            ]
-            this.answer3 = this.getEvolution(this.pokemonData, response[2])[0][
-              'name'
-            ]
-            this.answer4 = this.getEvolution(this.pokemonData, response[3])[0][
-              'name'
-            ]
-            break
-          case 4:
-            this.answer1 = response[0]['abilities']
-            this.answer2 = response[1]['abilities']
-            this.answer3 = response[2]['abilities']
-            this.answer4 = response[3]['abilities']
-            break
-          default:
-            break
-        }
-      })
-    }
+  ngOnDestroy() {
+    this.onDestroy$.next()
+    this.onDestroy$.complete()
   }
 
   private buildForm(): void {
@@ -297,10 +266,6 @@ export class QuizComponent implements OnInit {
 
   private checkAnswers(target, dummy1, dummy2, dummy3, typeNum) {
     this.checkAnswer += 1
-    this.debugTarget = target
-    this.debugDummy1 = dummy1
-    this.debugDummy2 = dummy2
-    this.debugDummy3 = dummy3
     switch (typeNum) {
       case 1:
         if (
@@ -313,7 +278,6 @@ export class QuizComponent implements OnInit {
         ) {
           this.getAnswer(target, typeNum)
         } else {
-          this.debugAnswerList = [target, dummy1, dummy2, dummy3]
           this.answerList.next([target, dummy1, dummy2, dummy3])
         }
         break
@@ -328,7 +292,6 @@ export class QuizComponent implements OnInit {
         ) {
           this.getAnswer(target, typeNum)
         } else {
-          this.debugAnswerList = [target, dummy1, dummy2, dummy3]
           this.answerList.next([target, dummy1, dummy2, dummy3])
         }
         break
@@ -343,7 +306,6 @@ export class QuizComponent implements OnInit {
         ) {
           this.getAnswer(target, typeNum)
         } else {
-          this.debugAnswerList = [target, dummy1, dummy2, dummy3]
           this.answerList.next([target, dummy1, dummy2, dummy3])
         }
         break
@@ -358,7 +320,6 @@ export class QuizComponent implements OnInit {
         ) {
           this.getAnswer(target, typeNum)
         } else {
-          this.debugAnswerList = [target, dummy1, dummy2, dummy3]
           this.answerList.next([target, dummy1, dummy2, dummy3])
         }
         break
@@ -388,15 +349,83 @@ export class QuizComponent implements OnInit {
   }
 
   register(choice: string) {
-    this.spinner.show()
+    var correctAnswer = null
+    switch (this.quizType) {
+      case 1:
+        correctAnswer = this.target['name']
+        break
+      case 2:
+        correctAnswer = this.target['types']
+        break
+      case 3:
+        correctAnswer = this.target['evolutions']
+        break
+      case 4:
+        correctAnswer = this.target['abilities']
+        break
+    }
+    this.confirmService
+      .openResultModal(choice === correctAnswer)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(result => {
+        this.spinner.show()
+      })
     this.answerService.addAnswer(
       this.target,
       this.quizType,
       choice,
+      correctAnswer,
       this.imageUrl
     )
     this.count += 1
     this.checkAnswer = 0
-    this.ngOnInit()
+    this.resetAnswer()
+    this.getNext()
+  }
+
+  private getNext() {
+    if (this.count > this.maxCount) {
+      this.router.navigate(['/result'])
+    } else {
+      this.data.subscribe(json => {
+        this.pokemonData = json
+        var pokemon = this.getPokemonData(json, 0, false)
+        this.quizType = this.getQuizType(pokemon)
+        this.question = QUESTIONS[this.quizType].value
+        this.getPokemonImage(pokemon['no'])
+        this.getAnswer(pokemon, this.quizType)
+        this.form.patchValue({
+          number: pokemon['no'],
+          name: pokemon['name'],
+          types: pokemon['types'],
+          abilities: pokemon['abilities'],
+          hiddenAbilities: pokemon['hiddenAbilities'],
+          evolutions: pokemon['evolutions'].length > 0 ? 'する' : 'しない',
+          status: pokemon['status']
+        })
+        this.target = {
+          number: pokemon['no'],
+          name: pokemon['name'],
+          types: pokemon['types'],
+          abilities: pokemon['abilities'],
+          hiddenAbilities: pokemon['hiddenAbilities'],
+          evolutions:
+            pokemon['evolutions'].length > 0
+              ? this.getEvolution(json, pokemon)[0]['name']
+              : '',
+          status: pokemon['status']
+        }
+        setTimeout(() => {
+          this.spinner.hide()
+        }, 1000)
+      })
+    }
+  }
+
+  private resetAnswer() {
+    this.answer1 = ''
+    this.answer2 = ''
+    this.answer3 = ''
+    this.answer4 = ''
   }
 }

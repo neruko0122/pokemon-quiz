@@ -1,6 +1,8 @@
 <div class="container card m-t-lg">
   <div class="card-header">
-    <label class="question">Q{{ count }}. {{ question }}</label>
+    <label *ngIf="question" class="question"
+      >Q{{ count }}. {{ question }}</label
+    >
   </div>
   <div class="card-body">
     <form [formGroup]="form" autocomplete="off">
@@ -55,6 +57,7 @@
     </form>
     <div>
       <button
+        *ngIf="answer1"
         type="button"
         class="btn btn-info mb-1 col-lg-3"
         (click)="register(answer1)"
@@ -62,6 +65,7 @@
         {{ answer1 }}
       </button>
       <button
+        *ngIf="answer2"
         type="button"
         class="btn btn-danger mb-1 col-lg-3"
         (click)="register(answer2)"
@@ -69,6 +73,7 @@
         {{ answer2 }}
       </button>
       <button
+        *ngIf="answer3"
         type="button"
         class="btn btn-success mb-1 col-lg-3"
         (click)="register(answer3)"
@@ -76,6 +81,7 @@
         {{ answer3 }}
       </button>
       <button
+        *ngIf="answer4"
         type="button"
         class="btn btn-warning mb-1 col-lg-3"
         (click)="register(answer4)"

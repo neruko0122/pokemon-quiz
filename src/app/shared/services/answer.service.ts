@@ -13,22 +13,7 @@ export class AnswerService {
     this.answerList = []
   }
 
-  addAnswer(target, quizType, choice: string, imageUrl) {
-    var correctAnswer = null
-    switch (quizType) {
-      case 1:
-        correctAnswer = target['name']
-        break
-      case 2:
-        correctAnswer = target['types']
-        break
-      case 3:
-        correctAnswer = target['evolutions']
-        break
-      case 4:
-        correctAnswer = target['abilities']
-        break
-    }
+  addAnswer(target, quizType, choice: string, correctAnswer, imageUrl) {
     this.answerList.push({
       question: QUESTIONS[quizType].value,
       answer: choice,
