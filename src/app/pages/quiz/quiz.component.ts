@@ -111,7 +111,6 @@ export class QuizComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.form.reset()
-    this.answerService.clearList()
     this.onDestroy$.next()
     this.onDestroy$.complete()
   }
