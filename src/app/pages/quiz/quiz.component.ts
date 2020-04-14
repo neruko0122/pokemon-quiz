@@ -40,6 +40,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   answerList: Subject<any[]> = new Subject()
   answerStatus = this.answerList.asObservable()
   onDestroy$ = new Subject()
+  readFlag = false
 
   checkAnswer = 0
 
@@ -401,6 +402,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   }
 
   private getNext() {
+    this.readFlag = false
     if (this.count > this.maxCount) {
       this.spinner.show()
       this.router.navigate(['/result'])
@@ -435,6 +437,7 @@ export class QuizComponent implements OnInit, OnDestroy {
         }
         setTimeout(() => {
           this.spinner.hide()
+          this.readFlag = true
         }, 1000)
       })
     }
