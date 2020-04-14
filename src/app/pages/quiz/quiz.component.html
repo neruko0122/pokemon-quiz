@@ -89,5 +89,17 @@
         {{ answer4 }}
       </button>
     </div>
+    <div *ngIf="!answer1 && !answer2 && !answer3 && !answer4">
+      <button
+        type="button"
+        class="btn btn-warning mb-1 col-lg-3"
+        (click)="reload()"
+      >
+        やりなおし
+      </button>
+      <label class="question">
+        ※エラーがはっせいしました。やりなおしボタンをおしてください。
+      </label>
+    </div>
   </div>
 </div>

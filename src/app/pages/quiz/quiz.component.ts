@@ -445,4 +445,9 @@ export class QuizComponent implements OnInit, OnDestroy {
     this.answer3 = ''
     this.answer4 = ''
   }
+
+  reload() {
+    this.ngOnDestroy()
+    this.ngOnInit()
+  }
 }
