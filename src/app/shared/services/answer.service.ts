@@ -15,6 +15,7 @@ export class AnswerService {
 
   addAnswer(target, quizType, choice: string, correctAnswer, imageUrl) {
     this.answerList.push({
+      no: target['number'],
       question: QUESTIONS[quizType].value,
       answer: choice,
       correctAnswer: correctAnswer,

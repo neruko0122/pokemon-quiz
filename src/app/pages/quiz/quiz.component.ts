@@ -154,26 +154,42 @@ export class QuizComponent implements OnInit, OnDestroy {
     return this.form.get('status') as FormControl
   }
 
-  private getPokemonData(data: any, excludeNum: number, isEvolution: boolean) {
+  private getPokemonData(
+    data: any,
+    excludeNum: number,
+    isEvolution: boolean,
+    isMain: boolean
+  ) {
     var min = this.range[0]
     var max = this.range[1]
 
     var number = Math.floor(Math.random() * (max + 1 - min)) + min
-    if (number == excludeNum) {
+    if (isMain) {
+      var list = this.answerService.getAnswer()
+      if (list.length > 0) {
+        for (var i = 0; i < list.length; i++) {
+          if (list[i]['no'] == data[number - 1]['no']) {
+            // 既に出題されたポケモンは取り直し
+            return this.getPokemonData(data, excludeNum, isEvolution, isMain)
+          }
+        }
+      }
+    }
+    if (data[number - 1]['no'] == excludeNum) {
       // 問題のポケモンは除外して取り直し
-      return this.getPokemonData(data, excludeNum, isEvolution)
+      return this.getPokemonData(data, excludeNum, isEvolution, isMain)
     }
     if (isEvolution && data[number - 1]['evolutions'].length === 0) {
       // 進化系問題で進化先のない場合は取り直し
-      return this.getPokemonData(data, excludeNum, isEvolution)
+      return this.getPokemonData(data, excludeNum, isEvolution, isMain)
     }
     if (data[number - 1]['form'] !== '') {
       // アローラのすがたは取り直し
-      return this.getPokemonData(data, excludeNum, isEvolution)
+      return this.getPokemonData(data, excludeNum, isEvolution, isMain)
     }
     if (data[number - 1]['isMegaEvolution']) {
       // メガシンカ後も取り直し
-      return this.getPokemonData(data, excludeNum, isEvolution)
+      return this.getPokemonData(data, excludeNum, isEvolution, isMain)
     }
     switch (this.quizType) {
       case 1:
@@ -186,7 +202,7 @@ export class QuizComponent implements OnInit, OnDestroy {
             this.target.types.length < 2 ||
             this.target.types[1] === data[number - 1]['types'][1]
           ) {
-            return this.getPokemonData(data, excludeNum, isEvolution)
+            return this.getPokemonData(data, excludeNum, isEvolution, isMain)
           }
         }
         break
@@ -200,7 +216,7 @@ export class QuizComponent implements OnInit, OnDestroy {
             this.target.abilities.length < 2 ||
             this.target.abilities[1] === data[number - 1]['abilities'][1]
           ) {
-            return this.getPokemonData(data, excludeNum, isEvolution)
+            return this.getPokemonData(data, excludeNum, isEvolution, isMain)
           }
         }
         break
@@ -257,9 +273,9 @@ export class QuizComponent implements OnInit, OnDestroy {
 
   private getAnswer(target, typeNum) {
     this.data.subscribe(json => {
-      var dummy1 = this.getPokemonData(json, target['no'], typeNum === 3)
-      var dummy2 = this.getPokemonData(json, target['no'], typeNum === 3)
-      var dummy3 = this.getPokemonData(json, target['no'], typeNum === 3)
+      var dummy1 = this.getPokemonData(json, target['no'], typeNum === 3, false)
+      var dummy2 = this.getPokemonData(json, target['no'], typeNum === 3, false)
+      var dummy3 = this.getPokemonData(json, target['no'], typeNum === 3, false)
       this.checkAnswers(target, dummy1, dummy2, dummy3, typeNum)
     })
   }
@@ -389,7 +405,7 @@ export class QuizComponent implements OnInit, OnDestroy {
     } else {
       this.data.subscribe(json => {
         this.pokemonData = json
-        var pokemon = this.getPokemonData(json, 0, false)
+        var pokemon = this.getPokemonData(json, 0, false, true)
         this.quizType = this.getQuizType(pokemon)
         this.question = QUESTIONS[this.quizType].value
         this.getPokemonImage(pokemon['no'])
