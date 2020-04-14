@@ -39,7 +39,7 @@ export class SettingService {
         this.pokemonRange = [1, 649]
         break
       case RANGE_KALOS:
-        this.pokemonRange = [1, 807]
+        this.pokemonRange = [1, 806]
         break
     }
   }

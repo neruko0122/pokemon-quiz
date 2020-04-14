@@ -62,6 +62,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.spinner.hide()
     this.buildForm()
     this.getNext()
 

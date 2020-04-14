@@ -101,7 +101,7 @@ export class SettingComponent implements OnInit {
         return RANGE_SINNOH
       case 649:
         return RANGE_ISSHU
-      case 807:
+      case 806:
         return RANGE_KALOS
     }
   }
@@ -123,7 +123,8 @@ export class SettingComponent implements OnInit {
 // No.252-386 ホウエン
 // No.387-494 シンオウ
 // No.495-649 イッシュ
-// No.650-807 カロス
+// No.650-806 カロス
+// No.807 デラオラはアイコンなし
 
 // デオキシス
 // ミノムッチ

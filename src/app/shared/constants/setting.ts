@@ -9,8 +9,8 @@ export const POKEMON_RANGES: any[] = [
   RANGE_JOHTO,
   RANGE_HOENN,
   RANGE_SINNOH,
-  RANGE_ISSHU
-  // RANGE_KALOS
+  RANGE_ISSHU,
+  RANGE_KALOS
 ]
 
 export const LEVEL_ELEMENTARY = 'しょきゅう（なまえ・タイプ）'
