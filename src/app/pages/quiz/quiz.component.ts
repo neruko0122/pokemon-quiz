@@ -402,6 +402,7 @@ export class QuizComponent implements OnInit, OnDestroy {
 
   private getNext() {
     if (this.count > this.maxCount) {
+      this.spinner.show()
       this.router.navigate(['/result'])
     } else {
       this.data.subscribe(json => {
