@@ -41,6 +41,7 @@ export class SettingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.spinner.hide()
     this.buildForm()
     this.rangeChange(RANGE_KANTO)
     this.levelChange(LEVEL_ELEMENTARY)
