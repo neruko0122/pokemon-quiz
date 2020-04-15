@@ -231,7 +231,7 @@ export class QuizComponent implements OnInit, OnDestroy {
 
   private getPokemonImage(number) {
     var imageUrl =
-      '/assets/images/pokemon/' + this.getZeroPadding(number) + '.png'
+      '/assets/images/pokemon/picture/' + this.getZeroPadding(number) + '.png'
     this.http.get(imageUrl).subscribe(
       res => {
         this.imageUrl = imageUrl
