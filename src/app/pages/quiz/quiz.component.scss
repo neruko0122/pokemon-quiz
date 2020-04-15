@@ -3,6 +3,15 @@
   font-weight: bold;
   font-size: 15pt;
   display: contents;
+  -webkit-font-smoothing: none;
+  font-family: "pokemon-font",
+  monospace;
+}
+
+.answer {
+  font-weight: bold;
+  -webkit-font-smoothing: none;
+  font-family: "pokemon-font",monospace;
 }
 
 .container {
