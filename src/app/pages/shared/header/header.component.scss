@@ -1,7 +1,13 @@
 .mat-toolbar {
   background: rgba(250, 170, 214, 0.918);
+  -webkit-font-smoothing: none;
+  font-family: 'pokemon-font', monospace;
 }
 
 .header-button {
   font: bold;
+}
+
+.title {
+  font-size: 1.5rem;
 }
