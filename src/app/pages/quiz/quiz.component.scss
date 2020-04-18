@@ -5,9 +5,15 @@
   display: contents;
 }
 
+.answer {
+  font-weight: bold;
+}
+
 .container {
   top: 15px;
   padding: 0px;
+  -webkit-font-smoothing: none;
+  font-family: 'pokemon-font', monospace;
 }
 
 .card-header {

@@ -25,8 +25,15 @@ col-xs-2 {
   width: 16.6%;
 }
 
+tr {
+  -webkit-font-smoothing: none;
+  font-family: 'pokemon-font', monospace;
+}
+
 .result-message {
   font-size: 2rem;
   color: red;
   line-height: 30px;
+  -webkit-font-smoothing: none;
+  font-family: 'pokemon-font', monospace;
 }
