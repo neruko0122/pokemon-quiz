@@ -9,12 +9,8 @@ import { environment } from 'src/environments/environment'
 export class UsersService {
   constructor(private http: Http) {}
 
-  findUser(): Observable<Response> {
+  getUser(): Observable<Response> {
     return this.http.get(environment.API_HOST + '/api/users')
-  }
-
-  findUsers(): Observable<Response> {
-    return this.http.get(environment.API_HOST + '/api/users/list')
   }
 
   updateUser(user): Observable<Response> {

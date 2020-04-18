@@ -22,37 +22,15 @@ var UserSchema = new schema({
   userId: {
     type: String
   },
-  password: {
-    type: String
-  },
   nickName: {
     type: String
-  },
-  lastLoginDate: {
-    type: Date
   }
 });
 
-var AnswerSchema = new schema({
-  userId: {
-    type: String
-  },
-  range: {
-    type: String
-  },
-  level: {
-    type: String
-  },
-  answers: {
-    type: Array
-  }
-});
-
-var users = mongo.model("users", UserSchema, "users");
-var answers = mongo.model("answers", AnswerSchema, "answers")
+var model = mongo.model("users", UserSchema, "users");
 
 router.post("/users", function (req, res) {
-  var user = new users(req.body);
+  var user = new model(req.body);
   user.save(function (err, data) {
     if (err) {
       res.send(err);
@@ -65,7 +43,7 @@ router.post("/users", function (req, res) {
 });
 
 router.put("/users", function (req, res) {
-  users.findByIdAndUpdate(
+  model.findByIdAndUpdate(
     req.body._id, {
       userId: req.body.userId,
       nickName: req.body.nickName
@@ -83,40 +61,8 @@ router.put("/users", function (req, res) {
 });
 
 router.get("/users", function (req, res) {
-  users.findById(req.body._id, function (err, data) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(data);
-    }
-  });
-});
-
-router.get("/users/list", function (req, res) {
-  users.find({}, function (err, data) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(data);
-    }
-  });
-});
-
-router.post("/answers", function (req, res) {
-  var answer = new answers(req.body);
-  answer.save(function (err, data) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send({
-        data: "INSERT COMPLETE!"
-      });
-    }
-  });
-});
-
-router.get("/answers", function (req, res) {
-  answers.findById(req.body._id, function (err, data) {
+  // model.findById(req.body._id,
+  model.find({}, function (err, data) {
     if (err) {
       res.send(err);
     } else {

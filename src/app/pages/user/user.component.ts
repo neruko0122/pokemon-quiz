@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {}
 
   find() {
-    this.usersService.findUser().subscribe(res => {
+    this.usersService.getUser().subscribe(res => {
       this.response = res.json()
       console.log(this.response)
     })
