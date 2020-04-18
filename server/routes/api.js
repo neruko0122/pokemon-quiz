@@ -38,13 +38,13 @@ var AnswerSchema = new schema({
     type: String
   },
   range: {
-    type: String
+    type: [String]
   },
   level: {
-    type: String
+    type: [String]
   },
   answers: {
-    type: Array
+    type: [Object]
   }
 });
 
