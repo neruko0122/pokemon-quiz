@@ -13,11 +13,19 @@ export class UsersService {
     return this.http.get(environment.API_HOST + '/api/users')
   }
 
-  updateUser(user): Observable<Response> {
-    return this.http.put(environment.API_HOST + '/api/users', user)
+  updateUser(user) {
+    this.http
+      .put(environment.API_HOST + '/api/users', user)
+      .subscribe((response: Response) => {
+        return response.json()
+      })
   }
 
-  createUser(user): Observable<Response> {
-    return this.http.post(environment.API_HOST + '/api/users', user)
+  createUser(user) {
+    this.http
+      .post(environment.API_HOST + '/api/users', user)
+      .subscribe((response: Response) => {
+        return response.json()
+      })
   }
 }

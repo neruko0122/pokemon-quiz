@@ -38,14 +38,9 @@
           "configurations": {
             "production": {
               "fileReplacements": [{
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                },
-                {
-                  "replace": "src/environments/environment.js",
-                  "with": "src/environments/environment.prod.js"
-                }
-              ],
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
