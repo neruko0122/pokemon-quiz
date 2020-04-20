@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongo = require("mongoose");
-const environment = require("../../src/environments/environment.js");
+const environment = require("../../src/environments/environment.prod.js");
 
 console.log(process.env.NODE_ENV)
 const db = mongo.connect(environment.MONGDB_URI, function (err, response) {
