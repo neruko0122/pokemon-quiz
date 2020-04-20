@@ -411,7 +411,7 @@ export class QuizComponent implements OnInit, OnDestroy {
           userId: 'user1',
           range: this.range,
           level: this.level,
-          answer: this.answerService.getAnswer()
+          answers: this.answerService.getAnswer()
         })
         .subscribe(res => {
           console.log(res)
