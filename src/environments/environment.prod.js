@@ -1,7 +1,7 @@
 const environment = {
-  API_HOST: "http://localhost:8080",
-  MONGDB_URI: "mongodb://heroku_w6g57tmq:k73q0144qan0o52v2io1f20osh@ds123728.mlab.com:23728/heroku_w6g57tmq",
+  MONGDB_URI:
+    "mongodb://heroku_15mrgg45:2crm988nnbjjkbu60qf7p37p5h@ds149806.mlab.com:49806/heroku_15mrgg45",
   production: true
 };
 
-module.exports = environment
+module.exports = environment;
