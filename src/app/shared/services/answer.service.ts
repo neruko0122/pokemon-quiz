@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core'
+import { Http, Response } from '@angular/http'
+import { Observable } from 'rxjs'
+import { environment } from 'src/environments/environment'
 
 import { QUESTIONS } from '../constants'
 
@@ -7,7 +10,7 @@ import { QUESTIONS } from '../constants'
 })
 export class AnswerService {
   answerList: any[]
-  constructor() {}
+  constructor(private http: Http) {}
 
   clearList() {
     this.answerList = []
@@ -26,5 +29,13 @@ export class AnswerService {
 
   getAnswer() {
     return this.answerList
+  }
+
+  findAnswer(): Observable<Response> {
+    return this.http.get(environment.API_HOST + '/api/answers')
+  }
+
+  createAnswer(answer): Observable<Response> {
+    return this.http.post(environment.API_HOST + '/api/answers', answer)
   }
 }

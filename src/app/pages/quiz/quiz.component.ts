@@ -37,8 +37,8 @@ export class QuizComponent implements OnInit, OnDestroy {
   inputClass = 'form-control col-sm-10 col-xs-9'
   labelClass = 'col-sm-2 col-xs-3 col-form-label col-form-label-sm'
   formGroupClass = 'form-group row align-items-center'
-  answerList: Subject<any[]> = new Subject()
-  answerStatus = this.answerList.asObservable()
+  answerList$: Subject<any[]> = new Subject()
+  answerStatus = this.answerList$.asObservable()
   onDestroy$ = new Subject()
   readFlag = false
 
@@ -297,7 +297,7 @@ export class QuizComponent implements OnInit, OnDestroy {
         ) {
           this.getAnswer(target, typeNum)
         } else {
-          this.answerList.next([target, dummy1, dummy2, dummy3])
+          this.answerList$.next([target, dummy1, dummy2, dummy3])
         }
         break
       case 2:
@@ -311,7 +311,7 @@ export class QuizComponent implements OnInit, OnDestroy {
         ) {
           this.getAnswer(target, typeNum)
         } else {
-          this.answerList.next([target, dummy1, dummy2, dummy3])
+          this.answerList$.next([target, dummy1, dummy2, dummy3])
         }
         break
       case 3:
@@ -325,7 +325,7 @@ export class QuizComponent implements OnInit, OnDestroy {
         ) {
           this.getAnswer(target, typeNum)
         } else {
-          this.answerList.next([target, dummy1, dummy2, dummy3])
+          this.answerList$.next([target, dummy1, dummy2, dummy3])
         }
         break
       case 4:
@@ -339,7 +339,7 @@ export class QuizComponent implements OnInit, OnDestroy {
         ) {
           this.getAnswer(target, typeNum)
         } else {
-          this.answerList.next([target, dummy1, dummy2, dummy3])
+          this.answerList$.next([target, dummy1, dummy2, dummy3])
         }
         break
     }
@@ -406,6 +406,16 @@ export class QuizComponent implements OnInit, OnDestroy {
     this.readFlag = false
     if (this.count > this.maxCount) {
       this.spinner.show()
+      this.answerService
+        .createAnswer({
+          userId: 'user1',
+          range: this.range,
+          level: this.level,
+          answers: this.answerService.getAnswer()
+        })
+        .subscribe(res => {
+          console.log(res)
+        })
       this.router.navigate(['/result'])
     } else {
       this.data.subscribe(json => {
