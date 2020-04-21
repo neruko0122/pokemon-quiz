@@ -29,6 +29,10 @@ const routes: Routes = [
       {
         path: 'user',
         loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+      },
+      {
+        path: 'map',
+        loadChildren: () => import('./map/map.module').then(m => m.MapModule)
       }
     ]
   }
