@@ -1,4 +1,36 @@
 <div class="view-area">
   <img class="map" src="{{ imageUrl }}" alt="MAPイメージ" />
-  <img class="charactor" src="{{ iconUrl }}" alt="キャラクターイメージ" />
+  <img
+    class="charactor"
+    [ngStyle]="style"
+    src="{{ iconUrl }}"
+    alt="キャラクターイメージ"
+    [@moveUp]="isMoveUp"
+    (@moveUp.start)="moveStartEvent($event)"
+    (@moveUp.done)="moveEndEvent($event)"
+    [@moveRight]="isMoveRight"
+    (@moveRight.start)="moveStartEvent($event)"
+    (@moveRight.done)="moveEndEvent($event)"
+    [@moveLeft]="isMoveLeft"
+    (@moveLeft.start)="moveStartEvent($event)"
+    (@moveLeft.done)="moveEndEvent($event)"
+    [@moveDown]="isMoveDown"
+    (@moveDown.start)="moveStartEvent($event)"
+    (@moveDown.done)="moveEndEvent($event)"
+  />
+  <button class="key up">
+    <i [class]="config.btnIcons.up" (click)="up()"></i>
+  </button>
+  <button class="key right">
+    <i [class]="config.btnIcons.right" (click)="right()"></i>
+  </button>
+  <button class="key left">
+    <i [class]="config.btnIcons.left" (click)="left()"></i>
+  </button>
+  <button class="key down">
+    <i [class]="config.btnIcons.down" (click)="down()"></i>
+  </button>
+  <button class="key submit">
+    <i [class]="config.btnIcons.submit" (click)="submit()"></i>
+  </button>
 </div>

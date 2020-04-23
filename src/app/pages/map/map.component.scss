@@ -13,3 +13,35 @@
   text-align: center;
   position: relative;
 }
+
+.key {
+  position: absolute;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+}
+
+.up {
+  right: 32px;
+  bottom: 64px;
+}
+
+.down {
+  right: 32px;
+  bottom: 0px;
+}
+
+.right {
+  right: 0px;
+  bottom: 32px;
+}
+
+.left {
+  right: 64px;
+  bottom: 32px;
+}
+
+.submit {
+  right: 32px;
+  bottom: 32px;
+}

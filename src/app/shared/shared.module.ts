@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { ConfirmModule } from './modals/confirm'
+import { MoveComponent } from './animations/move/move.component'
 
 const modules = [
   CommonModule,
@@ -13,7 +14,7 @@ const modules = [
 ]
 
 @NgModule({
-  declarations: [],
+  declarations: [MoveComponent],
   imports: [...modules],
   exports: [...modules],
   providers: [DatePipe]
