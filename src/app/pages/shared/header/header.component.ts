@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { SettingService } from 'src/app/shared/services/setting.service'
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  range!: string
+  level!: string
+  constructor(private settingService: SettingService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.range = this.settingService.getRangeString()
+    this.level = this.settingService.getLevelString()
+  }
 }
