@@ -3,9 +3,13 @@ import {
   AnimationEvent,
   style,
   transition,
-  trigger
+  trigger,
+  useAnimation
 } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { NgxSpinnerService } from 'ngx-spinner'
+import { moveUpAnimation } from 'src/app/shared/animations'
 
 import { DEFAULT_CONFIG } from './../../shared/constants/map'
 
@@ -15,27 +19,24 @@ import { DEFAULT_CONFIG } from './../../shared/constants/map'
   styleUrls: ['./map.component.scss'],
   animations: [
     trigger('moveUp', [
-      transition('false => true', [
-        style({ transform: '*' }),
-        animate('1s', style({ transform: 'translateY(-120%)' }))
-      ])
+      transition('false => true', [useAnimation(moveUpAnimation)])
     ]),
     trigger('moveRight', [
       transition('false => true', [
         style({ transform: '*' }),
-        animate('1s', style({ transform: 'translateX(120%)' }))
+        animate('1s', style({ transform: 'translateX(100px)' }))
       ])
     ]),
     trigger('moveLeft', [
       transition('false => true', [
         style({ transform: '*' }),
-        animate('1s', style({ transform: 'translateX(-120%)' }))
+        animate('1s', style({ transform: 'translateX(-100px)' }))
       ])
     ]),
     trigger('moveDown', [
       transition('false => true', [
         style({ transform: '*' }),
-        animate('1s', style({ transform: 'translateY(120%)' }))
+        animate('1s', style({ transform: 'translateY(100px)' }))
       ])
     ])
   ]
@@ -57,27 +58,42 @@ export class MapComponent implements OnInit {
     webkitTransform: ''
   }
 
-  constructor() {}
+  constructor(private router: Router, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.imageUrl = '/assets/images/map/map_kanto.jpg'
     this.iconUrl = '/assets/images/pokemon/gif/025-1.gif'
+    this.spinner.hide()
+    setTimeout(() => {
+      this.up()
+    }, 3000)
+    setTimeout(() => {
+      this.router.navigate(['/quiz'])
+    }, 5000)
   }
 
   up(): void {
-    this.isMoveUp = true
+    if (this.translateY >= 0) {
+      this.isMoveUp = true
+    }
   }
 
   down(): void {
-    this.isMoveDown = true
+    if (this.translateY <= 0) {
+      this.isMoveDown = true
+    }
   }
 
   left(): void {
-    this.isMoveLeft = true
+    if (this.translateX >= 0) {
+      this.isMoveLeft = true
+    }
   }
 
   right(): void {
-    this.isMoveRight = true
+    if (this.translateX <= 0) {
+      this.isMoveRight = true
+    }
   }
 
   submit() {}
@@ -113,19 +129,19 @@ export class MapComponent implements OnInit {
     console.log(event.element.style.transform)
     switch (event.triggerName) {
       case 'moveUp':
-        this.translateY -= 20
+        this.translateY -= 60
         this.isMoveUp = false
         break
       case 'moveDown':
-        this.translateY += 20
+        this.translateY += 60
         this.isMoveDown = false
         break
       case 'moveRight':
-        this.translateX += 20
+        this.translateX += 60
         this.isMoveRight = false
         break
       case 'moveLeft':
-        this.translateX -= 20
+        this.translateX -= 60
         this.isMoveLeft = false
         break
     }

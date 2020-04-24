@@ -5,50 +5,78 @@ import {
   LEVEL_ELEMENTARY,
   LEVEL_INTERMEDIATE,
   RANGE_HOENN,
+  RANGE_HOENN_ONLY,
   RANGE_ISSHU,
+  RANGE_ISSHU_ONLY,
   RANGE_JOHTO,
+  RANGE_JOHTO_ONLY,
   RANGE_KALOS,
-  RANGE_KANTO,
+  RANGE_KALOS_ONLY,
+  RANGE_KANTO_ONLY,
+  RANGE_SHINNOH_ONLY,
   RANGE_SINNOH
 } from '../constants/setting'
+import { ADVENTURE_LIST } from './../constants/setting'
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingService {
-  pokemonRange = [1, 151]
+  range = [1, 151]
+  rangeString: string = ''
   level = [1, 2]
+  levelString: string = ''
   quizCount = 10
+  adventure = false
+  adventureCount = 0
+  adventureList = ADVENTURE_LIST
   constructor() {}
 
   setRange(range: string) {
+    this.rangeString = range
     switch (range) {
-      case RANGE_KANTO:
-        this.pokemonRange = [1, 151]
+      case RANGE_KANTO_ONLY:
+        this.range = [1, 151]
         break
       case RANGE_JOHTO:
-        this.pokemonRange = [1, 251]
+        this.range = [1, 251]
         break
       case RANGE_HOENN:
-        this.pokemonRange = [1, 368]
+        this.range = [1, 368]
         break
       case RANGE_SINNOH:
-        this.pokemonRange = [1, 494]
+        this.range = [1, 494]
         break
       case RANGE_ISSHU:
-        this.pokemonRange = [1, 649]
+        this.range = [1, 649]
         break
       case RANGE_KALOS:
-        this.pokemonRange = [1, 806]
+        this.range = [1, 806]
+        break
+      case RANGE_JOHTO_ONLY:
+        this.range = [152, 251]
+        break
+      case RANGE_HOENN_ONLY:
+        this.range = [252, 368]
+        break
+      case RANGE_SHINNOH_ONLY:
+        this.range = [369, 494]
+        break
+      case RANGE_ISSHU_ONLY:
+        this.range = [495, 649]
+        break
+      case RANGE_KALOS_ONLY:
+        this.range = [650, 806]
         break
     }
   }
 
   getRange() {
-    return this.pokemonRange
+    return this.range
   }
 
   setLevel(level: string) {
+    this.levelString = level
     switch (level) {
       case LEVEL_ELEMENTARY:
         this.level = [1, 2]
@@ -72,5 +100,35 @@ export class SettingService {
 
   getQuizCount() {
     return this.quizCount
+  }
+
+  setAdventure(flag: boolean) {
+    this.adventure = flag
+  }
+
+  getAdventure() {
+    return this.adventure
+  }
+
+  setAdventureSetting(count: number) {
+    this.setLevel(this.adventureList[count].level)
+    this.setRange(this.adventureList[count].range)
+    this.setQuizCount(this.adventureList[count].quizCount)
+  }
+
+  setAdventureCount() {
+    this.adventureCount++
+  }
+
+  getAdventureCount() {
+    return this.adventureCount
+  }
+
+  getRangeString() {
+    return this.rangeString
+  }
+
+  getLevelString() {
+    return this.levelString
   }
 }

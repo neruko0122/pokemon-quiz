@@ -18,19 +18,21 @@
     (@moveDown.start)="moveStartEvent($event)"
     (@moveDown.done)="moveEndEvent($event)"
   />
-  <button class="key up">
-    <i [class]="config.btnIcons.up" (click)="up()"></i>
-  </button>
-  <button class="key right">
-    <i [class]="config.btnIcons.right" (click)="right()"></i>
-  </button>
-  <button class="key left">
-    <i [class]="config.btnIcons.left" (click)="left()"></i>
-  </button>
-  <button class="key down">
-    <i [class]="config.btnIcons.down" (click)="down()"></i>
-  </button>
-  <button class="key submit">
-    <i [class]="config.btnIcons.submit" (click)="submit()"></i>
-  </button>
+  <div *ngIf="false">
+    <button class="key up">
+      <i [class]="config.btnIcons.up" (click)="up()"></i>
+    </button>
+    <button class="key right">
+      <i [class]="config.btnIcons.right" (click)="right()"></i>
+    </button>
+    <button class="key left">
+      <i [class]="config.btnIcons.left" (click)="left()"></i>
+    </button>
+    <button class="key down">
+      <i [class]="config.btnIcons.down" (click)="down()"></i>
+    </button>
+    <button class="key submit">
+      <i [class]="config.btnIcons.submit" (click)="submit()"></i>
+    </button>
+  </div>
 </div>

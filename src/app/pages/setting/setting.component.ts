@@ -15,7 +15,7 @@ import {
   RANGE_ISSHU,
   RANGE_JOHTO,
   RANGE_KALOS,
-  RANGE_KANTO,
+  RANGE_KANTO_ONLY,
   RANGE_SINNOH
 } from './../../shared/constants/setting'
 
@@ -43,7 +43,7 @@ export class SettingComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.hide()
     this.buildForm()
-    this.rangeChange(RANGE_KANTO)
+    this.rangeChange(RANGE_KANTO_ONLY)
     this.levelChange(LEVEL_ELEMENTARY)
     this.form.patchValue({
       pokemonRange: this.convertRange(this.settingService.getRange()),
@@ -92,7 +92,7 @@ export class SettingComponent implements OnInit {
   private convertRange(range: any[]) {
     switch (range[1]) {
       case 151:
-        return RANGE_KANTO
+        return RANGE_KANTO_ONLY
       case 251:
         return RANGE_JOHTO
       case 368:
