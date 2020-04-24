@@ -41,6 +41,7 @@
     "ngx-order-pipe": "^2.0.4",
     "ngx-spinner": "^9.0.1",
     "pokemon-font": "^1.8.1",
+    "polyfills": "^2.1.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
