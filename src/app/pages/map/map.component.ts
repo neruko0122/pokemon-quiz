@@ -1,5 +1,4 @@
 import {
-  animate,
   AnimationEvent,
   style,
   transition,
@@ -9,7 +8,12 @@ import {
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { NgxSpinnerService } from 'ngx-spinner'
-import { moveUpAnimation } from 'src/app/shared/animations'
+import {
+  moveDownAnimation,
+  moveLeftAnimation,
+  moveRightAnimation,
+  moveUpAnimation
+} from 'src/app/shared/animations'
 
 import { DEFAULT_CONFIG } from './../../shared/constants/map'
 
@@ -22,22 +26,13 @@ import { DEFAULT_CONFIG } from './../../shared/constants/map'
       transition('false => true', [useAnimation(moveUpAnimation)])
     ]),
     trigger('moveRight', [
-      transition('false => true', [
-        style({ transform: '*' }),
-        animate('1s', style({ transform: 'translateX(100px)' }))
-      ])
+      transition('false => true', [useAnimation(moveRightAnimation)])
     ]),
     trigger('moveLeft', [
-      transition('false => true', [
-        style({ transform: '*' }),
-        animate('1s', style({ transform: 'translateX(-100px)' }))
-      ])
+      transition('false => true', [useAnimation(moveLeftAnimation)])
     ]),
     trigger('moveDown', [
-      transition('false => true', [
-        style({ transform: '*' }),
-        animate('1s', style({ transform: 'translateY(100px)' }))
-      ])
+      transition('false => true', [useAnimation(moveDownAnimation)])
     ])
   ]
 })
@@ -129,19 +124,19 @@ export class MapComponent implements OnInit {
     console.log(event.element.style.transform)
     switch (event.triggerName) {
       case 'moveUp':
-        this.translateY -= 60
+        this.translateY -= 30
         this.isMoveUp = false
         break
       case 'moveDown':
-        this.translateY += 60
+        this.translateY += 30
         this.isMoveDown = false
         break
       case 'moveRight':
-        this.translateX += 60
+        this.translateX += 30
         this.isMoveRight = false
         break
       case 'moveLeft':
-        this.translateX -= 60
+        this.translateX -= 30
         this.isMoveLeft = false
         break
     }
