@@ -5,9 +5,10 @@ import {
   trigger,
   useAnimation
 } from '@angular/animations'
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { NgxSpinnerService } from 'ngx-spinner'
+import { Subject } from 'rxjs'
 import {
   moveDownAnimation,
   moveLeftAnimation,
@@ -36,7 +37,7 @@ import { DEFAULT_CONFIG } from './../../shared/constants/map'
     ])
   ]
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnDestroy {
   imageUrl!: string
   iconUrl!: string
   config = DEFAULT_CONFIG
@@ -52,6 +53,7 @@ export class MapComponent implements OnInit {
     oTransform: '',
     webkitTransform: ''
   }
+  onDestroy$ = new Subject()
 
   constructor(private router: Router, private spinner: NgxSpinnerService) {}
 
@@ -65,6 +67,11 @@ export class MapComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(['/quiz'])
     }, 5000)
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next()
+    this.onDestroy$.complete()
   }
 
   up(): void {

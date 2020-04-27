@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { NgxSpinnerService } from 'ngx-spinner'
+import { Subject } from 'rxjs'
 import {
   ADVENTURE_LIST,
   RESULT_CLEAR,
@@ -19,12 +20,13 @@ import { SettingService } from 'src/app/shared/services/setting.service'
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.scss']
 })
-export class ResultComponent implements OnInit {
+export class ResultComponent implements OnInit, OnDestroy {
   answerList!: any[]
   resultMessage!: string
   adventureFlag = false
   perfectFlag = false
   finishFlag = false
+  onDestroy$ = new Subject()
 
   constructor(
     private answerService: AnswerService,
@@ -40,6 +42,11 @@ export class ResultComponent implements OnInit {
     if (this.answerList) {
       this.getResultMessage()
     }
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next()
+    this.onDestroy$.complete()
   }
 
   restart() {
