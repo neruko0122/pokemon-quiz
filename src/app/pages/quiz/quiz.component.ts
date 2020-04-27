@@ -41,6 +41,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   answerStatus = this.answerList$.asObservable()
   onDestroy$ = new Subject()
   readFlag = false
+  adventureFlag = false
 
   checkAnswer = 0
 
@@ -56,6 +57,13 @@ export class QuizComponent implements OnInit, OnDestroy {
   ) {
     this.data = this.dataService.import()
     this.answerService.clearList()
+    this.adventureFlag = this.settingService.getAdventure()
+    if (this.adventureFlag) {
+      console.log('adventure:::' + this.settingService.getAdventureCount())
+      this.settingService.setAdventureSetting(
+        this.settingService.getAdventureCount()
+      )
+    }
     this.range = this.settingService.getRange()
     this.level = this.settingService.getLevel()
     this.maxCount = this.settingService.getQuizCount()
@@ -462,7 +470,17 @@ export class QuizComponent implements OnInit, OnDestroy {
   }
 
   reload() {
-    this.ngOnDestroy()
+    this.data = this.dataService.import()
+    this.answerService.clearList()
+    this.adventureFlag = this.settingService.getAdventure()
+    if (this.adventureFlag) {
+      this.settingService.setAdventureSetting(
+        this.settingService.getAdventureCount()
+      )
+    }
+    this.range = this.settingService.getRange()
+    this.level = this.settingService.getLevel()
+    this.maxCount = this.settingService.getQuizCount()
     this.ngOnInit()
   }
 }

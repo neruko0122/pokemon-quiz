@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { NgxSpinnerService } from 'ngx-spinner'
+import { Subject } from 'rxjs'
 import { SettingService } from 'src/app/shared/services/setting.service'
 
 import {
@@ -15,7 +16,7 @@ import {
   RANGE_ISSHU,
   RANGE_JOHTO,
   RANGE_KALOS,
-  RANGE_KANTO,
+  RANGE_KANTO_ONLY,
   RANGE_SINNOH
 } from './../../shared/constants/setting'
 
@@ -24,7 +25,7 @@ import {
   templateUrl: './setting.component.html',
   styleUrls: ['./setting.component.scss']
 })
-export class SettingComponent implements OnInit {
+export class SettingComponent implements OnInit, OnDestroy {
   form: FormGroup
   pokemonRanges = POKEMON_RANGES
   levels = LEVELS
@@ -32,6 +33,7 @@ export class SettingComponent implements OnInit {
   inputClass = 'form-control col-sm-9'
   labelClass = 'col-sm-3 col-form-label col-form-label-sm'
   formGroupClass = 'form-group row align-items-center'
+  onDestroy$ = new Subject()
 
   constructor(
     private fb: FormBuilder,
@@ -43,13 +45,18 @@ export class SettingComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.hide()
     this.buildForm()
-    this.rangeChange(RANGE_KANTO)
+    this.rangeChange(RANGE_KANTO_ONLY)
     this.levelChange(LEVEL_ELEMENTARY)
     this.form.patchValue({
       pokemonRange: this.convertRange(this.settingService.getRange()),
       level: this.convertLevel(this.settingService.getLevel()),
       count: this.settingService.getQuizCount()
     })
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next()
+    this.onDestroy$.complete()
   }
 
   private buildForm(): void {
@@ -92,7 +99,7 @@ export class SettingComponent implements OnInit {
   private convertRange(range: any[]) {
     switch (range[1]) {
       case 151:
-        return RANGE_KANTO
+        return RANGE_KANTO_ONLY
       case 251:
         return RANGE_JOHTO
       case 368:

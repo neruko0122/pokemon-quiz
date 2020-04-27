@@ -6,8 +6,28 @@
 
 .header-button {
   font: bold;
+  margin-left: auto;
 }
 
 .title {
   font-size: 1.5rem;
+}
+
+.setting-info {
+  font-size: small;
+  vertical-align: text-top;
+}
+
+.range {
+  color: red;
+  font-weight: bold;
+}
+
+.level {
+  color: red;
+  font-weight: bold;
+}
+
+label {
+  margin-bottom: 0px !important;
 }
