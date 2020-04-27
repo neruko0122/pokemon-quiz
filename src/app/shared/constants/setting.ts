@@ -18,10 +18,10 @@ export const POKEMON_RANGES: any[] = [
   RANGE_KALOS
 ]
 
-export const LEVEL_ELEMENTARY = 'しょきゅう（なまえ・タイプ）'
-export const LEVEL_INTERMEDIATE = 'ちゅうきゅう（なまえ・タイプ・しんか）'
-export const LEVEL_ADVANCED = 'じょうきゅう（なまえ・タイプ・しんか・とくせい）'
-export const LEVEL_UPPER_ADVANCED = 'ちょうじょうきゅう（ひみつ）'
+export const LEVEL_ELEMENTARY = 'なまえ・タイプ'
+export const LEVEL_INTERMEDIATE = 'なまえ・タイプ・しんか'
+export const LEVEL_ADVANCED = 'なまえ・タイプ・しんか・とくせい'
+export const LEVEL_UPPER_ADVANCED = 'ひみつ'
 
 export const LEVELS: any[] = [
   LEVEL_ELEMENTARY,

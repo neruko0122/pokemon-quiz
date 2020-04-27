@@ -6,7 +6,7 @@
 
 .header-button {
   font: bold;
-  margin-left: 30px;
+  margin-left: auto;
 }
 
 .title {
@@ -15,7 +15,6 @@
 
 .setting-info {
   font-size: small;
-  margin-left: auto;
   vertical-align: text-top;
 }
 
@@ -27,4 +26,8 @@
 .level {
   color: red;
   font-weight: bold;
+}
+
+label {
+  margin-bottom: 0px !important;
 }
