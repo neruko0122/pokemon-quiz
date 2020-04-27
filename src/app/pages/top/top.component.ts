@@ -18,7 +18,9 @@ export class TopComponent implements OnInit, OnDestroy {
     private settingService: SettingService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.settingService.setAdventure(false)
+  }
 
   ngOnDestroy(): void {
     this.onDestroy$.next()

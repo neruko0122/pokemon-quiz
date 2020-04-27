@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
+import { LEVEL_ELEMENTARY, RANGE_KANTO_ONLY } from 'src/app/shared/constants'
 import { SettingService } from 'src/app/shared/services/setting.service'
 
 @Component({
@@ -8,8 +9,8 @@ import { SettingService } from 'src/app/shared/services/setting.service'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  range!: string
-  level!: string
+  range: string = RANGE_KANTO_ONLY
+  level: string = LEVEL_ELEMENTARY
   dispSettingSubscription: Subscription
   constructor(private settingService: SettingService) {}
 
