@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Subscription } from 'rxjs'
 import { SettingService } from 'src/app/shared/services/setting.service'
 
 @Component({
@@ -9,10 +10,19 @@ import { SettingService } from 'src/app/shared/services/setting.service'
 export class HeaderComponent implements OnInit {
   range!: string
   level!: string
+  dispSettingSubscription: Subscription
   constructor(private settingService: SettingService) {}
 
   ngOnInit(): void {
-    this.range = this.settingService.getRangeString()
-    this.level = this.settingService.getLevelString()
+    this.dispSettingSubscription = this.settingService.dispLevelSource$.subscribe(
+      level => {
+        this.level = level
+      }
+    )
+    this.dispSettingSubscription = this.settingService.dispRangeSource$.subscribe(
+      range => {
+        this.range = range
+      }
+    )
   }
 }

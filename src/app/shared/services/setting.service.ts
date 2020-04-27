@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core'
+import { Subject } from 'rxjs'
 
 import {
   LEVEL_ADVANCED,
@@ -23,17 +24,21 @@ import { ADVENTURE_LIST } from './../constants/setting'
 })
 export class SettingService {
   range = [1, 151]
-  rangeString: string = ''
   level = [1, 2]
-  levelString: string = ''
   quizCount = 10
   adventure = false
   adventureCount = 0
   adventureList = ADVENTURE_LIST
+  private dispRangeSource = new Subject<string>()
+  public dispRangeSource$ = this.dispRangeSource.asObservable()
+
+  private dispLevelSource = new Subject<string>()
+  public dispLevelSource$ = this.dispLevelSource.asObservable()
+
   constructor() {}
 
   setRange(range: string) {
-    this.rangeString = range
+    this.dispRangeSource.next(range)
     switch (range) {
       case RANGE_KANTO_ONLY:
         this.range = [1, 151]
@@ -76,7 +81,7 @@ export class SettingService {
   }
 
   setLevel(level: string) {
-    this.levelString = level
+    this.dispLevelSource.next(level)
     switch (level) {
       case LEVEL_ELEMENTARY:
         this.level = [1, 2]
@@ -122,13 +127,5 @@ export class SettingService {
 
   getAdventureCount() {
     return this.adventureCount
-  }
-
-  getRangeString() {
-    return this.rangeString
-  }
-
-  getLevelString() {
-    return this.levelString
   }
 }

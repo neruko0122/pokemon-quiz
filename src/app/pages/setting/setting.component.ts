@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { NgxSpinnerService } from 'ngx-spinner'
+import { Subject } from 'rxjs'
 import { SettingService } from 'src/app/shared/services/setting.service'
 
 import {
@@ -24,7 +25,7 @@ import {
   templateUrl: './setting.component.html',
   styleUrls: ['./setting.component.scss']
 })
-export class SettingComponent implements OnInit {
+export class SettingComponent implements OnInit, OnDestroy {
   form: FormGroup
   pokemonRanges = POKEMON_RANGES
   levels = LEVELS
@@ -32,6 +33,7 @@ export class SettingComponent implements OnInit {
   inputClass = 'form-control col-sm-9'
   labelClass = 'col-sm-3 col-form-label col-form-label-sm'
   formGroupClass = 'form-group row align-items-center'
+  onDestroy$ = new Subject()
 
   constructor(
     private fb: FormBuilder,
@@ -50,6 +52,11 @@ export class SettingComponent implements OnInit {
       level: this.convertLevel(this.settingService.getLevel()),
       count: this.settingService.getQuizCount()
     })
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next()
+    this.onDestroy$.complete()
   }
 
   private buildForm(): void {

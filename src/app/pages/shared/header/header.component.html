@@ -3,13 +3,22 @@
     <img class="icon" src="../../../../favicon.ico" alt="icon" />
     <span class="title">ポケモンクイズ</span>
     <div class="float-right">
-      <a mat-button routerLink="/top" class="header-button">【さいしょから】</a>
+      <button
+        mat-stroked-button
+        color="accent"
+        routerLink="/top"
+        class="header-button"
+      >
+        さいしょから
+      </button>
     </div>
-    <!-- <div class="float-right">
-      <label>でてくるポケモン：{{range}}</label>
+    <div *ngIf="range" class="float-right setting-info">
+      <label>でてくるポケモン：</label>
+      <label class="range">{{ range }}</label>
     </div>
-    <div class="float-right">
-      <label>むずかしさ：{{level}}</label>
-    </div> -->
+    <div *ngIf="level" class="float-right setting-info">
+      <label>むずかしさ：</label>
+      <label class="level">{{ level }}</label>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
