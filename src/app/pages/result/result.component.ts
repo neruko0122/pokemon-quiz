@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { NgxSpinnerService } from 'ngx-spinner'
 import { Subject } from 'rxjs'
+import { takeUntil } from 'rxjs/operators'
 import {
   ADVENTURE_LIST,
   RESULT_CLEAR,
@@ -13,7 +14,10 @@ import {
   RESULT_RETRY
 } from 'src/app/shared/constants'
 import { AnswerService } from 'src/app/shared/services/answer.service'
+import { RankingService } from 'src/app/shared/services/ranking.service'
 import { SettingService } from 'src/app/shared/services/setting.service'
+
+import { RankingRegistService } from './../../shared/modals/ranking-regist/ranking-regist.service'
 
 @Component({
   selector: 'app-result',
@@ -32,7 +36,9 @@ export class ResultComponent implements OnInit, OnDestroy {
     private answerService: AnswerService,
     private router: Router,
     private spinner: NgxSpinnerService,
-    private settingService: SettingService
+    private settingService: SettingService,
+    private rankingRegistService: RankingRegistService,
+    private rankingService: RankingService
   ) {}
 
   ngOnInit(): void {
@@ -87,6 +93,18 @@ export class ResultComponent implements OnInit, OnDestroy {
         ) {
           this.resultMessage = RESULT_CLEAR
           this.finishFlag = true
+          // 名前登録ダイアログ
+          this.rankingRegistService
+            .openResultModal()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(response => {
+              this.rankingService
+                .registerRanking({
+                  name: response,
+                  clearedAt: new Date()
+                })
+                .subscribe(() => {})
+            })
         } else {
           this.resultMessage = RESULT_NEXT
         }

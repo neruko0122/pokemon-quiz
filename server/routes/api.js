@@ -136,8 +136,8 @@ router.get("/answers", function (req, res) {
 });
 
 router.post("/ranking", function (req, res) {
-  var ranking = new ranking(req.body);
-  ranking.save(function (err, data) {
+  var request = new ranking(req.body);
+  request.save(function (err, data) {
     if (err) {
       res.send(err);
     } else {
