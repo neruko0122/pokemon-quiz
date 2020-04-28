@@ -1,0 +1,24 @@
+<br />
+<div class="modal-body">
+  <div class="message">
+    「でんどういり」おめでとう！<br />
+    なまえ をにゅうりょくして、おくるボタンをおしてね。<br />
+  </div>
+
+  <form [formGroup]="form" autocomplete="off">
+    <div [class]="formGroupClass">
+      <label [class]="labelClass">なまえ：</label>
+      <input type="text" [class]="inputClass" formControlName="name" />
+    </div>
+  </form>
+  <div>
+    <button
+      type="button"
+      class="btn btn-info mb-1 col-lg-3"
+      (click)="register()"
+    >
+      おくる
+    </button>
+  </div>
+</div>
+<br />

@@ -41,4 +41,8 @@ export class TopComponent implements OnInit, OnDestroy {
   setting() {
     this.router.navigate(['/setting'])
   }
+
+  ranking() {
+    this.router.navigate(['ranking'])
+  }
 }

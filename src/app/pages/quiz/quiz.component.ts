@@ -59,7 +59,6 @@ export class QuizComponent implements OnInit, OnDestroy {
     this.answerService.clearList()
     this.adventureFlag = this.settingService.getAdventure()
     if (this.adventureFlag) {
-      console.log('adventure:::' + this.settingService.getAdventureCount())
       this.settingService.setAdventureSetting(
         this.settingService.getAdventureCount()
       )

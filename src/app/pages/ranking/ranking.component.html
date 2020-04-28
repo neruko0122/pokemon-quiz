@@ -1,0 +1,33 @@
+<table *ngIf="rankingList.length > 0" class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>なまえ</th>
+      <th>クリアしたひ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ranking of rankingList">
+      <td class="col-xs-3">
+        <img
+          class="preview"
+          src="../../../assets/images/medal_gold.png"
+          alt="メダル"
+        />
+      </td>
+      <td class="col-xs-3">{{ ranking.name }}</td>
+      <td class="col-xs-3">
+        {{ ranking.clearedAt | date: 'Mがつdにち hじmふん' }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="rankingList.length == 0" class="message">
+  <br />
+  でんどういりしているひとはまだいないよ<br /><br />
+  ぼうけんモードをクリアしてみよう
+  <br />
+</div>
+<button type="button" class="btn btn-warning  w-100px ml-1" (click)="back()">
+  もどる
+</button>
