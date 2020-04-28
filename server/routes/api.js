@@ -48,8 +48,18 @@ var AnswerSchema = new schema({
   }
 });
 
+var RankingSchema = new schema({
+  name: {
+    type: String
+  },
+  clearedAt: {
+    type: Date
+  }
+})
+
 var users = mongo.model("users", UserSchema, "users");
 var answers = mongo.model("answers", AnswerSchema, "answers")
+var ranking = mongo.model("ranking", RankingSchema, "ranking")
 
 router.post("/users", function (req, res) {
   var user = new users(req.body);
@@ -117,6 +127,29 @@ router.post("/answers", function (req, res) {
 
 router.get("/answers", function (req, res) {
   answers.findById(req.body._id, function (err, data) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+router.post("/ranking", function (req, res) {
+  var ranking = new ranking(req.body);
+  ranking.save(function (err, data) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send({
+        data: "INSERT COMPLETE!"
+      });
+    }
+  });
+});
+
+router.get("/ranking", function (req, res) {
+  ranking.find({}, function (err, data) {
     if (err) {
       res.send(err);
     } else {

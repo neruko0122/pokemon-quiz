@@ -109,8 +109,6 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   moveStartEvent(event: AnimationEvent) {
-    console.log('###Start: ' + event.triggerName)
-    console.log(event.element.style.transform)
     switch (event.triggerName) {
       case 'moveUp':
         this.iconUrl = '/assets/images/pokemon/gif/025-2.gif'
@@ -127,8 +125,6 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   moveEndEvent(event: AnimationEvent) {
-    console.log('###End: ' + event.triggerName)
-    console.log(event.element.style.transform)
     switch (event.triggerName) {
       case 'moveUp':
         this.translateY -= 30
