@@ -10,11 +10,14 @@
   </mat-toolbar-row>
   <mat-toolbar-row>
     <div *ngIf="range && level" class="setting-info">
-      <label>でてくるポケモン：</label>
+      <label>ポケモン：</label>
       <label class="range">{{ range }}</label
       ><br />
-      <label>でてくるもんだい：</label>
+      <label>もんだい：</label>
       <label class="level">{{ level }}</label>
+    </div>
+    <div *ngIf="adventure" class="count">
+      ステージ：{{ count }}/{{ maxCount }}
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

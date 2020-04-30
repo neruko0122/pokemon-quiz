@@ -35,6 +35,12 @@ export class SettingService {
   private dispLevelSource = new Subject<string>()
   public dispLevelSource$ = this.dispLevelSource.asObservable()
 
+  private dispAdventureCountSource = new Subject<number>()
+  public dispAdventureCountSource$ = this.dispAdventureCountSource.asObservable()
+
+  private adventureSource = new Subject<boolean>()
+  public adventureSource$ = this.adventureSource.asObservable()
+
   constructor() {}
 
   setRange(range: string) {
@@ -108,6 +114,7 @@ export class SettingService {
   }
 
   setAdventure(flag: boolean) {
+    this.adventureSource.next(flag)
     this.adventure = flag
   }
 
@@ -123,6 +130,7 @@ export class SettingService {
 
   setAdventureCount() {
     this.adventureCount++
+    this.dispAdventureCountSource.next(this.adventureCount + 1)
   }
 
   getAdventureCount() {
