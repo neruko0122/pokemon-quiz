@@ -22,11 +22,13 @@ export const LEVEL_ELEMENTARY = 'なまえ/タイプ'
 export const LEVEL_INTERMEDIATE = 'なまえ/タイプ/しんか'
 export const LEVEL_ADVANCED = 'なまえ/タイプ/しんか/とくせい'
 export const LEVEL_UPPER_ADVANCED = 'ひみつ'
+export const LEVEL_WEAKNESS = 'じゃくてん'
 
 export const LEVELS: any[] = [
   LEVEL_ELEMENTARY,
   LEVEL_INTERMEDIATE,
-  LEVEL_ADVANCED
+  LEVEL_ADVANCED,
+  LEVEL_WEAKNESS
 ]
 
 export const COUNT_LIST = [5, 10, 15, 20, 25]

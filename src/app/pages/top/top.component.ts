@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { NgxSpinnerService } from 'ngx-spinner'
 import { Subject } from 'rxjs'
+import { LEVEL_WEAKNESS, RANGE_KALOS } from 'src/app/shared/constants'
 import { SettingService } from 'src/app/shared/services/setting.service'
 
 @Component({
@@ -44,5 +45,12 @@ export class TopComponent implements OnInit, OnDestroy {
 
   ranking() {
     this.router.navigate(['ranking'])
+  }
+
+  weaknessStart() {
+    this.spinner.show()
+    this.settingService.setLevel(LEVEL_WEAKNESS)
+    this.settingService.setRange(RANGE_KALOS)
+    this.router.navigate(['/quiz'])
   }
 }
