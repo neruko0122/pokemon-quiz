@@ -526,7 +526,7 @@ export class QuizComponent implements OnInit, OnDestroy {
             (types[0] == require.types[0] && types[1] == require.types[1]) ||
             (types[0] == require.types[1] && types[1] == require.types[0])
           ) {
-            if (require.weakness.double.length > 1) {
+            if (require.weakness.double.length > 0) {
               return require.weakness.double
             }
             return require.weakness.single
