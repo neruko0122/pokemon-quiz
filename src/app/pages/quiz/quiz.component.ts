@@ -44,6 +44,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   readFlag = false
   adventureFlag = false
   weaknessAnswer = null
+  hintFlag = false
 
   constructor(
     private router: Router,
@@ -550,5 +551,9 @@ export class QuizComponent implements OnInit, OnDestroy {
       return this.getAnswerType(weaknessList, dummy1, dummy2)
     }
     return answer
+  }
+
+  dispHint() {
+    this.hintFlag = !this.hintFlag
   }
 }

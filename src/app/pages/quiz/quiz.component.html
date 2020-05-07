@@ -9,6 +9,21 @@
       <div style="text-align: center">
         <img class="preview" src="{{ imageUrl }}" alt="ポケモンイメージ" />
       </div>
+      <div class="text-right">
+        <button
+          *ngIf="quizType == 5"
+          type="button"
+          class="btn btn-primary mb-1 col-lg-3 hint"
+          (click)="dispHint()"
+        >
+          <ng-container *ngIf="!hintFlag">
+            ヒントをみる
+          </ng-container>
+          <ng-container *ngIf="hintFlag">
+            ヒントをみない
+          </ng-container>
+        </button>
+      </div>
       <div [class]="formGroupClass" *ngIf="quizType != 1">
         <label [class]="labelClass">なまえ：</label>
         <input
@@ -18,11 +33,15 @@
           readonly
         />
       </div>
-      <div [class]="formGroupClass" *ngIf="quizType != 2 && quizType != 5">
+      <div
+        [class]="formGroupClass"
+        *ngIf="(quizType != 2 && quizType != 5) || hintFlag"
+      >
         <label [class]="labelClass">タイプ：</label>
         <input
           type="text"
           [class]="inputClass"
+          [ngClass]="{ 'hint-text': hintFlag }"
           formControlName="types"
           readonly
         />
