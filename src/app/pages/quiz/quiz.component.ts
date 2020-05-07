@@ -5,6 +5,7 @@ import { Router } from '@angular/router'
 import { NgxSpinnerService } from 'ngx-spinner'
 import { Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
+import { TYPES, WEAKNESS_LIST } from 'src/app/shared/constants/weakness'
 import { ConfirmService } from 'src/app/shared/modals/confirm'
 import { AnswerService } from 'src/app/shared/services/answer.service'
 import { DataService } from 'src/app/shared/services/data.service'
@@ -42,8 +43,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   onDestroy$ = new Subject()
   readFlag = false
   adventureFlag = false
-
-  checkAnswer = 0
+  weaknessAnswer = null
 
   constructor(
     private router: Router,
@@ -75,7 +75,11 @@ export class QuizComponent implements OnInit, OnDestroy {
 
     this.answerStatus.subscribe(response => {
       if (!response) {
-        return this.getAnswer(this.target, this.quizType)
+        return this.getAnswer(
+          this.target,
+          this.quizType,
+          this.target['weakness']
+        )
       }
       response.sort(() => Math.random() - 0.5)
       this.resetAnswer()
@@ -111,6 +115,13 @@ export class QuizComponent implements OnInit, OnDestroy {
           this.answer2 = response[1]['abilities']
           this.answer3 = response[2]['abilities']
           this.answer4 = response[3]['abilities']
+          break
+        case 5:
+          console.log('じゃくてん')
+          this.answer1 = response[0]
+          this.answer2 = response[1]
+          this.answer3 = response[2]
+          this.answer4 = response[3]
           break
         default:
           break
@@ -281,17 +292,30 @@ export class QuizComponent implements OnInit, OnDestroy {
     return ('000' + number).slice(-3)
   }
 
-  private getAnswer(target, typeNum) {
-    this.data.subscribe(json => {
-      var dummy1 = this.getPokemonData(json, target['no'], typeNum === 3, false)
-      var dummy2 = this.getPokemonData(json, target['no'], typeNum === 3, false)
-      var dummy3 = this.getPokemonData(json, target['no'], typeNum === 3, false)
-      this.checkAnswers(target, dummy1, dummy2, dummy3, typeNum)
-    })
+  private getAnswer(target, typeNum, weaknessList) {
+    var dummy1 = null
+    var dummy2 = null
+    var dummy3 = null
+    if (typeNum === 5) {
+      console.log(weaknessList)
+      this.weaknessAnswer =
+        weaknessList[Math.floor(Math.random() * weaknessList.length)]
+      console.log(this.weaknessAnswer)
+      dummy1 = this.getAnswerType(weaknessList, null, null)
+      dummy2 = this.getAnswerType(weaknessList, dummy1, null)
+      dummy3 = this.getAnswerType(weaknessList, dummy1, dummy2)
+      this.answerList$.next([this.weaknessAnswer, dummy1, dummy2, dummy3])
+    } else {
+      this.data.subscribe(json => {
+        dummy1 = this.getPokemonData(json, target['no'], typeNum === 3, false)
+        dummy2 = this.getPokemonData(json, target['no'], typeNum === 3, false)
+        dummy3 = this.getPokemonData(json, target['no'], typeNum === 3, false)
+        this.checkAnswers(target, dummy1, dummy2, dummy3, typeNum)
+      })
+    }
   }
 
   private checkAnswers(target, dummy1, dummy2, dummy3, typeNum) {
-    this.checkAnswer += 1
     switch (typeNum) {
       case 1:
         if (
@@ -302,7 +326,7 @@ export class QuizComponent implements OnInit, OnDestroy {
           dummy1['name'] === dummy3['name'] ||
           dummy2['name'] === dummy3['name']
         ) {
-          this.getAnswer(target, typeNum)
+          this.getAnswer(target, typeNum, null)
         } else {
           this.answerList$.next([target, dummy1, dummy2, dummy3])
         }
@@ -316,7 +340,7 @@ export class QuizComponent implements OnInit, OnDestroy {
           this.compareList(dummy1['types'], dummy3['types']) ||
           this.compareList(dummy2['types'], dummy3['types'])
         ) {
-          this.getAnswer(target, typeNum)
+          this.getAnswer(target, typeNum, null)
         } else {
           this.answerList$.next([target, dummy1, dummy2, dummy3])
         }
@@ -330,7 +354,7 @@ export class QuizComponent implements OnInit, OnDestroy {
           this.compareList(dummy1['evolutions'], dummy3['evolutions']) ||
           this.compareList(dummy2['evolutions'], dummy3['evolutions'])
         ) {
-          this.getAnswer(target, typeNum)
+          this.getAnswer(target, typeNum, null)
         } else {
           this.answerList$.next([target, dummy1, dummy2, dummy3])
         }
@@ -344,7 +368,7 @@ export class QuizComponent implements OnInit, OnDestroy {
           this.compareList(dummy1['abilities'], dummy3['abilities']) ||
           this.compareList(dummy2['abilities'], dummy3['abilities'])
         ) {
-          this.getAnswer(target, typeNum)
+          this.getAnswer(target, typeNum, null)
         } else {
           this.answerList$.next([target, dummy1, dummy2, dummy3])
         }
@@ -388,6 +412,8 @@ export class QuizComponent implements OnInit, OnDestroy {
         break
       case 4:
         correctAnswer = this.target['abilities']
+      case 5:
+        correctAnswer = this.weaknessAnswer
         break
     }
     this.confirmService
@@ -404,7 +430,6 @@ export class QuizComponent implements OnInit, OnDestroy {
       this.imageUrl
     )
     this.count += 1
-    this.checkAnswer = 0
     this.resetAnswer()
     this.getNext()
   }
@@ -431,7 +456,11 @@ export class QuizComponent implements OnInit, OnDestroy {
         this.quizType = this.getQuizType(pokemon)
         this.question = QUESTIONS[this.quizType].value
         this.getPokemonImage(pokemon['no'])
-        this.getAnswer(pokemon, this.quizType)
+        this.getAnswer(
+          pokemon,
+          this.quizType,
+          this.getWeakness(pokemon['types'])
+        )
         this.form.patchValue({
           number: pokemon['no'],
           name: pokemon['name'],
@@ -451,7 +480,8 @@ export class QuizComponent implements OnInit, OnDestroy {
             pokemon['evolutions'].length > 0
               ? this.getEvolution(json, pokemon)[0]['name']
               : '',
-          status: pokemon['status']
+          status: pokemon['status'],
+          weakness: this.getWeakness(pokemon['types'])
         }
         setTimeout(() => {
           this.spinner.hide()
@@ -481,5 +511,44 @@ export class QuizComponent implements OnInit, OnDestroy {
     this.level = this.settingService.getLevel()
     this.maxCount = this.settingService.getQuizCount()
     this.ngOnInit()
+  }
+
+  private getWeakness(types: any) {
+    for (var require of WEAKNESS_LIST) {
+      if (types.length === 1) {
+        if (types[0] == require.types[0]) {
+          return require.weakness.single
+        }
+      } else {
+        if (types.length > 1 && require.types.length > 1) {
+          if (
+            (types[0] == require.types[0] && types[1] == require.types[1]) ||
+            (types[0] == require.types[1] && types[1] == require.types[0])
+          ) {
+            if (require.weakness.double.length > 1) {
+              return require.weakness.double
+            }
+            return require.weakness.single
+          }
+        }
+      }
+      continue
+    }
+    console.log('no match: ')
+    console.log(types)
+    return null
+  }
+
+  private getAnswerType(weaknessList, dummy1, dummy2) {
+    var answer = TYPES[Math.floor(Math.random() * TYPES.length)]
+    const result = weaknessList.find(weakness => weakness === answer)
+    if (
+      result ||
+      (dummy1 && answer === dummy1) ||
+      (dummy2 && answer === dummy2)
+    ) {
+      return this.getAnswerType(weaknessList, dummy1, dummy2)
+    }
+    return answer
   }
 }

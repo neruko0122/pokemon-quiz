@@ -5,6 +5,7 @@ import {
   LEVEL_ADVANCED,
   LEVEL_ELEMENTARY,
   LEVEL_INTERMEDIATE,
+  LEVEL_WEAKNESS,
   RANGE_HOENN,
   RANGE_HOENN_ONLY,
   RANGE_ISSHU,
@@ -98,6 +99,8 @@ export class SettingService {
       case LEVEL_ADVANCED:
         this.level = [1, 4]
         break
+      case LEVEL_WEAKNESS:
+        this.level = [5, 5]
     }
   }
 

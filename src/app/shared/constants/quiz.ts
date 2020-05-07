@@ -41,5 +41,9 @@ export const QUESTIONS: any[] = [
   {
     key: 4,
     value: 'このポケモンがもっている とくせい は？'
+  },
+  {
+    key: 5,
+    value: 'このポケモンの じゃくてん は？'
   }
 ]

@@ -18,7 +18,7 @@
           readonly
         />
       </div>
-      <div [class]="formGroupClass" *ngIf="quizType != 2">
+      <div [class]="formGroupClass" *ngIf="quizType != 2 && quizType != 5">
         <label [class]="labelClass">タイプ：</label>
         <input
           type="text"
