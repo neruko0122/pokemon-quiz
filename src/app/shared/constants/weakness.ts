@@ -1766,26 +1766,34 @@ export const WEAKNESS_LIST = [
   {
     types: ['ひこう', 'フェアリー'],
     weakness: {
-      single: ['でんき', 'こおり', 'いわ'],
+      single: ['でんき', 'こおり', 'どく', 'いわ', 'はがね'],
       double: []
     },
     strength: {
-      single: ['くさ', 'かくとう', 'むし'],
-      double: [],
-      noEffect: ['じめん']
+      single: ['くさ', 'あく'],
+      double: ['かくとう', 'むし'],
+      noEffect: ['じめん', 'ドラゴン']
     },
     skills: []
   },
   {
     types: ['エスパー', 'むし'],
     weakness: {
-      single: ['むし', 'ゴースト', 'あく'],
+      single: [
+        'ほのお',
+        'じめん',
+        'ひこう',
+        'むし',
+        'いわ',
+        'ゴースト',
+        'あく'
+      ],
       double: [],
       noEffect: []
     },
     strength: {
-      single: ['かくとう', 'エスパー'],
-      double: [],
+      single: ['くさ', 'エスパー'],
+      double: ['かくとう'],
       noEffect: []
     },
     skills: []
@@ -1793,12 +1801,12 @@ export const WEAKNESS_LIST = [
   {
     types: ['エスパー', 'いわ'],
     weakness: {
-      single: ['むし', 'ゴースト', 'あく'],
+      single: ['みず', 'くさ', 'じめん', 'むし', 'ゴースト', 'あく', 'はがね'],
       double: [],
       noEffect: []
     },
     strength: {
-      single: ['かくとう', 'エスパー'],
+      single: ['ノーマル', 'ほのお', 'どく', 'ひこう', 'エスパー'],
       double: [],
       noEffect: []
     },
@@ -1807,26 +1815,26 @@ export const WEAKNESS_LIST = [
   {
     types: ['エスパー', 'ゴースト'],
     weakness: {
-      single: ['むし', 'ゴースト', 'あく'],
-      double: [],
+      single: [],
+      double: ['ゴースト', 'あく'],
       noEffect: []
     },
     strength: {
-      single: ['かくとう', 'エスパー'],
+      single: ['どく', 'エスパー'],
       double: [],
-      noEffect: []
+      noEffect: ['ノーマル', 'かくとう']
     },
     skills: []
   },
   {
     types: ['エスパー', 'ドラゴン'],
     weakness: {
-      single: ['むし', 'ゴースト', 'あく'],
+      single: ['こおり', 'むし', 'ゴースト', 'ドラゴン', 'あく', 'フェアリー'],
       double: [],
       noEffect: []
     },
     strength: {
-      single: ['かくとう', 'エスパー'],
+      single: ['ほのお', 'みず', 'でんき', 'くさ', 'かくとう', 'エスパー'],
       double: [],
       noEffect: []
     },
@@ -1835,53 +1843,62 @@ export const WEAKNESS_LIST = [
   {
     types: ['エスパー', 'あく'],
     weakness: {
-      single: ['むし', 'ゴースト', 'あく'],
-      double: [],
+      single: ['フェアリー'],
+      double: ['むし'],
       noEffect: []
     },
     strength: {
-      single: ['かくとう', 'エスパー'],
+      single: [],
       double: [],
-      noEffect: []
+      noEffect: ['エスパー']
     },
     skills: []
   },
   {
     types: ['エスパー', 'はがね'],
     weakness: {
-      single: ['むし', 'ゴースト', 'あく'],
+      single: ['ほのお', 'じめん', 'ゴースト', 'あく'],
       double: [],
       noEffect: []
     },
     strength: {
-      single: ['かくとう', 'エスパー'],
-      double: [],
-      noEffect: []
+      single: [
+        'ノーマル',
+        'くさ',
+        'こおり',
+        'ひこう',
+        'いわ',
+        'ドラゴン',
+        'はがね',
+        'フェアリー'
+      ],
+      double: ['エスパー'],
+      noEffect: ['どく']
     },
     skills: []
   },
   {
     types: ['エスパー', 'フェアリー'],
     weakness: {
-      single: ['むし', 'ゴースト', 'あく'],
+      single: ['どく', 'ゴースト', 'はがね'],
       double: [],
       noEffect: []
     },
     strength: {
-      single: ['かくとう', 'エスパー'],
-      double: [],
-      noEffect: []
+      single: ['エスパー'],
+      double: ['かくとう'],
+      noEffect: ['ドラゴン']
     },
     skills: []
   },
   {
     types: ['むし', 'いわ'],
     weakness: {
-      single: ['ほのお', 'ひこう', 'いわ'],
+      single: ['みず', 'いわ', 'はがね'],
       double: []
     },
     strength: {
-      single: ['くさ', 'かくとう', 'じめん'],
+      single: ['ノーマル', 'どく'],
       double: [],
       noEffect: []
     },
@@ -1890,51 +1907,66 @@ export const WEAKNESS_LIST = [
   {
     types: ['むし', 'ゴースト'],
     weakness: {
-      single: ['ほのお', 'ひこう', 'いわ'],
+      single: ['ほのお', 'ひこう', 'いわ', 'ゴースト', 'あく'],
       double: []
     },
     strength: {
-      single: ['くさ', 'かくとう', 'じめん'],
+      single: ['くさ', 'どく', 'じめん', 'むし'],
       double: [],
-      noEffect: []
+      noEffect: ['ノーマル', 'かくとう']
     },
     skills: []
   },
   {
     types: ['むし', 'はがね'],
     weakness: {
-      single: ['ほのお', 'ひこう', 'いわ'],
-      double: []
+      single: [],
+      double: ['ほのお']
     },
     strength: {
-      single: ['くさ', 'かくとう', 'じめん'],
-      double: [],
-      noEffect: []
+      single: [
+        'ノーマル',
+        'こおり',
+        'エスパー',
+        'むし',
+        'ドラゴン',
+        'はがね',
+        'フェアリー'
+      ],
+      double: ['くさ'],
+      noEffect: ['どく']
     },
     skills: []
   },
   {
     types: ['むし', 'フェアリー'],
     weakness: {
-      single: ['ほのお', 'ひこう', 'いわ'],
+      single: ['ほのお', 'どく', 'ひこう', 'いわ', 'はがね'],
       double: []
     },
     strength: {
-      single: ['くさ', 'かくとう', 'じめん'],
-      double: [],
-      noEffect: []
+      single: ['くさ', 'じめん', 'むし', 'あく'],
+      double: ['かくとう'],
+      noEffect: ['ドラゴン']
     },
     skills: []
   },
   {
     types: ['いわ', 'ドラゴン'],
     weakness: {
-      single: ['みず', 'くさ', 'かくとう', 'じめん', 'はがね'],
+      single: [
+        'こおり',
+        'かくとう',
+        'じめん',
+        'ドラゴン',
+        'はがね',
+        'フェアリー'
+      ],
       double: []
     },
     strength: {
-      single: ['ノーマル', 'ほのお', 'どく', 'ひこう'],
-      double: [],
+      single: ['ノーマル', 'でんき', 'どく', 'ひこう'],
+      double: ['ほのお'],
       noEffect: []
     },
     skills: []
@@ -1942,50 +1974,50 @@ export const WEAKNESS_LIST = [
   {
     types: ['いわ', 'あく'],
     weakness: {
-      single: ['みず', 'くさ', 'かくとう', 'じめん', 'はがね'],
-      double: []
+      single: ['みず', 'くさ', 'じめん', 'むし', 'はがね', 'フェアリー'],
+      double: ['かくとう']
     },
     strength: {
-      single: ['ノーマル', 'ほのお', 'どく', 'ひこう'],
+      single: ['ノーマル', 'ほのお', 'どく', 'ひこう', 'ゴースト', 'あく'],
       double: [],
-      noEffect: []
+      noEffect: ['エスパー']
     },
     skills: []
   },
   {
     types: ['いわ', 'はがね'],
     weakness: {
-      single: ['みず', 'くさ', 'かくとう', 'じめん', 'はがね'],
-      double: []
+      single: ['みず'],
+      double: ['かくとう', 'じめん']
     },
     strength: {
-      single: ['ノーマル', 'ほのお', 'どく', 'ひこう'],
-      double: [],
-      noEffect: []
+      single: ['こおり', 'エスパー', 'むし', 'いわ', 'ドラゴン', 'フェアリー'],
+      double: ['ノーマル', 'ひこう'],
+      noEffect: ['どく']
     },
     skills: []
   },
   {
     types: ['いわ', 'フェアリー'],
     weakness: {
-      single: ['みず', 'くさ', 'かくとう', 'じめん', 'はがね'],
-      double: []
+      single: ['みず', 'くさ', 'じめん'],
+      double: ['はがね']
     },
     strength: {
-      single: ['ノーマル', 'ほのお', 'どく', 'ひこう'],
+      single: ['ノーマル', 'ほのお', 'ひこう', 'むし', 'あく'],
       double: [],
-      noEffect: []
+      noEffect: ['ドラゴン']
     },
     skills: []
   },
   {
     types: ['ゴースト', 'ドラゴン'],
     weakness: {
-      single: ['エスパー', 'あく'],
+      single: ['こおり', 'ゴースト', 'ドラゴン', 'あく', 'フェアリー'],
       double: []
     },
     strength: {
-      single: ['どく', 'むし'],
+      single: ['ほのお', 'みず', 'でんき', 'くさ', 'どく', 'むし'],
       double: [],
       noEffect: ['ノーマル', 'かくとう']
     },
@@ -1994,104 +2026,132 @@ export const WEAKNESS_LIST = [
   {
     types: ['ゴースト', 'あく'],
     weakness: {
-      single: ['エスパー', 'あく'],
+      single: ['フェアリー'],
       double: []
     },
     strength: {
-      single: ['どく', 'むし'],
+      single: ['どく'],
       double: [],
-      noEffect: ['ノーマル', 'かくとう']
+      noEffect: ['ノーマル', 'かくとう', 'エスパー']
     },
     skills: []
   },
   {
     types: ['ゴースト', 'はがね'],
     weakness: {
-      single: ['エスパー', 'あく'],
+      single: ['ほのお', 'じめん', 'ゴースト', 'あく'],
       double: []
     },
     strength: {
-      single: ['どく', 'むし'],
-      double: [],
-      noEffect: ['ノーマル', 'かくとう']
+      single: [
+        'くさ',
+        'こおり',
+        'ひこう',
+        'エスパー',
+        'いわ',
+        'ドラゴン',
+        'はがね',
+        'フェアリー'
+      ],
+      double: ['むし'],
+      noEffect: ['ノーマル', 'かくとう', 'どく']
     },
     skills: []
   },
   {
     types: ['ゴースト', 'フェアリー'],
     weakness: {
-      single: ['エスパー', 'あく'],
+      single: ['ゴースト', 'はがね'],
       double: []
     },
     strength: {
-      single: ['どく', 'むし'],
-      double: [],
-      noEffect: ['ノーマル', 'かくとう']
+      single: [],
+      double: ['むし'],
+      noEffect: ['ノーマル', 'かくとう', 'ドラゴン']
     },
     skills: []
   },
   {
     types: ['ドラゴン', 'あく'],
     weakness: {
-      single: ['こおり', 'ドラゴン', 'フェアリー'],
-      double: []
+      single: ['こおり', 'かくとう', 'むし', 'ドラゴン'],
+      double: ['フェアリー']
     },
     strength: {
-      single: ['ほのお', 'みず', 'でんき', 'くさ'],
+      single: ['ほのお', 'みず', 'でんき', 'くさ', 'ゴースト', 'あく'],
       double: [],
-      noEffect: []
+      noEffect: ['エスパー']
     },
     skills: []
   },
   {
     types: ['ドラゴン', 'はがね'],
     weakness: {
-      single: ['こおり', 'ドラゴン', 'フェアリー'],
+      single: ['かくとう', 'じめん'],
       double: []
     },
     strength: {
-      single: ['ほのお', 'みず', 'でんき', 'くさ'],
-      double: [],
-      noEffect: []
+      single: [
+        'ノーマル',
+        'みず',
+        'でんき',
+        'ひこう',
+        'エスパー',
+        'むし',
+        'いわ',
+        'はがね'
+      ],
+      double: ['くさ'],
+      noEffect: ['どく']
     },
     skills: []
   },
   {
     types: ['ドラゴン', 'フェアリー'],
     weakness: {
-      single: ['こおり', 'ドラゴン', 'フェアリー'],
+      single: ['こおり', 'どく', 'はがね', 'フェアリー'],
       double: []
     },
     strength: {
-      single: ['ほのお', 'みず', 'でんき', 'くさ'],
+      single: ['ほのお', 'みず', 'でんき', 'くさ', 'かくとう', 'むし', 'あく'],
       double: [],
-      noEffect: []
+      noEffect: ['ドラゴン']
     },
     skills: []
   },
   {
     types: ['あく', 'はがね'],
     weakness: {
-      single: ['かくとう', 'むし', 'フェアリー'],
-      double: []
+      single: ['ほのお', 'じめん'],
+      double: ['かくとう']
     },
     strength: {
-      single: ['ゴースト', 'あく'],
+      single: [
+        'ノーマル',
+        'くさ',
+        'こおり',
+        'ひこう',
+        'いわ',
+        'ゴースト',
+        'ドラゴン',
+        'あく',
+        'はがね'
+      ],
       double: [],
-      noEffect: ['エスパー']
+      noEffect: ['どく', 'エスパー']
     },
     skills: []
   },
   {
     types: ['あく', 'フェアリー'],
     weakness: {
-      single: ['かくとう', 'むし', 'フェアリー'],
+      single: ['どく', 'はがね', 'フェアリー'],
       double: []
     },
     strength: {
-      single: ['ゴースト', 'あく'],
-      double: [],
-      noEffect: ['エスパー']
+      single: ['ゴースト'],
+      double: ['あく'],
+      noEffect: ['エスパー', 'ドラゴン']
     },
     skills: []
   },
