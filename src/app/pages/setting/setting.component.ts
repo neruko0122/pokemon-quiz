@@ -10,6 +10,7 @@ import {
   LEVEL_ADVANCED,
   LEVEL_ELEMENTARY,
   LEVEL_INTERMEDIATE,
+  LEVEL_WEAKNESS,
   LEVELS,
   POKEMON_RANGES,
   RANGE_HOENN,
@@ -121,6 +122,8 @@ export class SettingComponent implements OnInit, OnDestroy {
         return LEVEL_INTERMEDIATE
       case 4:
         return LEVEL_ADVANCED
+      case 5:
+        return LEVEL_WEAKNESS
     }
   }
 }
