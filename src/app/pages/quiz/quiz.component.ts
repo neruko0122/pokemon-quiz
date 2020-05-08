@@ -7,6 +7,7 @@ import { Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
 import { TYPES, WEAKNESS_LIST } from 'src/app/shared/constants/weakness'
 import { ConfirmService } from 'src/app/shared/modals/confirm'
+import { TrainerService } from 'src/app/shared/modals/trainer/trainer.service'
 import { AnswerService } from 'src/app/shared/services/answer.service'
 import { DataService } from 'src/app/shared/services/data.service'
 import { SettingService } from 'src/app/shared/services/setting.service'
@@ -54,13 +55,17 @@ export class QuizComponent implements OnInit, OnDestroy {
     private answerService: AnswerService,
     private spinner: NgxSpinnerService,
     private settingService: SettingService,
-    private confirmService: ConfirmService
+    private confirmService: ConfirmService,
+    private trainerService: TrainerService
   ) {
     this.data = this.dataService.import()
     this.answerService.clearList()
     this.adventureFlag = this.settingService.getAdventure()
     if (this.adventureFlag) {
       this.settingService.setAdventureSetting(
+        this.settingService.getAdventureCount()
+      )
+      this.trainerService.openTrainerModal(
         this.settingService.getAdventureCount()
       )
     }
@@ -118,7 +123,6 @@ export class QuizComponent implements OnInit, OnDestroy {
           this.answer4 = response[3]['abilities']
           break
         case 5:
-          console.log('じゃくてん')
           this.answer1 = response[0]
           this.answer2 = response[1]
           this.answer3 = response[2]
@@ -298,10 +302,8 @@ export class QuizComponent implements OnInit, OnDestroy {
     var dummy2 = null
     var dummy3 = null
     if (typeNum === 5) {
-      console.log(weaknessList)
       this.weaknessAnswer =
         weaknessList[Math.floor(Math.random() * weaknessList.length)]
-      console.log(this.weaknessAnswer)
       dummy1 = this.getAnswerType(weaknessList, null, null)
       dummy2 = this.getAnswerType(weaknessList, dummy1, null)
       dummy3 = this.getAnswerType(weaknessList, dummy1, dummy2)
@@ -413,6 +415,7 @@ export class QuizComponent implements OnInit, OnDestroy {
         break
       case 4:
         correctAnswer = this.target['abilities']
+        break
       case 5:
         correctAnswer = this.weaknessAnswer
         break
@@ -535,8 +538,6 @@ export class QuizComponent implements OnInit, OnDestroy {
       }
       continue
     }
-    console.log('no match: ')
-    console.log(types)
     return null
   }
 

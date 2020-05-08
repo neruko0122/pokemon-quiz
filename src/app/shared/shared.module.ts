@@ -5,13 +5,15 @@ import { ReactiveFormsModule } from '@angular/forms'
 
 import { ConfirmModule } from './modals/confirm'
 import { RankingRegistModule } from './modals/ranking-regist/ranking-regist.module'
+import { TrainerModule } from './modals/trainer/trainer.module'
 
 const modules = [
   CommonModule,
   ReactiveFormsModule,
   ScrollingModule,
   ConfirmModule,
-  RankingRegistModule
+  RankingRegistModule,
+  TrainerModule
 ]
 
 @NgModule({
