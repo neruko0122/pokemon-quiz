@@ -33,59 +33,87 @@ export const LEVELS: any[] = [
 
 export const COUNT_LIST = [5, 10, 15, 20, 25]
 
+export const LINES_PATTERN_01 = 'クイズでバトルだ！'
+export const LINES_PATTERN_02 = 'クイズでしょうぶよ！'
+export const LINES_PATTERN_03 = 'クイズでもやるか！'
+export const LINES_PATTERN_04 = 'このクイズがとけますか？'
+export const LINES_PATTERN_05 = 'クイズをだすよ！'
+export const LINES_PATTERN_06 = '（クイズ…）'
+export const LINES_PATTERN_07 = 'クイズをしましょう！'
+export const LINES_PATTERN_08 = '・・・'
+export const LINES_PATTERN_09 = 'さいごのクイズです！'
+
 export const ADVENTURE_LIST = [
   {
     // カントー 初級
     range: RANGE_KANTO_ONLY,
     level: LEVEL_ELEMENTARY,
-    quizCount: 10
+    quizCount: 10,
+    characterImage: '/assets/images/character/character01.jpg',
+    line: LINES_PATTERN_01
   },
   {
     // カントー 中級
     range: RANGE_KANTO_ONLY,
     level: LEVEL_INTERMEDIATE,
-    quizCount: 10
+    quizCount: 10,
+    characterImage: '/assets/images/character/character02.jpg',
+    line: LINES_PATTERN_02
   },
   {
     // カントー 上級
     range: RANGE_KANTO_ONLY,
     level: LEVEL_ADVANCED,
-    quizCount: 10
+    quizCount: 10,
+    characterImage: '/assets/images/character/character03.jpg',
+    line: LINES_PATTERN_03
   },
   {
     // ジョウト 初級
     range: RANGE_JOHTO_ONLY,
     level: LEVEL_ELEMENTARY,
-    quizCount: 10
+    quizCount: 10,
+    characterImage: '/assets/images/character/character04.jpg',
+    line: LINES_PATTERN_04
   },
   {
     // ジョウト 中級
     range: RANGE_JOHTO_ONLY,
     level: LEVEL_INTERMEDIATE,
-    quizCount: 10
+    quizCount: 10,
+    characterImage: '/assets/images/character/character05.jpg',
+    line: LINES_PATTERN_05
   },
   {
     // ジョウト 上級
     range: RANGE_JOHTO_ONLY,
     level: LEVEL_ADVANCED,
-    quizCount: 10
+    quizCount: 10,
+    characterImage: '/assets/images/character/character06.jpg',
+    line: LINES_PATTERN_06
   },
   {
     // ホウエン 初級
     range: RANGE_HOENN_ONLY,
     level: LEVEL_ELEMENTARY,
-    quizCount: 10
+    quizCount: 10,
+    characterImage: '/assets/images/character/character07.jpg',
+    line: LINES_PATTERN_07
   },
   {
     // ホウエン 中級
     range: RANGE_HOENN_ONLY,
     level: LEVEL_INTERMEDIATE,
-    quizCount: 10
+    quizCount: 10,
+    characterImage: '/assets/images/character/character08.jpg',
+    line: LINES_PATTERN_08
   },
   {
     // ホウエン 上級
     range: RANGE_HOENN_ONLY,
     level: LEVEL_ADVANCED,
-    quizCount: 10
+    quizCount: 10,
+    characterImage: '/assets/images/character/character09.jpg',
+    line: LINES_PATTERN_09
   }
 ]
