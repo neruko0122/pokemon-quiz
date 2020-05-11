@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { BsModalRef, BsModalService } from 'ngx-bootstrap'
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal'
 import { Subject } from 'rxjs'
 
 import { RESULT_MESSAGE_NG, RESULT_MESSAGE_OK } from '../../constants'

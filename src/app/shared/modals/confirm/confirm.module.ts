@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { ModalModule } from 'ngx-bootstrap'
+import { ModalModule } from 'ngx-bootstrap/modal'
 
 import { ConfirmComponent } from './confirm.component'
 import { ConfirmService } from './confirm.service'

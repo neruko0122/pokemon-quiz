@@ -213,10 +213,6 @@ export class QuizComponent implements OnInit, OnDestroy {
       // アローラのすがたは取り直し
       return this.getPokemonData(data, excludeNum, isEvolution, isMain)
     }
-    if (data[number - 1]['isMegaEvolution']) {
-      // メガシンカ後も取り直し
-      return this.getPokemonData(data, excludeNum, isEvolution, isMain)
-    }
     switch (this.quizType) {
       case 1:
         // 同名のポケモンはいないのでスルー（アローラのすがたは別途検討）
@@ -252,9 +248,25 @@ export class QuizComponent implements OnInit, OnDestroy {
     return data[number - 1]
   }
 
-  private getPokemonImage(number) {
-    var imageUrl =
-      '/assets/images/pokemon/picture/' + this.getZeroPadding(number) + '.png'
+  private getPokemonImage(number, isMegaEvolution) {
+    var imageUrl = ''
+    if (isMegaEvolution) {
+      if (number === 6 || number === 150) {
+        // X/Yの振り分け
+        imageUrl =
+          '/assets/images/pokemon/picture/' +
+          this.getZeroPadding(number) +
+          '.png'
+      } else {
+        imageUrl =
+          '/assets/images/pokemon/picture/mega' +
+          this.getZeroPadding(number) +
+          '.png'
+      }
+    } else {
+      imageUrl =
+        '/assets/images/pokemon/picture/' + this.getZeroPadding(number) + '.png'
+    }
     this.http.get(imageUrl).subscribe(
       res => {
         this.imageUrl = imageUrl
@@ -459,7 +471,7 @@ export class QuizComponent implements OnInit, OnDestroy {
         var pokemon = this.getPokemonData(json, 0, false, true)
         this.quizType = this.getQuizType(pokemon)
         this.question = QUESTIONS[this.quizType].value
-        this.getPokemonImage(pokemon['no'])
+        this.getPokemonImage(pokemon['no'], pokemon['isMegaEvolution'])
         this.getAnswer(
           pokemon,
           this.quizType,
