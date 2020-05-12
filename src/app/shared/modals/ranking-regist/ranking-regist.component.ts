@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
-import { BsModalRef } from 'ngx-bootstrap'
+import { BsModalRef } from 'ngx-bootstrap/modal'
 import { Subject } from 'rxjs'
 
 @Component({
