@@ -248,18 +248,22 @@ export class QuizComponent implements OnInit, OnDestroy {
     return data[number - 1]
   }
 
-  private getPokemonImage(number, isMegaEvolution) {
+  private getPokemonImage(pokemon) {
+    var isMegaEvolution = pokemon['isMegaEvolution']
+    var number = pokemon['no']
     var imageUrl = ''
     if (isMegaEvolution) {
       if (number === 6 || number === 150) {
         // X/Yの振り分け
         imageUrl =
-          '/assets/images/pokemon/picture/' +
+          '/assets/images/pokemon/picture/mega/' +
           this.getZeroPadding(number) +
+          '_' +
+          this.getFormFromName(pokemon['name']) +
           '.png'
       } else {
         imageUrl =
-          '/assets/images/pokemon/picture/mega' +
+          '/assets/images/pokemon/picture/mega/' +
           this.getZeroPadding(number) +
           '.png'
       }
@@ -307,6 +311,15 @@ export class QuizComponent implements OnInit, OnDestroy {
 
   private getZeroPadding(number) {
     return ('000' + number).slice(-3)
+  }
+
+  private getFormFromName(name: string) {
+    switch (name.slice(-1)) {
+      case 'X':
+        return 'x'
+      case 'Y':
+        return 'y'
+    }
   }
 
   private getAnswer(target, typeNum, weaknessList) {
@@ -471,7 +484,7 @@ export class QuizComponent implements OnInit, OnDestroy {
         var pokemon = this.getPokemonData(json, 0, false, true)
         this.quizType = this.getQuizType(pokemon)
         this.question = QUESTIONS[this.quizType].value
-        this.getPokemonImage(pokemon['no'], pokemon['isMegaEvolution'])
+        this.getPokemonImage(pokemon)
         this.getAnswer(
           pokemon,
           this.quizType,
