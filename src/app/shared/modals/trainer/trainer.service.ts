@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { BsModalRef, BsModalService } from 'ngx-bootstrap'
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal'
 import { Subject } from 'rxjs'
 
 import { ADVENTURE_LIST } from '../../constants'

@@ -1,6 +1,6 @@
 import { Type } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
-import { ModalModule } from 'ngx-bootstrap'
+import { ModalModule } from 'ngx-bootstrap/modal'
 
 import { ConfirmService } from './confirm.service'
 
