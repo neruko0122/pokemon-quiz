@@ -2,16 +2,536 @@
     "name": "とっしん",
     "type": "ノーマル",
     "category": "ノーマル",
-    "dpt": 5,
-    "ept": 8,
-    "rigidity": 3
+    "dpt": "5",
+    "ept": "8",
+    "rigidity": "3"
   },
   {
     "name": "プレゼント",
     "type": "ノーマル",
     "category": "ノーマル",
-    "dpt": 3,
-    "ept": 12,
-    "rigidity": 3
+    "dpt": "3",
+    "ept": "12",
+    "rigidity": "3"
+  },
+  {
+    "name": "あくび",
+    "type": "ノーマル",
+    "category": "ノーマル",
+    "dpt": "0",
+    "ept": "12",
+    "rigidity": "4"
+  },
+  {
+    "name": "めざめるパワー",
+    "type": "ノーマル",
+    "category": "ノーマル",
+    "dpt": "9",
+    "ept": "8",
+    "rigidity": "3"
+  },
+  {
+    "name": "へんしん",
+    "type": "ノーマル",
+    "category": "ノーマル",
+    "dpt": "0",
+    "ept": "0",
+    "rigidity": "3"
+  },
+  {
+    "name": "いあいぎり",
+    "type": "ノーマル",
+    "category": "ノーマル",
+    "dpt": "3",
+    "ept": "2",
+    "rigidity": "1"
+  },
+  {
+    "name": "ひっかく",
+    "type": "ノーマル",
+    "category": "ノーマル",
+    "dpt": "4",
+    "ept": "2",
+    "rigidity": "1"
+  },
+  {
+    "name": "はたく",
+    "type": "ノーマル",
+    "category": "ノーマル",
+    "dpt": "5",
+    "ept": "4",
+    "rigidity": "2"
+  },
+  {
+    "name": "でんこうせっか",
+    "type": "ノーマル",
+    "category": "ノーマル",
+    "dpt": "5",
+    "ept": "7",
+    "rigidity": "2"
+  },
+  {
+    "name": "たいあたり",
+    "type": "ノーマル",
+    "category": "ノーマル",
+    "dpt": "3",
+    "ept": "2",
+    "rigidity": "1"
+  },
+  {
+    "name": "ロックオン",
+    "type": "ノーマル",
+    "category": "ノーマル",
+    "dpt": "1",
+    "ept": "5",
+    "rigidity": "1"
+  },
+  {
+    "name": "むしのていこう",
+    "type": "むし",
+    "category": "ノーマル",
+    "dpt": "9",
+    "ept": "8",
+    "rigidity": "3"
+  },
+  {
+    "name": "まとわりつく",
+    "type": "むし",
+    "category": "ノーマル",
+    "dpt": "6",
+    "ept": "11",
+    "rigidity": "3"
+  },
+  {
+    "name": "れんぞくぎり",
+    "type": "むし",
+    "category": "ノーマル",
+    "dpt": "2",
+    "ept": "4",
+    "rigidity": "1"
+  },
+  {
+    "name": "むしくい",
+    "type": "むし",
+    "category": "ノーマル",
+    "dpt": "3",
+    "ept": "3",
+    "rigidity": "1"
+  },
+  {
+    "name": "たきのぼり",
+    "type": "みず",
+    "category": "ノーマル",
+    "dpt": "12",
+    "ept": "8",
+    "rigidity": "3"
+  },
+  {
+    "name": "みずでっぽう",
+    "type": "みず",
+    "category": "ノーマル",
+    "dpt": "3",
+    "ept": "3",
+    "rigidity": "1"
+  },
+  {
+    "name": "はねる",
+    "type": "みず",
+    "category": "ノーマル",
+    "dpt": "0",
+    "ept": "12",
+    "rigidity": "4"
+  },
+  {
+    "name": "あわ",
+    "type": "みず",
+    "category": "ノーマル",
+    "dpt": "8",
+    "ept": "11",
+    "rigidity": "3"
+  },
+  {
+    "name": "タネマシンガン",
+    "type": "くさ",
+    "category": "ノーマル",
+    "dpt": "5",
+    "ept": "13",
+    "rigidity": "3"
+  },
+  {
+    "name": "はっぱカッター",
+    "type": "くさ",
+    "category": "ノーマル",
+    "dpt": "11",
+    "ept": "4",
+    "rigidity": "2"
+  },
+  {
+    "name": "つるのムチ",
+    "type": "くさ",
+    "category": "ノーマル",
+    "dpt": "5",
+    "ept": "8",
+    "rigidity": "2"
+  },
+  {
+    "name": "こなゆき",
+    "type": "こおり",
+    "category": "ノーマル",
+    "dpt": "4",
+    "ept": "8",
+    "rigidity": "2"
+  },
+  {
+    "name": "こおりのつぶて",
+    "type": "こおり",
+    "category": "ノーマル",
+    "dpt": "9",
+    "ept": "10",
+    "rigidity": "3"
+  },
+  {
+    "name": "こおりのいぶき",
+    "type": "こおり",
+    "category": "ノーマル",
+    "dpt": "8",
+    "ept": "5",
+    "rigidity": "2"
+  },
+  {
+    "name": "こおりのキバ",
+    "type": "こおり",
+    "category": "ノーマル",
+    "dpt": "8",
+    "ept": "5",
+    "rigidity": "2"
+  },
+  {
+    "name": "カウンター",
+    "type": "かくとう",
+    "category": "ノーマル",
+    "dpt": "8",
+    "ept": "7",
+    "rigidity": "2"
+  },
+  {
+    "name": "けたぐり",
+    "type": "かくとう",
+    "category": "ノーマル",
+    "dpt": "4",
+    "ept": "5",
+    "rigidity": "2"
+  },
+  {
+    "name": "からてチョップ",
+    "type": "かくとう",
+    "category": "ノーマル",
+    "dpt": "5",
+    "ept": "7",
+    "rigidity": "2"
+  },
+  {
+    "name": "いわくだき",
+    "type": "かくとう",
+    "category": "ノーマル",
+    "dpt": "9",
+    "ept": "7",
+    "rigidity": "3"
+  },
+  {
+    "name": "マッドショット",
+    "type": "じめん",
+    "category": "ノーマル",
+    "dpt": "3",
+    "ept": "9",
+    "rigidity": "2"
+  },
+  {
+    "name": "どろかけ",
+    "type": "じめん",
+    "category": "ノーマル",
+    "dpt": "11",
+    "ept": "8",
+    "rigidity": "3"
+  },
+  {
+    "name": "いわおとし",
+    "type": "いわ",
+    "category": "ノーマル",
+    "dpt": "8",
+    "ept": "5",
+    "rigidity": "2"
+  },
+  {
+    "name": "うちおとす",
+    "type": "いわ",
+    "category": "ノーマル",
+    "dpt": "12",
+    "ept": "8",
+    "rigidity": "3"
+  },
+  {
+    "name": "ほのおのうず",
+    "type": "ほのお",
+    "category": "ノーマル",
+    "dpt": "9",
+    "ept": "10",
+    "rigidity": "3"
+  },
+  {
+    "name": "ほのおのキバ",
+    "type": "ほのお",
+    "category": "ノーマル",
+    "dpt": "8",
+    "ept": "5",
+    "rigidity": "2"
+  },
+  {
+    "name": "ひのこ",
+    "type": "ほのお",
+    "category": "ノーマル",
+    "dpt": "6",
+    "ept": "6",
+    "rigidity": "2"
+  },
+  {
+    "name": "エアスラッシュ",
+    "type": "ひこう",
+    "category": "ノーマル",
+    "dpt": "9",
+    "ept": "9",
+    "rigidity": "3"
+  },
+  {
+    "name": "つばさでうつ",
+    "type": "ひこう",
+    "category": "ノーマル",
+    "dpt": "5",
+    "ept": "7",
+    "rigidity": "2"
+  },
+  {
+    "name": "つつく",
+    "type": "ひこう",
+    "category": "ノーマル",
+    "dpt": "6",
+    "ept": "5",
+    "rigidity": "2"
+  },
+  {
+    "name": "アイアンテール",
+    "type": "はがね",
+    "category": "ノーマル",
+    "dpt": "9",
+    "ept": "6",
+    "rigidity": "3"
+  },
+  {
+    "name": "メタルクロー",
+    "type": "はがね",
+    "category": "ノーマル",
+    "dpt": "5",
+    "ept": "6",
+    "rigidity": "2"
+  },
+  {
+    "name": "バレットパンチ",
+    "type": "はがね",
+    "category": "ノーマル",
+    "dpt": "6",
+    "ept": "7",
+    "rigidity": "2"
+  },
+  {
+    "name": "はがねのつばさ",
+    "type": "はがね",
+    "category": "ノーマル",
+    "dpt": "7",
+    "ept": "5",
+    "rigidity": "2"
+  },
+  {
+    "name": "たたりめ",
+    "type": "ゴースト",
+    "category": "ノーマル",
+    "dpt": "6",
+    "ept": "11",
+    "rigidity": "3"
+  },
+  {
+    "name": "おどろかす",
+    "type": "ゴースト",
+    "category": "ノーマル",
+    "dpt": "5",
+    "ept": "9",
+    "rigidity": "3"
+  },
+  {
+    "name": "シャドークロー",
+    "type": "ゴースト",
+    "category": "ノーマル",
+    "dpt": "6",
+    "ept": "8",
+    "rigidity": "2"
+  },
+  {
+    "name": "したでなめる",
+    "type": "ゴースト",
+    "category": "ノーマル",
+    "dpt": "3",
+    "ept": "3",
+    "rigidity": "1"
+  },
+  {
+    "name": "あまえる",
+    "type": "フェアリー",
+    "category": "ノーマル",
+    "dpt": "16",
+    "ept": "6",
+    "rigidity": "3"
+  },
+  {
+    "name": "じんつうりき",
+    "type": "エスパー",
+    "category": "ノーマル",
+    "dpt": "8",
+    "ept": "10",
+    "rigidity": "3"
+  },
+  {
+    "name": "ねんりき",
+    "type": "エスパー",
+    "category": "ノーマル",
+    "dpt": "16",
+    "ept": "12",
+    "rigidity": "4"
+  },
+  {
+    "name": "しねんのずつき",
+    "type": "エスパー",
+    "category": "ノーマル",
+    "dpt": "8",
+    "ept": "6",
+    "rigidity": "3"
+  },
+  {
+    "name": "サイコカッター",
+    "type": "エスパー",
+    "category": "ノーマル",
+    "dpt": "3",
+    "ept": "9",
+    "rigidity": "2"
+  },
+  {
+    "name": "ドラゴンテール",
+    "type": "ドラゴン",
+    "category": "ノーマル",
+    "dpt": "9",
+    "ept": "10",
+    "rigidity": "3"
+  },
+  {
+    "name": "りゅうのいぶき",
+    "type": "ドラゴン",
+    "category": "ノーマル",
+    "dpt": "4",
+    "ept": "3",
+    "rigidity": "1"
+  },
+  {
+    "name": "ようかいえき",
+    "type": "どく",
+    "category": "ノーマル",
+    "dpt": "6",
+    "ept": "5",
+    "rigidity": "2"
+  },
+  {
+    "name": "どくばり",
+    "type": "どく",
+    "category": "ノーマル",
+    "dpt": "3",
+    "ept": "6",
+    "rigidity": "2"
+  },
+  {
+    "name": "どくづき",
+    "type": "どく",
+    "category": "ノーマル",
+    "dpt": "6",
+    "ept": "7",
+    "rigidity": "2"
+  },
+  {
+    "name": "ボルトチェンジ",
+    "type": "でんき",
+    "category": "ノーマル",
+    "dpt": "12",
+    "ept": "16",
+    "rigidity": "4"
+  },
+  {
+    "name": "チャージビーム",
+    "type": "でんき",
+    "category": "ノーマル",
+    "dpt": "5",
+    "ept": "11",
+    "rigidity": "3"
+  },
+  {
+    "name": "でんきショック",
+    "type": "でんき",
+    "category": "ノーマル",
+    "dpt": "3",
+    "ept": "9",
+    "rigidity": "2"
+  },
+  {
+    "name": "スパーク",
+    "type": "でんき",
+    "category": "ノーマル",
+    "dpt": "4",
+    "ept": "8",
+    "rigidity": "2"
+  },
+  {
+    "name": "かみなりのキバ",
+    "type": "でんき",
+    "category": "ノーマル",
+    "dpt": "8",
+    "ept": "5",
+    "rigidity": "2"
+  },
+  {
+    "name": "バークアウト",
+    "type": "あく",
+    "category": "ノーマル",
+    "dpt": "5",
+    "ept": "13",
+    "rigidity": "3"
+  },
+  {
+    "name": "ふいうち",
+    "type": "あく",
+    "category": "ノーマル",
+    "dpt": "5",
+    "ept": "7",
+    "rigidity": "2"
+  },
+  {
+    "name": "だましうち",
+    "type": "あく",
+    "category": "ノーマル",
+    "dpt": "6",
+    "ept": "6",
+    "rigidity": "2"
+  },
+  {
+    "name": "かみつく",
+    "type": "あく",
+    "category": "ノーマル",
+    "dpt": "4",
+    "ept": "2",
+    "rigidity": "1"
   }
 ]
