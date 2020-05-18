@@ -1,0 +1,17 @@
+[{
+    "name": "とっしん",
+    "type": "ノーマル",
+    "category": "ノーマル",
+    "dpt": 5,
+    "ept": 8,
+    "rigidity": 3
+  },
+  {
+    "name": "プレゼント",
+    "type": "ノーマル",
+    "category": "ノーマル",
+    "dpt": 3,
+    "ept": 12,
+    "rigidity": 3
+  }
+]
