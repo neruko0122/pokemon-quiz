@@ -533,5 +533,1141 @@
     "dpt": "4",
     "ept": "2",
     "rigidity": "1"
+  },
+  {
+    "name": "わるあがき",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "35",
+    "energy": "100",
+    "effect": "-"
+  },
+  {
+    "name": "まきつく",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "ふみつけ",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "55",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "ひっさつまえば",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "はさむ",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "40",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "はかいこうせん",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "150",
+    "energy": "80",
+    "effect": "-"
+  },
+  {
+    "name": "のしかかり",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "つのでつく",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "40",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "スピードスター",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "ギガインパクト",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "150",
+    "energy": "80",
+    "effect": "-"
+  },
+  {
+    "name": "やつあたり",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "10",
+    "energy": "70",
+    "effect": "-"
+  },
+  {
+    "name": "おんがえし",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "130",
+    "energy": "70",
+    "effect": "-"
+  },
+  {
+    "name": "ロケットずつき",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "130",
+    "energy": "75",
+    "effect": "自:防↑100%"
+  },
+  {
+    "name": "ウェザーボール",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "とっておき",
+    "type": "ノーマル",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "ぎんいろのかぜ",
+    "type": "むし",
+    "category": "スペシャル",
+    "dpe": "45",
+    "energy": "45",
+    "effect": "自:攻防↑↑10%"
+  },
+  {
+    "name": "メガホーン",
+    "type": "むし",
+    "category": "スペシャル",
+    "dpe": "100",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "むしのさざめき",
+    "type": "むし",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "シザークロス",
+    "type": "むし",
+    "category": "スペシャル",
+    "dpe": "45",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "シグナルビーム",
+    "type": "むし",
+    "category": "スペシャル",
+    "dpe": "75",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "とどめばり",
+    "type": "むし",
+    "category": "スペシャル",
+    "dpe": "20",
+    "energy": "35",
+    "effect": "自:攻↑100%"
+  },
+  {
+    "name": "なみのり",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "65",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "ねっとう",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "みずのはどう",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "バブルこうせん",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "25",
+    "energy": "40",
+    "effect": "相:攻↓100%"
+  },
+  {
+    "name": "ハイドロポンプ",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "130",
+    "energy": "75",
+    "effect": "-"
+  },
+  {
+    "name": "しおみず",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "アクアテール",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "50",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "アクアジェット",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "45",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "オクタンほう",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "50",
+    "energy": "50",
+    "effect": "相:攻↓↓50%"
+  },
+  {
+    "name": "クラブハンマー",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "75",
+    "energy": "50",
+    "effect": "自:攻↑↑12.5%"
+  },
+  {
+    "name": "だくりゅう",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "35",
+    "energy": "35",
+    "effect": "相:攻↓30%"
+  },
+  {
+    "name": "ウェザーボール(みず)",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "ハイドロカノン",
+    "type": "みず",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "ハードプラント",
+    "type": "くさ",
+    "category": "スペシャル",
+    "dpe": "100",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "エナジーボール",
+    "type": "くさ",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "55",
+    "effect": "相:防↓10%"
+  },
+  {
+    "name": "くさむすび",
+    "type": "くさ",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "リーフブレード",
+    "type": "くさ",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "はなふぶき",
+    "type": "くさ",
+    "category": "スペシャル",
+    "dpe": "110",
+    "energy": "65",
+    "effect": "-"
+  },
+  {
+    "name": "パワーウィップ",
+    "type": "くさ",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "タネばくだん",
+    "type": "くさ",
+    "category": "スペシャル",
+    "dpe": "55",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "ソーラービーム",
+    "type": "くさ",
+    "category": "スペシャル",
+    "dpe": "150",
+    "energy": "80",
+    "effect": "-"
+  },
+  {
+    "name": "グラスミキサー",
+    "type": "くさ",
+    "category": "スペシャル",
+    "dpe": "45",
+    "energy": "40",
+    "effect": "相:攻↓↓50%"
+  },
+  {
+    "name": "ゆきなだれ",
+    "type": "こおり",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "オーロラビーム",
+    "type": "こおり",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "れいとうビーム",
+    "type": "こおり",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "れいとうパンチ",
+    "type": "こおり",
+    "category": "スペシャル",
+    "dpe": "55",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "ふぶき",
+    "type": "こおり",
+    "category": "スペシャル",
+    "dpe": "130",
+    "energy": "75",
+    "effect": "-"
+  },
+  {
+    "name": "こごえるかぜ",
+    "type": "こおり",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "45",
+    "effect": "相:攻↓100%"
+  },
+  {
+    "name": "ウェザーボール(こおり)",
+    "type": "こおり",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "きあいだま",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "150",
+    "energy": "75",
+    "effect": "-"
+  },
+  {
+    "name": "ばくれつパンチ",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "インファイト",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "100",
+    "energy": "45",
+    "effect": "自:防↓↓100%"
+  },
+  {
+    "name": "ローキック",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "40",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "じごくぐるま",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "クロスチョップ",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "50",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "かわらわり",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "40",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "フライングプレス",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "せいなるつるぎ",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "ばかぢから",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "85",
+    "energy": "40",
+    "effect": "自:攻防↓100%"
+  },
+  {
+    "name": "はどうだん",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "100",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "グロウパンチ",
+    "type": "かくとう",
+    "category": "スペシャル",
+    "dpe": "20",
+    "energy": "35",
+    "effect": "自:攻↑100%"
+  },
+  {
+    "name": "すなじごく",
+    "type": "じめん",
+    "category": "スペシャル",
+    "dpe": "25",
+    "energy": "40",
+    "effect": "相:防↓100%"
+  },
+  {
+    "name": "ホネこんぼう",
+    "type": "じめん",
+    "category": "スペシャル",
+    "dpe": "40",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "じしん",
+    "type": "じめん",
+    "category": "スペシャル",
+    "dpe": "120",
+    "energy": "65",
+    "effect": "-"
+  },
+  {
+    "name": "ドリルライナー",
+    "type": "じめん",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "どろばくだん",
+    "type": "じめん",
+    "category": "スペシャル",
+    "dpe": "55",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "じならし",
+    "type": "じめん",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "あなをほる",
+    "type": "じめん",
+    "category": "スペシャル",
+    "dpe": "100",
+    "energy": "80",
+    "effect": "-"
+  },
+  {
+    "name": "だいちのちから",
+    "type": "じめん",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "55",
+    "effect": "相:防↓10%"
+  },
+  {
+    "name": "ロックブラスト",
+    "type": "いわ",
+    "category": "スペシャル",
+    "dpe": "50",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "ストーンエッジ",
+    "type": "いわ",
+    "category": "スペシャル",
+    "dpe": "100",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "パワージェム",
+    "type": "いわ",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "げんしのちから",
+    "type": "いわ",
+    "category": "スペシャル",
+    "dpe": "45",
+    "energy": "45",
+    "effect": "自:攻防↑↑10%"
+  },
+  {
+    "name": "がんせきふうじ",
+    "type": "いわ",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "いわなだれ",
+    "type": "いわ",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "がんせきほう",
+    "type": "いわ",
+    "category": "スペシャル",
+    "dpe": "110",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "ブラストバーン",
+    "type": "ほのお",
+    "category": "スペシャル",
+    "dpe": "110",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "オーバーヒート",
+    "type": "ほのお",
+    "category": "スペシャル",
+    "dpe": "130",
+    "energy": "55",
+    "effect": "自:攻↓↓100%"
+  },
+  {
+    "name": "ほのおのパンチ",
+    "type": "ほのお",
+    "category": "スペシャル",
+    "dpe": "55",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "だいもんじ",
+    "type": "ほのお",
+    "category": "スペシャル",
+    "dpe": "140",
+    "energy": "80",
+    "effect": "-"
+  },
+  {
+    "name": "はじけるほのお",
+    "type": "ほのお",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "ニトロチャージ",
+    "type": "ほのお",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "かえんほうしゃ",
+    "type": "ほのお",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "かえんぐるま",
+    "type": "ほのお",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "ねっぷう",
+    "type": "ほのお",
+    "category": "スペシャル",
+    "dpe": "95",
+    "energy": "75",
+    "effect": "-"
+  },
+  {
+    "name": "ブレイズキック",
+    "type": "ほのお",
+    "category": "スペシャル",
+    "dpe": "55",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "ウェザーボール(ほのお)",
+    "type": "ほのお",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "ブレイブバード",
+    "type": "ひこう",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "ゴッドバード",
+    "type": "ひこう",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "ぼうふう",
+    "type": "ひこう",
+    "category": "スペシャル",
+    "dpe": "110",
+    "energy": "65",
+    "effect": "-"
+  },
+  {
+    "name": "ドリルくちばし",
+    "type": "ひこう",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "つばめがえし",
+    "type": "ひこう",
+    "category": "スペシャル",
+    "dpe": "55",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "エアカッター",
+    "type": "ひこう",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "はめつのねがい",
+    "type": "はがね",
+    "category": "スペシャル",
+    "dpe": "75",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "ヘビーボンバー",
+    "type": "はがね",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "ジャイロボール",
+    "type": "はがね",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "アイアンヘッド",
+    "type": "はがね",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "ラスターカノン",
+    "type": "はがね",
+    "category": "スペシャル",
+    "dpe": "110",
+    "energy": "65",
+    "effect": "-"
+  },
+  {
+    "name": "マグネットボム",
+    "type": "はがね",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "ミラーショット",
+    "type": "はがね",
+    "category": "スペシャル",
+    "dpe": "35",
+    "energy": "35",
+    "effect": "相:攻↓30%"
+  },
+  {
+    "name": "コメットパンチ",
+    "type": "はがね",
+    "category": "スペシャル",
+    "dpe": "100",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "かげうち",
+    "type": "ゴースト",
+    "category": "スペシャル",
+    "dpe": "50",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "シャドーパンチ",
+    "type": "ゴースト",
+    "category": "スペシャル",
+    "dpe": "40",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "ナイトヘッド",
+    "type": "ゴースト",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "シャドーボール",
+    "type": "ゴースト",
+    "category": "スペシャル",
+    "dpe": "100",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "あやしいかぜ",
+    "type": "ゴースト",
+    "category": "スペシャル",
+    "dpe": "45",
+    "energy": "45",
+    "effect": "自:攻防↑↑10%"
+  },
+  {
+    "name": "ドレインキッス",
+    "type": "フェアリー",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "ムーンフォース",
+    "type": "フェアリー",
+    "category": "スペシャル",
+    "dpe": "110",
+    "energy": "60",
+    "effect": "相:攻↓30%"
+  },
+  {
+    "name": "マジカルシャイン",
+    "type": "フェアリー",
+    "category": "スペシャル",
+    "dpe": "110",
+    "energy": "70",
+    "effect": "-"
+  },
+  {
+    "name": "チャームボイス",
+    "type": "フェアリー",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "じゃれつく",
+    "type": "フェアリー",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "サイコブースト",
+    "type": "エスパー",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "35",
+    "effect": "自:攻↓↓100%"
+  },
+  {
+    "name": "ミラーコート",
+    "type": "エスパー",
+    "category": "スペシャル",
+    "dpe": "60",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "みらいよち",
+    "type": "エスパー",
+    "category": "スペシャル",
+    "dpe": "120",
+    "energy": "65",
+    "effect": "-"
+  },
+  {
+    "name": "サイコショック",
+    "type": "エスパー",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "サイコキネシス",
+    "type": "エスパー",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "55",
+    "effect": "相:防↓10%"
+  },
+  {
+    "name": "サイケこうせん",
+    "type": "エスパー",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "サイコブレイク",
+    "type": "エスパー",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "シンクロノイズ",
+    "type": "エスパー",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "りゅうせいぐん",
+    "type": "ドラゴン",
+    "category": "スペシャル",
+    "dpe": "150",
+    "energy": "65",
+    "effect": "自:攻↓↓100%"
+  },
+  {
+    "name": "げきりん",
+    "type": "ドラゴン",
+    "category": "スペシャル",
+    "dpe": "110",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "ドラゴンクロー",
+    "type": "ドラゴン",
+    "category": "スペシャル",
+    "dpe": "50",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "りゅうのはどう",
+    "type": "ドラゴン",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "たつまき",
+    "type": "ドラゴン",
+    "category": "スペシャル",
+    "dpe": "45",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "ヘドロばくだん",
+    "type": "どく",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "50",
+    "effect": "-"
+  },
+  {
+    "name": "ヘドロこうげき",
+    "type": "どく",
+    "category": "スペシャル",
+    "dpe": "50",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "ヘドロウェーブ",
+    "type": "どく",
+    "category": "スペシャル",
+    "dpe": "110",
+    "energy": "65",
+    "effect": "-"
+  },
+  {
+    "name": "どくどくのキバ",
+    "type": "どく",
+    "category": "スペシャル",
+    "dpe": "40",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "ダストシュート",
+    "type": "どく",
+    "category": "スペシャル",
+    "dpe": "130",
+    "energy": "75",
+    "effect": "-"
+  },
+  {
+    "name": "クロスポイズン",
+    "type": "どく",
+    "category": "スペシャル",
+    "dpe": "40",
+    "energy": "35",
+    "effect": "-"
+  },
+  {
+    "name": "アシッドボム",
+    "type": "どく",
+    "category": "スペシャル",
+    "dpe": "20",
+    "energy": "50",
+    "effect": "相:防↓↓100%"
+  },
+  {
+    "name": "でんじほう",
+    "type": "でんき",
+    "category": "スペシャル",
+    "dpe": "150",
+    "energy": "80",
+    "effect": "-"
+  },
+  {
+    "name": "ワイルドボルト",
+    "type": "でんき",
+    "category": "スペシャル",
+    "dpe": "100",
+    "energy": "45",
+    "effect": "自:防↓↓100%"
+  },
+  {
+    "name": "かみなりパンチ",
+    "type": "でんき",
+    "category": "スペシャル",
+    "dpe": "55",
+    "energy": "40",
+    "effect": "-"
+  },
+  {
+    "name": "かみなり",
+    "type": "でんき",
+    "category": "スペシャル",
+    "dpe": "100",
+    "energy": "60",
+    "effect": "-"
+  },
+  {
+    "name": "ほうでん",
+    "type": "でんき",
+    "category": "スペシャル",
+    "dpe": "65",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "１０まんボルト",
+    "type": "でんき",
+    "category": "スペシャル",
+    "dpe": "90",
+    "energy": "55",
+    "effect": "-"
+  },
+  {
+    "name": "イカサマ",
+    "type": "あく",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "かみくだく",
+    "type": "あく",
+    "category": "スペシャル",
+    "dpe": "70",
+    "energy": "45",
+    "effect": "-"
+  },
+  {
+    "name": "つじぎり",
+    "type": "あく",
+    "category": "スペシャル",
+    "dpe": "50",
+    "energy": "35",
+    "effect": "自:攻↑↑12.5%"
+  },
+  {
+    "name": "あくのはどう",
+    "type": "あく",
+    "category": "スペシャル",
+    "dpe": "80",
+    "energy": "50",
+    "effect": "-"
   }
 ]
