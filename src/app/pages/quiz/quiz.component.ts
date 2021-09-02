@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
 import { NgxSpinnerService } from 'ngx-spinner'
-import { Subject } from 'rxjs'
+import { Observable, Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
 import { TYPES, WEAKNESS_LIST } from 'src/app/shared/constants/weakness'
 import { ConfirmService } from 'src/app/shared/modals/confirm'
@@ -21,7 +21,7 @@ import { QUESTIONS, QUIZ_TYPES } from './../../shared/constants/quiz'
 })
 export class QuizComponent implements OnInit, OnDestroy {
   form: FormGroup
-  data: any
+  data: Observable<Object>
   pokemonData: any
   target: any = null
   quizType = 0

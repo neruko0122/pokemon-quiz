@@ -6,7 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 
 import { PagesRoutingModule } from './pages-routing.module'
 import { PagesComponent } from './pages.component'
-import { HeaderComponent } from './shared/header/header.component'
+import { HeaderComponent } from './shared/header/header.component';
+import { TestComponent } from './test/test.component'
 
 @NgModule({
   declarations: [PagesComponent, HeaderComponent],
