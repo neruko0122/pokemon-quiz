@@ -1,0 +1,42 @@
+<div class="container card m-t-lg">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <form [formGroup]="form">
+      <div style="text-align: center">
+        <img
+          class="preview"
+          src="{{ getImageUrl(pokemon) }}"
+          alt="ポケモンイメージ"
+        />
+      </div>
+      <div>
+        <label>なまえ：</label>
+        <input type="text" formControlName="name" />
+      </div>
+      <div>
+        <label>タイプ：</label>
+        <input type="text" formControlName="types" />
+      </div>
+      <div>
+        <label>しんか：</label>
+        <input type="text" formControlName="evolutions" />
+      </div>
+      <div>
+        <label>とくせい：</label>
+        <input type="text" formControlName="abilities" />
+      </div>
+      <div>
+        <label>かくれとくせい：</label>
+        <input type="text" formControlName="hiddenAbilities" />
+      </div>
+    </form>
+  </div>
+</div>
+<div class="card-footer">
+  <button *ngIf="index > 0" (click)="goPrev(index)">
+    まえへ
+  </button>
+  <button *ngIf="index < 917" (click)="goNext(index)">
+    つぎへ
+  </button>
+</div>
