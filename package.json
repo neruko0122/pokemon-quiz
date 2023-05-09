@@ -36,7 +36,7 @@
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "log4js": "^6.2.1",
-    "mongoose": "^5.9.13",
+    "mongoose": "^5.13.15",
     "ngx-bootstrap": "^5.6.1",
     "ngx-order-pipe": "^2.0.4",
     "ngx-spinner": "^9.0.2",
