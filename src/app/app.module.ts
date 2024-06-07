@@ -1,14 +1,13 @@
-import { CommonModule } from '@angular/common'
-import { HttpClientModule } from '@angular/common/http'
-import { NgModule } from '@angular/core'
-import { FormsModule } from '@angular/forms'
-import { HttpModule } from '@angular/http'
-import { BrowserModule } from '@angular/platform-browser'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { NgxSpinnerModule } from 'ngx-spinner'
+import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxSpinnerModule } from "ngx-spinner";
 
-import { AppRoutingModule } from './app-routing.module'
-import { AppComponent } from './app.component'
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,8 +18,7 @@ import { AppComponent } from './app.component'
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxSpinnerModule,
-    HttpModule
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

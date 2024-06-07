@@ -1,0 +1,33 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>図鑑No</th>
+      <th>なまえ</th>
+      <th>タイプ</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pokemon of pokemonData; let i = index">
+      <ng-container *ngIf="i < 10">
+        <td class="col-xs-1">{{ pokemon["no"] }}</td>
+        <td class="col-xs-2">{{ pokemon["name"] }}</td>
+        <td class="col-xs-2">{{ pokemon["types"] }}</td>
+        <td class="col-xs-5">
+          <img
+            class="preview"
+            src="{{ getImageUrl(pokemon) }}"
+            alt="ポケモンイメージ"
+          />
+        </td>
+        <td class="col-xs-2">
+          <button (click)="getDetail(i)">
+            もっとみる
+          </button>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>
+<button (click)="goBack()">もどる</button>
