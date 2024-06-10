@@ -4,7 +4,16 @@
 
 export const environment = {
   API_HOST: "http://localhost:8081",
-  production: false
+  production: false,
+  firebaseConfig: {
+    // apiKey: process.env,
+    // authDomain: process.env,
+    // projectId: process.env,
+    // storageBucket: process.env,
+    // messagingSenderId: process.env,
+    // appId: process.env,
+    // measurementId: process.env
+  }
 };
 
 /*

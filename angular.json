@@ -34,7 +34,11 @@
               "src/styles.scss",
               "./node_modules/font-awesome/css/font-awesome.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+	            "firebase",
+	            "@firebase/database"
+            ]
           },
           "configurations": {
             "production": {
