@@ -1,124 +1,61 @@
-<div class="container card m-t-lg">
-  <div class="card-header">
-    <label *ngIf="question" class="question"
-      >Q{{ count }}. {{ question }}</label
-    >
+<div class="quiz-container">
+  <div class="quiz-header">
+    <h2 *ngIf="question" class="question-text">Q{{ count }}. {{ question }}</h2>
   </div>
-  <div class="card-body">
+  <div class="quiz-content">
     <form [formGroup]="form" autocomplete="off">
-      <div style="text-align: center">
-        <img class="preview" src="{{ imageUrl }}" alt="ポケモンイメージ" />
+      <div class="pokemon-image-container">
+        <img class="pokemon-image" src="{{ imageUrl }}" alt="ポケモンイメージ" />
       </div>
-      <div class="text-right">
-        <button
-          *ngIf="quizType == 5"
-          type="button"
-          class="btn btn-primary mb-1 col-lg-3 hint"
-          (click)="dispHint()"
-        >
-          <ng-container *ngIf="!hintFlag">
-            ヒントをみる
-          </ng-container>
-          <ng-container *ngIf="hintFlag">
-            ヒントをみない
-          </ng-container>
+      <div class="hint-button-container" *ngIf="quizType == 5">
+        <button type="button" class="hint-button" (click)="dispHint()">
+          {{ hintFlag ? 'ヒントをみない' : 'ヒントをみる' }}
         </button>
       </div>
-      <div [class]="formGroupClass" *ngIf="quizType != 1">
-        <label [class]="labelClass">なまえ：</label>
-        <input
-          type="text"
-          [class]="inputClass"
-          formControlName="name"
-          readonly
-        />
-      </div>
-      <div
-        [class]="formGroupClass"
-        *ngIf="(quizType != 2 && quizType != 5) || hintFlag"
-      >
-        <label [class]="labelClass">タイプ：</label>
-        <input
-          type="text"
-          [class]="inputClass"
-          [ngClass]="{ 'hint-text': hintFlag }"
-          formControlName="types"
-          readonly
-        />
-      </div>
-      <div [class]="formGroupClass" *ngIf="quizType != 3">
-        <label [class]="labelClass">しんか：</label>
-        <input
-          type="text"
-          [class]="inputClass"
-          formControlName="evolutions"
-          readonly
-        />
-      </div>
-      <div [class]="formGroupClass" *ngIf="quizType != 4">
-        <label [class]="labelClass">とくせい：</label>
-        <input
-          type="text"
-          [class]="inputClass"
-          formControlName="abilities"
-          readonly
-        />
-      </div>
-      <div [class]="formGroupClass" *ngIf="quizType != 4">
-        <label [class]="labelClass">かくれとくせい：</label>
-        <input
-          type="text"
-          [class]="inputClass"
-          formControlName="hiddenAbilities"
-          readonly
-        />
+      <div class="pokemon-info">
+        <div class="info-row" *ngIf="quizType != 1">
+          <label class="info-label">なまえ：</label>
+          <input type="text" class="info-input" formControlName="name" readonly />
+        </div>
+        <div class="info-row" *ngIf="(quizType != 2 && quizType != 5) || hintFlag">
+          <label class="info-label">タイプ：</label>
+          <input type="text" class="info-input" [ngClass]="{ 'hint-text': hintFlag }" formControlName="types" readonly />
+        </div>
+        <div class="info-row" *ngIf="quizType != 3">
+          <label class="info-label">しんか：</label>
+          <input type="text" class="info-input" formControlName="evolutions" readonly />
+        </div>
+        <div class="info-row" *ngIf="quizType != 4">
+          <label class="info-label">とくせい：</label>
+          <input type="text" class="info-input" formControlName="abilities" readonly />
+        </div>
+        <div class="info-row" *ngIf="quizType != 4">
+          <label class="info-label">かくれとくせい：</label>
+          <input type="text" class="info-input" formControlName="hiddenAbilities" readonly />
+        </div>
       </div>
     </form>
-    <div>
-      <button
-        *ngIf="answer1"
-        type="button"
-        class="btn btn-info mb-1 col-lg-3 answer"
-        (click)="register(answer1)"
-      >
+    <div class="answer-buttons">
+      <button *ngIf="answer1" type="button" class="answer-button answer-button-1" (click)="register(answer1)">
         {{ answer1 }}
       </button>
-      <button
-        *ngIf="answer2"
-        type="button"
-        class="btn btn-danger mb-1 col-lg-3 answer"
-        (click)="register(answer2)"
-      >
+      <button *ngIf="answer2" type="button" class="answer-button answer-button-2" (click)="register(answer2)">
         {{ answer2 }}
       </button>
-      <button
-        *ngIf="answer3"
-        type="button"
-        class="btn btn-success mb-1 col-lg-3 answer"
-        (click)="register(answer3)"
-      >
+      <button *ngIf="answer3" type="button" class="answer-button answer-button-3" (click)="register(answer3)">
         {{ answer3 }}
       </button>
-      <button
-        *ngIf="answer4"
-        type="button"
-        class="btn btn-warning mb-1 col-lg-3 answer"
-        (click)="register(answer4)"
-      >
+      <button *ngIf="answer4" type="button" class="answer-button answer-button-4" (click)="register(answer4)">
         {{ answer4 }}
       </button>
     </div>
-    <div *ngIf="!answer1 && !answer2 && !answer3 && !answer4 && readFlag">
-      <button
-        type="button"
-        class="btn btn-warning mb-1 col-lg-3"
-        (click)="reload()"
-      >
+    <div class="error-message" *ngIf="!answer1 && !answer2 && !answer3 && !answer4 && readFlag">
+      <button type="button" class="retry-button" (click)="reload()">
         やりなおし
       </button>
-      <label class="question">
+      <p class="error-text">
         ※エラーがはっせいしました。やりなおしボタンをおしてください。
-      </label>
+      </p>
     </div>
   </div>
 </div>

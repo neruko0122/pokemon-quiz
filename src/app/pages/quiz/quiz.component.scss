@@ -1,60 +1,134 @@
-.question {
-  color: red;
-  font-weight: bold;
-  font-size: 15pt;
-  display: contents;
-}
-
-.answer {
-  font-weight: bold;
-}
-
-.container {
-  top: 15px;
-  padding: 0px;
-  -webkit-font-smoothing: none;
+.quiz-container {
   font-family: 'pokemon-font', monospace;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f8ff;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.card-header {
-  background-color: mistyrose;
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.form-control[readonly] {
-  background-color: white;
+.question-text {
+  color: #ff4500;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.preview {
-  width: 10rem;
+.quiz-content {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-.form-control {
-  width: auto;
+.pokemon-image-container {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.col-form-label {
-  width: auto;
+.pokemon-image {
+  max-width: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-.col-xs-9 {
-  width: 75%;
+.hint-button-container {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.col-xs-3 {
-  width: 25%;
+.hint-button {
+  background-color: #ffd700;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.btn {
-  height: 4rem;
+.hint-button:hover {
+  background-color: #ffa500;
 }
 
-.hint {
-  width: fit-content;
-  height: 100%;
+.pokemon-info {
+  margin-bottom: 20px;
+}
+
+.info-row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.info-label {
+  flex: 0 0 120px;
+  font-weight: bold;
+  color: #4169e1;
+}
+
+.info-input {
+  flex: 1;
+  border: none;
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 .hint-text {
-  color: red;
+  color: #ff6347;
   font-weight: bold;
-  background-color: bisque !important;
+  background-color: #ffe4b5 !important;
+}
+
+.answer-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.answer-button {
+  background-color: #87cefa;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.answer-button:hover {
+  background-color: #1e90ff;
+  color: #ffffff;
+}
+
+.error-message {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.retry-button {
+  background-color: #ff6347;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.retry-button:hover {
+  background-color: #ff4500;
+}
+
+.error-text {
+  color: #ff0000;
+  font-weight: bold;
+  margin-top: 10px;
 }
