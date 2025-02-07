@@ -16,6 +16,7 @@ export class ZukanComponent implements OnInit {
   ) {}
 
   pokemonData!: any;
+  // aaa
 
   ngOnInit(): void {
     this.dataService.import().subscribe(json => {
